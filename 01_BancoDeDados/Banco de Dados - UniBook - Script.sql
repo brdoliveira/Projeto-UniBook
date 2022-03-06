@@ -29,7 +29,7 @@ CREATE TABLE endereco (
   cepEndereco 					VARCHAR(45) 
 );
 
-CREATE TABLE usuario_comprador_vendedor(
+CREATE TABLE usuario_comprador_vendedor_adm(
   idUsuario 				INT PRIMARY KEY,
   nomeUsuario				VARCHAR(45),
   dataNascimentoUsuario	    DATE,
@@ -38,30 +38,18 @@ CREATE TABLE usuario_comprador_vendedor(
   emailUsuario 				VARCHAR(45),
   senhaUsuario 				VARCHAR(25),
   ativoUsuario				CHAR(20),
+  tipoUsuario				CHAR(1), CHECK(tipoUsuario = 'a' OR tipoUsuario = 'v' OR tipoUsuario = 'c'),
   fkEndereco				INT,
-  FOREIGN KEY(fkEndereco) REFERENCES endereco(idEndereco)
-);
-
-
-CREATE TABLE usuario_adm(
-  idU_adm 						INT PRIMARY KEY,
-  nomeU_adm 					VARCHAR(45), 
-  dataNascimentoU_adm			DATE,
-  sexoU_adm 					CHAR(1), CHECK(sexoU_adm = 'm' OR sexoU_adm = 'f'),
-  cpfU_adm 						VARCHAR(25), 
-  emailU_adm 					VARCHAR(45),
-  senhaU_adm 					VARCHAR(25),
-  ativoU_adm 					CHAR(20),
-  fkEndereco					INT,
-  FOREIGN KEY(fkEndereco) REFERENCES endereco(idEndereco)
+  fkUsuarioAdm 				INT,
+  FOREIGN KEY(fkEndereco) REFERENCES endereco(idEndereco),
+  foreign key(fkUsuarioAdm) references usuario_comprador_vendedor_adm(idUsuario)
 );
 
 CREATE TABLE pedidos(
 	fkUsuario_vendedor_comprador INT,
-    fkUsuario_adm 				 INT,
     fkProduto					 INT,
     dataP						 DATE,
     quantidade					 INT,
-    PRIMARY KEY(fkUsuario_vendedor_comprador, fkUsuario_adm, fkProduto)
+    PRIMARY KEY(fkUsuario_vendedor_comprador, fkProduto)
 );
 
