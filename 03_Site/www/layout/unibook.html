@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Cabeçalho padrão -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <!-- Arquivos de estilos -->
+    <link rel="stylesheet" href="../templates/styles/styles.css">
+    <link rel="stylesheet" href="../templates/styles/styles_index.css">
+    <link rel="stylesheet" href="../templates/styles/styles_contact.css">
+    <link rel="stylesheet" href="../templates/styles/styles_footer.css">
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Icon -->
+    <link rel="shortcut icon" type="imagex/png" href="../img/hat.png">
+    <!-- Titulo -->
+    <title>UniBook</title>
+</head>
+<body>
+    <!-- Menu -->
+  <header class="section-header" id="header">
+    <section class="header-main">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-2 col-sm-3 col-xl-2 col-md-2 col-3"> <a href="#" class="brand-wrap" data-abc="true">
+                        <img class="logo" src="../img/hat.png" style="width:40px;filter: invert(100%);"> <span class="logo">UniBook</span> </a> </div>
+                <div class="col-lg-5 col-sm-7 col-xl-6 col-md-4 col-7">
+                    <form action="#" class="search-wrap">
+                        <div class="input-group w-100"> <input type="text" class="form-control search-form" style="width:55%;" placeholder="Search">
+                            <div class="input-group-append"> <button class="btn btn-primary search-button" type="submit"> <i class="bi bi-search"></i> </button> </div>
+                        </div>
+                    </form>
+                </div>
+                <button class="btn btn-primary nav-link rounded mx-3 d-none col-sm-1 col-md-1 col-1 hover-nav" onclick="expand()">
+                  <i class="bi bi-list"></i>
+                </button>
+                <div class="col-lg-5 col-xl-4 col-md-6 d-none d-md-block">
+                  <div class="d-flex justify-content-end">
+                    <a class="nav-link nav-user-img hover-nav rounded" href="#" data-toggle="modal" data-target="#login-modal" data-abc="true">
+                      <span class="login">Home</span>
+                    </a>
+                    <a class="nav-link nav-user-img hover-nav rounded" href="#" data-toggle="modal" data-target="#login-modal" data-abc="true">
+                          <span class="login">Fale Conosco</span>
+                        </a>
+                        <a class="nav-link nav-user-img hover-nav rounded" href="#" data-toggle="modal" data-target="#login-modal" data-abc="true">
+                          <span class="login">Sobre-nós</span>
+                        </a>
+                        <button type="button" class="btn btn-primary color border-0 nav-link rounded mx-3">
+                          <i class="bi bi-person-circle"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+    </section>
+</header>
+<!-- Imagem Central -->
+<header class="header">
+    <div class="overlay">
+        <h1>UniBook</h1>
+        <h3>De estudantes para estudantes ...</h3>
+        <p>Um lugar onde você pode comprar livros usados em bom estado com uma ótimo preço, ou vender livros ótimos!</p>
+    <br>
+    <button class="font-weight-bold">Saiba Mais</button>
+    </div>
+</header>
+<!-- Cards -->    
+<section id="featured-services" class="featured-services section-bg">
+    <div class="container">
+
+      <div class="row no-gutters">
+        <div class="col-lg-4 col-md-6">
+          <div class="icon-box">
+            <div class="icon"><i class="bi bi-laptop"></i></div>
+            <h3 class="title"><a href="">Login</a></h3>
+            <p class="description">Caso você queira comprar ou vender algum produto, você irá precisar fazer o login, clique aqui para fazer o login!</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="icon-box">
+            <div class="icon"><i class="bi bi-briefcase"></i></div>
+            <h3 class="title"><a href="">Quem Somos?</a></h3>
+            <p class="description">Aqui você pode ver nossa história, nossos princípios ou até nossas planejamentos para o futuro
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="icon-box">
+            <div class="icon"><i class="bi bi-calendar4-week"></i></div>
+            <h3 class="title"><a href="">Fale Conosco</a></h3>
+            <p class="description">Para mandar alguma mensagem, entre na pagina de fale conosco e escreva sua mensagem, iremos responder a mensagem o mais rápido possível, pois você é
+              especial! 
+              </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- Quem Somos? -->
+<div class="text-white">
+    <div class="container color mt-4 rounded">
+        <div class="row">
+            <div class="col-12 col-md-6 p-1">
+                <h2 class="text-center font-weight-bold">Historia</h2>
+                <p class="text-left m-2">
+                  Um grupos de amigos de sala da faculdade SPTECH (São Paulo Tech School), tiveram a brilhante ideia com contribuição de um dos seus professores 
+                  Fábio Figueira, a criar um site para suprir e necessidade de livros acessíveis para pessoas que querem achar livros mais baratos. com isso
+                  criamos o site unibook
+                </p>
+            </div>
+            <div class="col-12 col-md-6">
+                <img class="img-fluid" src="https://www.hostinger.com.br/tutoriais/wp-content/uploads/sites/12/2021/01/As-32-Melhores-Ideias-de-Pequenos-Negocios-para-Comecar-em-2021.png" alt="">
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="container color mt-4 rounded">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <img class="img-fluid" src="https://www.hostinger.com.br/tutoriais/wp-content/uploads/sites/12/2020/04/17-Melhores-Ideias-para-Trabalhar-em-Casa-Edi%C3%A7ao-2020.png" alt="">
+            </div>
+            <div class="col-12 col-md-6 p-1">
+                <h2 class="text-center font-weight-bold">Principios</h2>
+                <p class="text-right m-2">
+                  Temos como princípio as passar seus livros antigos para pessoas que precisam, pois além de pagar mais barata você está contribuindo com o meio-ambiente.
+                  Também a diversidade é algo primordial para nossa empresa, pois com ela conseguimos tem diferentes pensamentos sobre a mesma coisa,
+                  assim evouluindo o projeto !
+                </p>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="container color my-4 rounded">
+        <div class="row">
+            <div class="col-12 col-md-6 p-1">
+                <h2 class="text-center font-weight-bold">Propostas Futuras</h2>
+                <p class="text-left m-2">
+                  Queremos aumentar a troca de livro no brasil, para diminuir os gastos de livros e consequentemente diminuir o desperdício de livros. Também com isso irá evoluir toda a população para um caminho de sucesso
+                </p>
+            </div>
+            <div class="col-12 col-md-6">
+                <img class="img-fluid" src="https://www.hostinger.com.br/tutoriais/wp-content/uploads/sites/12/2019/05/21-Ideias-de-Negocios-Online-para-Ganhar-Dinheiro-na-Internet-1.png" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- Nossa Equipe -->
+    <div class="container color my-4 rounded py-5 team4">
+      <div class="container">
+        <div class="row justify-content-center mb-4">
+            <h3 class="mb-3">Profissionais da Equipe</h3>
+        </div>
+        <div class="row justify-content-center">
+          <!-- column  -->
+          <div class="col-lg-2 mb-4">
+            <!-- Row -->
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <img src="https://media-exp1.licdn.com/dms/image/C5603AQEVydckSu1HSQ/profile-displayphoto-shrink_200_200/0/1645754872754?e=1652918400&v=beta&t=W-yN9ghIW_UuOeeuYrTpCz4d2vpVxOFFqOkrs7CDprQ
+                " alt="wrapkit" class="img-fluid rounded-circle" />
+              </div>
+              <div class="col-md-12 text-center">
+                <div class="pt-2">
+                  <h5 class="mt-4 font-weight-medium mb-0">Beatriz Vitoria</h5>
+                  <h6 class="subtitle mb-3">Front End, DevOps(Lider)
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 mb-4">
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <img src="https://media-exp1.licdn.com/dms/image/D4D03AQEjOMPJC11KrA/profile-displayphoto-shrink_200_200/0/1644802817563?e=1652313600&v=beta&t=bi3cq42JpzkAoDiTjZMsIqRCi_X6DgB0yFPueceV5JM" alt="wrapkit" class="img-fluid rounded-circle" />
+              </div>
+              <div class="col-md-12 text-center">
+                <div class="pt-2">
+                  <h5 class="mt-4 font-weight-medium mb-0">Bruno Ribeiro</h5>
+                  <h6 class="subtitle mb-3">Analytics (Lider), Front-End(Lider)</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 mb-4">
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <img src="../img/henrique.jpeg" style="width: 200px;" alt="wrapkit" class="img-fluid rounded-circle" />
+              </div>
+              <div class="col-md-12 text-center">
+                <div class="pt-2">
+                  <h5 class="mt-4 font-weight-medium mb-0">Henrique Piassi</h5>
+                  <h6 class="subtitle mb-3">Analytics, Back-End (Lider)</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 mb-4">
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <img src="https://media-exp1.licdn.com/dms/image/C5603AQFLZIbfQ3EG5Q/profile-displayphoto-shrink_200_200/0/1643988608912?e=1652918400&v=beta&t=ERz8o0QNOBprEgVI3FtgW4x2vJKJgZP_RsUsxfQqMBM" alt="wrapkit" class="img-fluid rounded-circle" />
+              </div>
+              <div class="col-md-12 text-center">
+                <div class="pt-2">
+                  <h5 class="mt-4 font-weight-medium mb-0">João Pedro</h5>
+                  <h6 class="subtitle mb-3">Analytics, Negócios(Lider)</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 mb-4">
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <img src="https://media-exp1.licdn.com/dms/image/C5603AQE67EUVPM-3mw/profile-displayphoto-shrink_200_200/0/1603679083518?e=1652918400&v=beta&t=g6SY38LLtgpRLf6koURkPDAzJOJo5Irl1HEL5ERorp4
+                " alt="wrapkit" class="img-fluid rounded-circle" />
+              </div>
+              <div class="col-md-12 text-center">
+                <div class="pt-2">
+                  <h5 class="mt-4 font-weight-medium mb-0">Luiz Henrique</h5>
+                  <h6 class="subtitle mb-3">Back-End e o Front-End</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<!-- Contatos -->
+<section id="contact" class="contact">
+    <div class="container">
+
+      <div class="section-title">
+        <h2 class="font-weight-bold">Contatos</h2>
+        <p>Nosso contatos se tiver alguma dúvida de como funciona nossa empresa, ou sequiser dar algum feedback. Contate-nós ; )</p>
+      </div>
+
+      <div class="row">
+
+        <div class="col-lg-5 d-flex align-items-stretch">
+          <div class="info">
+            <div class="address">
+              <i class="bi bi-geo-alt"></i>
+              <h4>Localização:</h4>
+              <p>Rua Haddock Lobo, 595 - Cerqueira César, São Paulo - SP, 01414-001</p>
+            </div>
+
+            <div class="email">
+              <i class="bi bi-envelope"></i>
+              <h4>Email:</h4>
+              <p>contato-empresa@unibook.com.br</p>
+            </div>
+
+            <div class="phone">
+              <i class="bi bi-phone"></i>
+              <h4>Numero de Contato:</h4>
+              <p>+55 11 4002-8922</p>
+            </div>
+
+            <iframe src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=S%C3%A3o%20Paulo%20Tech%20School+(UniBook%20Empresa)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+          </div>
+
+        </div>
+
+        <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+          <form action="" method="post" role="form" class="form-email">
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="name">Seu nome:</label>
+                <input type="text" name="name" class="form-control" id="name" required>
+              </div>
+              <div class="form-group col-md-6 mt-3 mt-md-0">
+                <label for="name">Seu Email</label>
+                <input type="email" class="form-control" name="email" id="email" required>
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <label for="name">Assunto</label>
+              <input type="text" class="form-control" name="subject" id="subject" required>
+            </div>
+            <div class="form-group mt-3">
+              <label for="name">Mensagem</label>
+              <textarea class="form-control" name="message" rows="10" required></textarea>
+            </div>
+            <div class="my-3">
+              <div class="loading">Carregandp</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Sua mensagem foi enviada. Obrigado!</div>
+            </div>
+            <div class="text-center"><button class="font-weight-bold" type="submit">Enviar mensagem</button></div>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div class="footer-page color">
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-3 item">
+                    <h3>Pagina</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Quem Conosco</a></li>
+                        <li><a href="#">Sobre-nós</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-md-3 item">
+                    <h3>Compras</h3>
+                    <ul>
+                        <li><a href="#">Carrinho</a></li>
+                        <li><a href="#">Favoritos</a></li>
+                        <li><a href="#">Lista de Produtos</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 item text">
+                    <h3>Nome da Empresa</h3>
+                    <p>Quando criamos a empresa pensamos em criar um serviço para as pessoas que estão com problemas de achar livros de ensino médio com o preço acessível, e também livros de vestibulares.
+                        Para pessoas que querem passar em faculdades, e virarem UNIversitarios. E juntamos UNI + BOOK (Livro)
+                    </p>
+                </div>
+                <div class="col item social"><a href="#"><i class="bi bi-facebook"></i></a><a href="#"><i class="bi bi-twitter"></i></a><a href="#"><i class="bi bi-github"></i></a><a href="#"><i class="bi bi-instagram"></i></a></div>
+            </div>
+            <p class="copyright">UniBook © 2022</p>
+        </div>
+    </footer>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+</body>
+</html>
