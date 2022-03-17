@@ -3,11 +3,24 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+.degrade{
+  background-image: linear-gradient(90deg, rgb(63, 82, 202) 0%, rgb(22, 43, 173) 50%, rgb(16, 29, 113) 100%);
+}
+
+.color{
+  background-color: rgba(16,29,173,1);
+}
+
+.secondary-color{
+  background-color: #FB8500;
+}
+
 .header-main {
+  height: 50px;
   position: relative;
   padding-top: 7px;
   padding-bottom: 7px;
-  background-color: #007bff;
+  background-color: rgba(22,43,173,1);
 }
 
 .logo {
@@ -32,7 +45,7 @@ body {
 }
 
 .search-button {
-  color: #007bff;
+  color: rgba(22,43,173,1);
   background-color: #ffffff;
   border-color: #ffffff;
 }

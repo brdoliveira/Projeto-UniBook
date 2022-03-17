@@ -1,6 +1,6 @@
 .contact .info {
-    border-top: 3px solid blueviolet;
-    border-bottom: 3px solid blueviolet;
+    border-top: 3px solid #FB8500;
+    border-bottom: 3px solid #FB8500;
     padding: 30px;
     background: #fff;
     width: 100%;
@@ -8,7 +8,7 @@
   }
   .contact .info i {
     font-size: 20px;
-    color: blueviolet;
+    color: #FB8500;
     float: left;
     width: 44px;
     height: 44px;
@@ -50,17 +50,17 @@
     margin-right: 10px;
   }
   .contact .info .social-links a:hover {
-    background: blueviolet;
+    background: #FB8500;
     color: #fff;
   }
   .contact .info .email:hover i, .contact .info .address:hover i, .contact .info .phone:hover i {
-    background: blueviolet;
+    background: #FB8500;
     color: #fff;
   }
   .contact .form-email {
     width: 100%;
-    border-top: 3px solid blueviolet;
-    border-bottom: 3px solid blueviolet;
+    border-top: 3px solid #FB8500;
+    border-bottom: 3px solid #FB8500;
     padding: 30px;
     background: #fff;
     box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
@@ -112,7 +112,7 @@
     border-radius: 4px;
   }
   .contact .form-email input:focus, .contact .form-email textarea:focus {
-    border-color: purple;
+    border-color: #A55802;
   }
   .contact .form-email input {
     height: 44px;
@@ -121,7 +121,7 @@
     padding: 10px 12px;
   }
   .contact .form-email button[type=submit] {
-    background: blueviolet;
+    background: #FB8500;
     border: 0;
     padding: 10px 24px;
     color: #fff;
@@ -129,7 +129,7 @@
     border-radius: 4px;
   }
   .contact .form-email button[type=submit]:hover {
-    background: purple;
+    background: #A55802;
     transition: 0.5s;
   }
   @-webkit-keyframes animate-loading {
