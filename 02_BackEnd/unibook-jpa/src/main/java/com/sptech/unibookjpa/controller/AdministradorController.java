@@ -24,8 +24,6 @@ public class AdministradorController {
     @Autowired
     EnderecoRepository enderecoRepository;
 
-
-
     @PostMapping("/cadastrar/{cep}/{numero}")
     public  ResponseEntity<Administrador> cadastrarAdministrador(
                                         @Valid
@@ -53,8 +51,6 @@ public class AdministradorController {
                 return new ResponseEntity<>(lista, HttpStatus.OK);
             }
     }
-
-
 
     @DeleteMapping("/remover-produto")
     public void removerProduto(@Valid
