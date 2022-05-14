@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cea58013-85f3-4c63-bd6e-a2ce5eda29df" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Projeto Java Sprint 1/unibook/src/main/java/com/sptech/unibook/controller/EnderecoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Projeto Java Sprint 1/unibook/src/main/java/com/sptech/unibook/controller/EnderecoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Projeto Java Sprint 1/unibook/src/main/java/com/sptech/unibook/model/Endereco.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Projeto Java Sprint 1/unibook/src/main/java/com/sptech/unibook/model/Endereco.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../unibook-jpa/src/main/java/com/sptech/unibookjpa/controller/EnderecoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../unibook-jpa/src/main/java/com/sptech/unibookjpa/controller/EnderecoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../unibook-jpa/src/main/java/com/sptech/unibookjpa/model/Endereco.java" beforeDir="false" afterPath="$PROJECT_DIR$/../unibook-jpa/src/main/java/com/sptech/unibookjpa/model/Endereco.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="27ymV3kGyaIfFiddpxXXxiDdHmq" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cea58013-85f3-4c63-bd6e-a2ce5eda29df" name="Changes" comment="" />
+      <created>1650300722437</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1650300722437</updated>
+    </task>
+    <servers />
+  </component>
+</project>
