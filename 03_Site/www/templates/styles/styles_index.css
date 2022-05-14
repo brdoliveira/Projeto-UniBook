@@ -1,5 +1,6 @@
 *{padding: 0; margin: 0; box-sizing: border-box;}
 body{height: 900px;}
+
 .header { 
   background-image: linear-gradient(90deg, rgb(63, 82, 202) 0%, rgb(22, 43, 173) 50%, rgb(16, 29, 113) 100%);
 	text-align: center;
@@ -40,6 +41,8 @@ button {
 	background: #fff;
 	margin-bottom: 50px;
 	box-shadow: 0 3px 20px 0 #0000003b;
+  font-weight: bold;
+  font-family: 18px;
 }
 button:hover{
 	cursor: pointer;
@@ -84,4 +87,8 @@ section {
   .featured-services .description {
     line-height: 24px;
     font-size: 14px;
+  }
+
+  .description{
+    font-weight: bold !important;
   }
