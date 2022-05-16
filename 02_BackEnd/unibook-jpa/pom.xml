@@ -8,7 +8,6 @@
 		<version>2.6.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-<!--	teste -->
 	<groupId>com.sptech</groupId>
 	<artifactId>unibook-jpa</artifactId>
 	<version>0.0.1-SNAPSHOT</version>

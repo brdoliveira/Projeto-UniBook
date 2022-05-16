@@ -8,8 +8,8 @@ import java.util.concurrent.ThreadLocalRandom;
 @Entity
 @DiscriminatorValue("1")
 public class Administrador extends Usuario implements IBoleto {
-    public Administrador() {
-    }
+    // public Administrador() {
+    // }
 
     public Administrador(String nome, String dataNascimento, char sexo, String cpf,
                          String email, String senha, boolean ativo, Endereco endereco) {
