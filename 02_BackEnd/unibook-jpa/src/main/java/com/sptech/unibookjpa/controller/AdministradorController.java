@@ -12,6 +12,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -89,6 +92,28 @@ public class AdministradorController {
     public String gerarBoleto(@Valid @RequestBody Administrador administrador,
                             @PathVariable double valor){
        return administrador.gerarBoleto(valor);
+    }
+
+
+    // EXPORTAÇÃO E GRAVAÇAO DE ARQUIVO
+
+    public static void gravaRegistro(String registro, String nomeArq) {
+        BufferedWriter saida = null;
+
+        try {
+            saida = new BufferedWriter(new FileWriter(nomeArq, true));
+        }
+        catch (IOException erro) {
+            System.out.println("Erro ao abrir o arquivo: " + erro);
+        }
+
+        try {
+            saida.append(registro + "\n");
+            saida.close();
+        }
+        catch (IOException erro) {
+            System.out.println("Erro ao gravar o arquivo: " + erro);
+        }
     }
 
 

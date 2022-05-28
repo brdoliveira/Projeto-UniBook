@@ -11,8 +11,13 @@ public class Administrador extends Usuario implements IBoleto {
     // public Administrador() {
     // }
 
-    public Administrador(String nome, String dataNascimento, char sexo, String cpf,
-                         String email, String senha, boolean ativo, Endereco endereco) {
+    public Administrador(String nome,
+                         String dataNascimento,
+                         char sexo, String cpf,
+                         String email,
+                         String senha,
+                         boolean ativo,
+                         Endereco endereco) {
 
         super(nome, dataNascimento, sexo, cpf, email, senha, ativo, endereco);
     }
