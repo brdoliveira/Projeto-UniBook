@@ -126,10 +126,10 @@ public class AdministradorController {
         header += LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
         header += "V1";
 
-        // Grava o registro de header
+
         gravaRegistro(header, nomeArq);
 
-        // Monta e grava os registros de corpo
+
         String corpo;
         for (Administrador a : lista) {
             corpo = "02";
@@ -147,14 +147,11 @@ public class AdministradorController {
             gravaRegistro(corpo, nomeArq);
         }
 
-        // Monta e grava o registro de trailer
+
         String trailer = "01";
         trailer += String.format("%07d", contaRegCorpo);
         gravaRegistro(trailer, nomeArq);
     }
 
-    public static void main(String[] args) {
 
-
-    }
 }
