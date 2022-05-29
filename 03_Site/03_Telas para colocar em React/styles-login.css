@@ -1,0 +1,11 @@
+@import url(./color.css);
+
+.bg-image{
+    background-image: url("./login-image.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.bg-height{
+    height: 100vh;
+}
