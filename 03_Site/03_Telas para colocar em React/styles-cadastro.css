@@ -1,0 +1,23 @@
+@import url(./color.css);
+
+.container-cadastro{
+    height: 90vh;
+}
+
+.div-cadastro{
+    height: 70vh;
+}
+
+.div-cadastro .cadastro{
+    height: 50vh;
+}
+
+@media (max-width: 991.98px) {
+    .container-cadastro{
+      height: auto;
+    }
+
+    .div-cadastro{
+        height: auto;
+    }
+  }
