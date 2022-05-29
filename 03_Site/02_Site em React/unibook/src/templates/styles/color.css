@@ -1,0 +1,24 @@
+:root{
+    --bluebook: rgba(22,43,173,1) !important;
+    --bluelightbook: rgba(63,82,202,1) !important;
+    --skylightbook: rgba(111,128,233,1) !important;
+    --orangebook: rgba(251, 133, 0,1) !important;
+    --orangelightbook: rgba(255, 160, 53,1) !important;
+  }
+
+  body {
+    background-color: #eee;
+    font-family: "Roboto", sans-serif;
+  }
+  
+  .bg-blue{
+    background-color: var(--bluebook) !important;
+  }
+  
+  .bg-bluelight{
+    background-color: var(--bluelightbook) !important;
+  }
+
+  .bg-orange{
+      background-color: var(--orangebook);
+  }

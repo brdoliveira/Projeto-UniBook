@@ -1,0 +1,6 @@
+@import url(./color.css);
+
+.button-editar:hover{
+    background-color: var(--orangelightbook);
+    transition: all 0.5s ease;
+}
