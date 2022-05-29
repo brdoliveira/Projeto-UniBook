@@ -12,6 +12,11 @@
     height: 50vh;
 }
 
+button:hover{
+    background-color: var(--orangelightbook);
+    transition: all 0.5s ease;
+}
+
 @media (max-width: 991.98px) {
     .container-cadastro{
       height: auto;
