@@ -51,7 +51,7 @@ function Menu() {
               <a
                 className="nav-link text-white px-3"
                 aria-current="page"
-                href="/index"
+                href="/fale-conosco"
               >
                 Fale Conosco
               </a>
