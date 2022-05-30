@@ -1,17 +1,17 @@
 @import url(./color.css);
 
-.bg-image{
-    background-image: url("../images/login-image.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
+.bg-image {
+  background-image: url("../images/login-image.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.bg-height{
-    height: 100vh;
+.bg-height {
+  height: 95vh;
 }
 
 @media (max-width: 991.98px) {
-    .image-not-found{
-        width: 90%;
-    }
+  .image-not-found {
+    width: 90%;
   }
+}

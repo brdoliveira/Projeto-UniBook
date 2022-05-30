@@ -1,11 +1,16 @@
 @import url(./color.css);
 
-.bg-image{
-    background-image: url("../images/login-image.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
+.bg-image {
+  background-image: url("../images/login-image.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.bg-height{
-    height: 100vh;
+.bg-height {
+  height: 100vh;
+}
+
+.button-entrar:hover {
+  background-color: var(--orangelightbook) !important;
+  transition: all 0.5s ease;
 }

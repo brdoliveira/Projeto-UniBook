@@ -1,28 +1,28 @@
 @import url(./color.css);
 
-.container-perfil{
-    height: 90vh;
+.container-perfil {
+  height: 90vh;
 }
 
-.div-perfil{
-    height: 70vh;
+.div-perfil {
+  height: 70vh;
 }
 
-.div-perfil .perfil{
-    height: 50vh;
+.div-perfil .perfil {
+  height: 50vh;
 }
 
 @media (max-width: 991.98px) {
-    .container-perfil{
-      height: auto;
-    }
-
-    .div-perfil{
-        height: auto;
-    }
+  .container-perfil {
+    height: auto;
   }
 
-.button-perfil:hover{
-    background-color: var(--orangelightbook) !important;
-    transition: all 0.5s ease;
+  .div-perfil {
+    height: auto;
+  }
+}
+
+.button-perfil:hover {
+  background-color: var(--orangelightbook) !important;
+  transition: all 0.5s ease;
 }
