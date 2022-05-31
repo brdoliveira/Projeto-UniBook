@@ -21,29 +21,29 @@ function CadastroEndereco() {
         <div className="col-12 col-md-6 px-4">
           <div className="col-12 text-white py-4">
             <span>Cidade</span>
-            <input className="col-12 border border-0 rounded-pill" />
+            <input className="col-12 border border-0 rounded-pill px-3" />
           </div>
           <div className="col-12 text-white py-4">
             <span>Estado</span>
-            <input className="col-12 border border-0 rounded-pill" />
+            <input className="col-12 border border-0 rounded-pill px-3" />
           </div>
           <div className="col-12 text-white py-4">
             <span>Logradouro</span>
-            <input className="col-12 border border-0 rounded-pill" />
+            <input className="col-12 border border-0 rounded-pill px-3" />
           </div>
         </div>
         <div className="col-12 col-md-6 px-4">
           <div className="col-12 text-white py-4">
             <span>Numero</span>
-            <input className="col-12 border border-0 rounded-pill" />
+            <input className="col-12 border border-0 rounded-pill px-3" />
           </div>
           <div className="col-12 text-white py-4">
             <span>CEP</span>
-            <input className="col-12 border border-0 rounded-pill" />
+            <input className="col-12 border border-0 rounded-pill px-3" />
           </div>
           <div className="col-12 text-white py-4">
             <span>Complemento</span>
-            <input className="col-12 border border-0 rounded-pill" />
+            <input className="col-12 border border-0 rounded-pill px-3" />
           </div>
         </div>
       </div>

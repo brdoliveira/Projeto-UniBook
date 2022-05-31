@@ -11,29 +11,29 @@ function CadastroUsuario() {
         <div className="col-12 col-md-6 px-4">
           <div className="col-12 text-white py-4">
             <span>Usuario</span>
-            <input className="col-12 border border-0 rounded-pill" />
+            <input className="col-12 border border-0 rounded-pill px-3" />
           </div>
           <div className="col-12 text-white py-4">
             <span>Email</span>
-            <input className="col-12 border border-0 rounded-pill" />
+            <input className="col-12 border border-0 rounded-pill px-3" />
           </div>
           <div className="col-12 text-white py-4">
             <span>Senha</span>
-            <input className="col-12 border border-0 rounded-pill" />
+            <input className="col-12 border border-0 rounded-pill px-3" type="password" />
           </div>
         </div>
         <div className="col-12 col-md-6 px-4">
           <div className="col-12 text-white py-4">
             <span>Data Nascimento</span>
-            <input className="col-12 border border-0 rounded-pill" />
+            <input className="col-12 border border-0 rounded-pill px-3" />
           </div>
           <div className="col-12 text-white py-4">
             <span>Sexo</span>
-            <input className="col-12 border border-0 rounded-pill" />
+            <input className="col-12 border border-0 rounded-pill px-3" />
           </div>
           <div className="col-12 text-white py-4">
             <span>CPF</span>
-            <input className="col-12 border border-0 rounded-pill" />
+            <input className="col-12 border border-0 rounded-pill px-3" />
           </div>
         </div>
       </div>

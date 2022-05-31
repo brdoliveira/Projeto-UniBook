@@ -2,6 +2,31 @@ import iconAddImage from "../templates/images/icon-add-image.png";
 import "../templates/styles/styles-cadastro.css";
 
 function CadastroImagem() {
+  const finalizarCadastro = () => {
+    console.log(file.files);
+  };
+
+  let photo = document.getElementById("imgPhoto");
+  let file = document.getElementById("flImage");
+
+  photo.addEventListener("click", () => {
+    file.click();
+  });
+
+  file.addEventListener("change", () => {
+    if (file.files.length <= 0) {
+      return;
+    }
+
+    let reader = new FileReader();
+
+    reader.onload = () => {
+      photo.src = reader.result;
+    };
+
+    reader.readAsDataURL(file.files[0]);
+  });
+
   return (
     <div>
       <div className="col-12 d-flex flex-wrap align-items-center justify-content-center container-cadastro py-4 px-lg-0">
@@ -28,12 +53,17 @@ function CadastroImagem() {
               className="col-12 bg-white rounded-pill d-flex flex-wrap align-items-center justify-content-center"
               style={{ height: "300px", width: "300px" }}
             >
-              <img src={iconAddImage} alt="" />
+              <img src={iconAddImage} alt="" id="imgPhoto" className="rounded-pill" style={{ height: "300px", width: "300px" }}/>
             </div>
             <div className="col-12 text-center py-2">
-              <button className="bg-orange rounded-pill border border-dark border-2 fw-bold px-4 py-1 button-cadastro">
-                Adicionar Imagem +
-              </button>
+              <input
+                type="file"
+                name="arquivos"
+                id="flImage"
+                className="btn btn-success bg-orange rounded-pill border border-dark border-2 fw-bold px-4 py-1 button-cadastro"
+                accept="image/png, image/jpeg"
+                multiple
+              />
             </div>
           </div>
         </div>
@@ -42,7 +72,10 @@ function CadastroImagem() {
         </div>
       </div>
       <div className="col-11 text-end d-none d-lg-block">
-        <button className="bg-orange rounded-pill border border-dark border-2 fw-bold px-4 py-1 button-cadastro">
+        <button
+          className="bg-orange rounded-pill border border-dark border-2 fw-bold px-4 py-1 button-cadastro"
+          onClick={finalizarCadastro}
+        >
           Finalizar Cadastro
         </button>
       </div>
@@ -64,7 +97,10 @@ function CadastroImagem() {
           </a>
         </div>
         <div className="col-6 text-center">
-          <button className="bg-orange rounded-pill border border-dark border-2 fw-bold px-4 py-1 button-cadastro">
+          <button
+            className="bg-orange rounded-pill border border-dark border-2 fw-bold px-4 py-1 button-cadastro"
+            onClick={finalizarCadastro}
+          >
             Finalizar Cadastro
           </button>
         </div>
