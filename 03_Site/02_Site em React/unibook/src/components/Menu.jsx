@@ -5,7 +5,7 @@ function Menu() {
     <nav className="navbar navbar-expand-lg bg-blue">
       <div className="container-fluid">
         <div className="col-3 col-sm-2">
-          <a className="navbar-brand px-3 text-white" href="/index">
+          <a className="navbar-brand px-3 text-white" href="/">
             Unibook
           </a>
         </div>
@@ -57,8 +57,8 @@ function Menu() {
               </a>
             </li>
             <li className="nav-item rounded mx-1">
-              <a className="nav-link text-white px-3" href="/index">
-                Sobre nós
+              <a className="nav-link text-white px-3" href="/quem-somos">
+                Quem Somos
               </a>
             </li>
             <li className="nav-item dropdown">

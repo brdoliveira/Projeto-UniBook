@@ -10,6 +10,7 @@ import PageCadastroEndereco from "./pages/PageCadastroEndereco";
 import PageCadastroImagem from "./pages/PageCadastroImagem";
 import PageFaleConosco from "./pages/PageFaleConosco";
 import PageHome from "./pages/PageHome";
+import PageQuemSomos from "./pages/PageQuemSomos";
 
 function Rotas() {
   return (
@@ -24,6 +25,7 @@ function Rotas() {
         <Route path="/cadastro/endereco" element={<PageCadastroEndereco />} />
         <Route path="/cadastro/imagem" element={<PageCadastroImagem />} />
         <Route path="/fale-conosco" element={<PageFaleConosco />} />
+        <Route path="/quem-somos" element={<PageQuemSomos />} />
       </Routes>
     </BrowserRouter>
   );

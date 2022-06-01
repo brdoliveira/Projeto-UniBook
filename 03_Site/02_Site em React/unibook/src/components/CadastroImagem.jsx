@@ -2,22 +2,19 @@ import iconAddImage from "../templates/images/icon-add-image.png";
 import "../templates/styles/styles-cadastro.css";
 
 function CadastroImagem() {
-  const finalizarCadastro = () => {
-    console.log(file.files);
-  };
-
-  let photo = document.getElementById("imgPhoto");
-  let file = document.getElementById("flImage");
-
-  photo.addEventListener("click", () => {
+  /**
+   let photo = document.getElementById("imgPhoto");
+   let file = document.getElementById("flImage");
+   
+   photo.addEventListener("click", () => {
     file.click();
   });
-
+  
   file.addEventListener("change", () => {
     if (file.files.length <= 0) {
       return;
     }
-
+    
     let reader = new FileReader();
 
     reader.onload = () => {
@@ -26,7 +23,8 @@ function CadastroImagem() {
 
     reader.readAsDataURL(file.files[0]);
   });
-
+  */
+  
   return (
     <div>
       <div className="col-12 d-flex flex-wrap align-items-center justify-content-center container-cadastro py-4 px-lg-0">
@@ -74,7 +72,6 @@ function CadastroImagem() {
       <div className="col-11 text-end d-none d-lg-block">
         <button
           className="bg-orange rounded-pill border border-dark border-2 fw-bold px-4 py-1 button-cadastro"
-          onClick={finalizarCadastro}
         >
           Finalizar Cadastro
         </button>
@@ -99,7 +96,6 @@ function CadastroImagem() {
         <div className="col-6 text-center">
           <button
             className="bg-orange rounded-pill border border-dark border-2 fw-bold px-4 py-1 button-cadastro"
-            onClick={finalizarCadastro}
           >
             Finalizar Cadastro
           </button>
