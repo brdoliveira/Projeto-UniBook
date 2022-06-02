@@ -12,7 +12,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -151,6 +154,49 @@ public class AdministradorController {
         String trailer = "01";
         trailer += String.format("%07d", contaRegCorpo);
         gravaRegistro(trailer, nomeArq);
+    }
+
+    
+    //IMPORTAÇÃO DO ARQUIVO
+
+    public static void lerArquivo(String nomeArquivo) {
+        BufferedReader entrada = null;
+        String registro, tipoRegistro;
+        String nome, dataNascimento, cpf, email, senha, sexo;
+        String bairro, cidade, estado, logradouro;
+        int id;
+        int contaRegistroLido = 0;
+        int qtdRegistroGravado;
+
+        List<Administrador> listaLida = new ArrayList<>();
+
+        try {
+            entrada = new BufferedReader(new FileReader(nomeArquivo));
+
+        } catch(IOException e) {
+            System.out.println("Erro ao abrir o arquivo: " + e);
+        }
+
+        try{
+            registro = entrada.readLine();
+
+            while(registro != null) {
+                tipoRegistro = registro.substring(0,2);
+                //verificar esses dados
+                if(tipoRegistro.equals("00")) {
+                    System.out.println("É um registro de header");
+                    System.out.println("Tipo de arquivo: " + registro.substring(2,6));
+                    System.out.println("Ano e semestre: " + registro.substring(6,11));
+                    System.out.println("Data e hora da gravação: " + registro.substring(11,30));
+                    System.out.println("Versão do documento: " + registro.substring(30,32));
+                }                
+
+            }
+
+        } catch(IOException e) {
+            
+        }
+
     }
 
 
