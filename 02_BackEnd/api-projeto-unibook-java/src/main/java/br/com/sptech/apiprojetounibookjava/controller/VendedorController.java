@@ -59,6 +59,33 @@ public class VendedorController {
             return ResponseEntity.status(200).build();
         }
     }
+    @PatchMapping(value = "/adicionar-foto-anuncio/{codigoVendedor}/{codigoAnuncio}", consumes = "image/jpeg")
+    public ResponseEntity patchFoto(@PathVariable long codigoVendedor,
+                                    @PathVariable long codigoAnuncio,
+                                    @RequestBody byte[] novaFoto) {
+        if (!vendedorRepository.existsById(codigoVendedor)) {
+            return ResponseEntity.status(404).build();
+        }
+        if (!produtoAnuncioRepository.existsById(codigoAnuncio)){
+            return ResponseEntity.status(404).build();
+        }
+        vendedorRepository.atualizarFoto(codigoVendedor, novaFoto);
+
+        return ResponseEntity.status(200).build();
+    }
+
+    @GetMapping(value = "/adicionar-foto-anuncio/{codigoVendedor}/{codigoAnuncio}", produces = "image/jpeg")
+    public ResponseEntity<byte[]> getFoto(@PathVariable long codigoVendedor,
+                                          @PathVariable long codigoAnuncio) {
+        byte[] foto = vendedorRepository.getFoto(codigoVendedor);
+        if (foto == null) {
+            return ResponseEntity.status(404).build();
+        }
+        if (!produtoAnuncioRepository.existsById(codigoAnuncio)){
+            return ResponseEntity.status(404).build();
+        }
+        return ResponseEntity.status(200).body(foto);
+    }
 }
      /*
     @GetMapping("/gerar-boleto/{valor}")
