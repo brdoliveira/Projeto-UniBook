@@ -1,163 +1,88 @@
-import "../templates/styles/styles-cadastro.css";
+import React from "react";
 
-function CadastroEndereco() {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData);
+import { InputText } from "primereact/inputtext";
+import { InputMask } from "primereact/inputmask";
+class CadastroEndereco extends React.Component {
+  state = {
+    cidade: "",
+    estado: "",
+    logradouro: "",
+    numero: "",
+    cep:"",
+    complemento:""
+  }
 
-    sessionStorage.setItem("cidade", data.cidade);
-    sessionStorage.setItem("estado", data.estado);
-    sessionStorage.setItem("logradouro", data.logradouro);
-    sessionStorage.setItem("numero", data.numero);
-    sessionStorage.setItem("cep", data.cep);
-
-    if (data.complemento) {
-      sessionStorage.setItem("complemento", data.complemento);
-    } else {
-      sessionStorage.setItem("complemento", "");
-    }
-
-    window.location.href = "/cadastro/imagem";
-  };
-
-  const backWindow = () => {
-    window.history.back();
-  };
-
+  render(){
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="col-12 d-flex flex-wrap align-items-center justify-content-center container-cadastro py-4 px-lg-0">
-        <div className="d-none d-lg-block col-lg-1 text-center py-4 px-lg-0">
-          <span className="text-decoration-none text-dark">
-            <button
-              style={{ width: "50px", height: "50px" }}
-              className="border border-dark border-2 rounded-pill bg-orange button-cadastro"
-              onClick={backWindow}
-            >
-              <i className="bi bi-caret-left-fill"></i>
-            </button>
-            <div className="col-12">
-              <span className="fw-bold" onClick={backWindow}>
-                {" "}
-                Voltar{" "}
-              </span>
-            </div>
-          </span>
-        </div>
-        <div className="col-11 col-lg-10 bg-blue p-4 div-cadastro rounded d-flex flex-wrap align-items-center justify-content-center">
-          <h1 className="col-12 text-center text-white">Cadastro - Endereço</h1>
-          <div className="col-12 col-md-6 px-4">
-            <div className="col-12 text-white py-4">
-              <span>Cidade</span>
-              <input
-                className="col-12 border border-0 rounded-pill px-3"
-                name="cidade"
+    <>
+      <div className="col-12 bg-blue d-flex flex-wrap align-items-center justify-content-center">
+        <h1 className="col-12 text-center text-white py-1">Cadastro - Endereço</h1>
+        <div className="col-12 col-md-6 px-4">
+          <div className="col-12 text-white py-4">
+            <p>Cidade</p>
+            <InputText
+                value={this.state.cidade}
+                onChange={(e) => this.setState({ cidade: e.target.value })}
+                className="col-12 border border-0 rounded-pill"
                 type="text"
-                placeholder="Digite sua cidade ..."
-                required
+                placeholder="digite sua cidade..."
               />
-            </div>
-            <div className="col-12 text-white py-4">
-              <span>Estado</span>
-              <input
-                className="col-12 border border-0 rounded-pill px-3"
-                name="estado"
-                type="text"
-                placeholder="Digite seu estado ..."
-                required
-              />
-            </div>
-            <div className="col-12 text-white py-4">
-              <span>Logradouro</span>
-              <input
-                className="col-12 border border-0 rounded-pill px-3"
-                name="logradouro"
-                type="text"
-                placeholder="Digite seu logradouro ..."
-                required
-              />
-            </div>
           </div>
-          <div className="col-12 col-md-6 px-4">
-            <div className="col-12 text-white py-4">
-              <span>Numero</span>
-              <input
-                className="col-12 border border-0 rounded-pill px-3"
-                name="numero"
+          <div className="col-12 text-white py-4">
+            <p>Estado</p>
+            <InputText
+                value={this.state.estado}
+                onChange={(e) => this.setState({ estado: e.target.value })}
+                className="col-12 border border-0 rounded-pill"
                 type="text"
-                placeholder="Digite o numero da sua casa ..."
-                required
+                placeholder="digite seu estado..."
               />
-            </div>
-            <div className="col-12 text-white py-4">
-              <span>CEP</span>
-              <input
-                className="col-12 border border-0 rounded-pill px-3"
-                name="cep"
+          </div>
+          <div className="col-12 text-white py-4">
+            <p>Logradouro</p>
+            <InputText
+                value={this.state.logradouro}
+                onChange={(e) => this.setState({ logradouro: e.target.value })}
+                className="col-12 border border-0 rounded-pill"
                 type="text"
-                placeholder="Digite seu CEP ..."
-                required
+                placeholder="digite o logradouro..."
               />
-            </div>
-            <div className="col-12 text-white py-4">
-              <span>Complemento (Opcional)</span>
-              <input
-                className="col-12 border border-0 rounded-pill px-3"
-                name="complemento"
-                type="type"
-                placeholder="Digite o complemento da sua casa ..."
-              />
-            </div>
           </div>
         </div>
-        <div className="d-none d-lg-block col-lg-1 text-center py-4 px-lg-0">
-          <span type="submit" className="text-decoration-none text-dark">
-            <button
-              style={{ width: "50px", height: "50px" }}
-              className="border border-dark border-2 rounded-pill bg-orange button-cadastro"
-            >
-              <i className="bi bi-caret-right-fill"></i>
-            </button>
-            <div className="col-12">
-              <span className="fw-bold"> Proximo </span>
-            </div>
-          </span>
-        </div>
-        <div className="col-12 d-flex d-lg-none">
-          <div className="text-center py-4 px-lg-0 col-6">
-            <span className="text-decoration-none text-dark">
-              <button
-                style={{ width: "50px", height: "50px" }}
-                className="border border-dark border-2 rounded-pill bg-orange button-cadastro"
-                onClick={backWindow}
-              >
-                <i className="bi bi-caret-left-fill"></i>
-              </button>
-              <div className="col-12">
-                <span className="fw-bold" onClick={backWindow}>
-                  {" "}
-                  Voltar{" "}
-                </span>
-              </div>
-            </span>
+        <div className="col-12 col-md-6 px-4">
+          <div className="col-12 text-white py-4">
+            <p>Numero</p>
+            <InputText
+                value={this.state.numero}
+                onChange={(e) => this.setState({ numero: e.target.value })}
+                className="col-12 border border-0 rounded-pill"
+                type="text"
+                placeholder="digite o numero da sua casa..."
+              />
           </div>
-          <div className="text-center py-4 px-lg-0 col-6">
-            <span type="submit" className="text-decoration-none text-dark">
-              <button
-                style={{ width: "50px", height: "50px" }}
-                className="border border-dark border-2 rounded-pill bg-orange button-cadastro"
-              >
-                <i className="bi bi-caret-right-fill"></i>
-              </button>
-              <div className="col-12">
-                <span className="fw-bold"> Proximo </span>
-              </div>
-            </span>
+          <div className="col-12 text-white py-4">
+            <p>CEP</p>
+            <InputMask
+                className="col-12 border border-0 rounded-pill"
+                mask="99999-999"
+                value={this.state.cep}
+                onChange={(e) => this.setState({ cep: e.target.value })}
+              ></InputMask>
+          </div>
+          <div className="col-12 text-white py-4">
+            <p>Complemento (Opcional)</p>
+            <InputText
+                value={this.state.complemento}
+                onChange={(e) => this.setState({ complemento: e.target.value })}
+                className="col-12 border border-0 rounded-pill"
+                type="text"
+                placeholder="digite o complemento..."
+              />
           </div>
         </div>
       </div>
-    </form>
+    </>
   );
+  }
 }
 export default CadastroEndereco;
