@@ -1,135 +1,123 @@
-import "../templates/styles/styles-cadastro.css";
+import React from "react";
 
-function CadastroUsuario() {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData);
+import { Calendar } from "primereact/calendar";
+import { InputText } from "primereact/inputtext";
+import { InputMask } from "primereact/inputmask";
+import { Password } from "primereact/password";
+import { RadioButton } from "primereact/radiobutton";
 
-    sessionStorage.setItem("cpf", data.cpf);
-    sessionStorage.setItem("usuario", data.usuario);
-    sessionStorage.setItem("email", data.email);
-    sessionStorage.setItem("senha", data.senha);
-    sessionStorage.setItem("data", data.data);
-    sessionStorage.setItem("sexo", data.sexo);
-
-    window.location.href = "/cadastro/endereco";
+class CadastroUsuario extends React.Component {
+  state = {
+    usuario: "",
+    email: "",
+    senha: "",
+    dataNasc: "",
+    sexo: "",
+    cpf: "",
   };
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <div className="col-12 d-flex flex-wrap align-items-center justify-content-center container-cadastro py-4 px-lg-0">
-        <div className="d-none d-lg-block col-lg-1 text-center">
-          <div style={{ width: "50px", height: "50px" }}></div>
-        </div>
-        <div className="col-11 col-lg-10 bg-blue p-4 div-cadastro rounded d-flex flex-wrap align-items-center justify-content-center">
-          <h1 className="col-12 text-center text-white">Cadastro - Usuario</h1>
+  render() {
+    return (
+      <>
+        <div className="col-12 bg-blue d-flex flex-wrap align-items-center justify-content-center">
+          <h1 className="col-12 text-center text-white py-1">Cadastro - Usuario</h1>
           <div className="col-12 col-md-6 px-4">
             <div className="col-12 text-white py-4">
-              <span>Usuario</span>
-              <input
-                className="col-12 border border-0 rounded-pill px-3"
+              <p>Usuario</p>
+              <InputText
+                value={this.state.usuario}
+                onChange={(e) => this.setState({ usuario: e.target.value })}
+                className="col-12 border border-0 rounded-pill"
                 type="text"
-                placeholder="digite seu usuario ..."
-                name="usuario"
-                required
+                placeholder="digite seu usuario..."
               />
             </div>
             <div className="col-12 text-white py-4">
-              <span>Email</span>
-              <input
-                className="col-12 border border-0 rounded-pill px-3"
+              <p>Email</p>
+              <InputText
+                value={this.state.email}
+                onChange={(e) => this.setState({ email: e.target.value })}
+                className="col-12 border border-0 rounded-pill"
                 type="text"
-                placeholder="digite seu email ..."
-                name="email"
-                required
+                placeholder="digite seu email..."
               />
             </div>
             <div className="col-12 text-white py-4">
-              <span>Senha</span>
-              <input
-                className="col-12 border border-0 rounded-pill px-3"
-                type="password"
-                placeholder="digite uma senha ..."
-                name="senha"
-                required
+              <p>Senha</p>
+              <Password
+                className="col-12 border border-0 rounded-pill"
+                value={this.state.senha}
+                onChange={(e) => this.setState({ senha: e.target.value })}
+                feedback={true}
+                toggleMask
               />
             </div>
           </div>
           <div className="col-12 col-md-6 px-4">
             <div className="col-12 text-white py-4">
-              <span>Data Nascimento</span>
-              <input
-                className="col-12 border border-0 rounded-pill px-3"
-                type="date"
-                name="data"
-                required
-              />
+              <p>Data Nascimento</p>
+              <Calendar
+                dateFormat="dd/mm/yy"
+                className="col-12 border border-0 rounded-pill py-0"
+                value={this.state.dataNasc}
+                onChange={(e) => this.setState({ dataNasc: e.target.value })}
+              ></Calendar>
             </div>
             <div className="col-12 text-white py-4">
-              <span className="col-12">Sexo</span>
-              <div className="col-12 d-flex flex-wrap">
-                <div className="col-4">
-                  <input
-                    type="radio"
-                    placeholder="digite seu genero ..."
+              <p className="col-12">Sexo</p>
+              <div className="col-12 d-flex flex-wrap py-2">
+                <div className="col-4 field-radiobutton py-1">
+                  <RadioButton
+                    inputId="sexo"
                     name="sexo"
                     value="F"
-                    required
-                  />{" "}
-                  Feminino
+                    onChange={(e) => this.setState({ sexo: e.target.value })}
+                    checked={this.state.sexo === "F"}
+                  />
+                  <label htmlFor="sexo" className="px-2">
+                    Feminino
+                  </label>
                 </div>
-                <div className="col-4">
-                  <input
-                    type="radio"
-                    placeholder="digite seu genero ..."
+                <div className="col-4 field-radiobutton py-1">
+                  <RadioButton
+                    inputId="sexo"
                     name="sexo"
                     value="M"
-                    required
-                  />{" "}
-                  Masculino
+                    onChange={(e) => this.setState({ sexo: e.target.value })}
+                    checked={this.state.sexo === "M"}
+                  />
+                  <label htmlFor="sexo" className="px-3">
+                    Masculino
+                  </label>
                 </div>
-                <div className="col-4">
-                  <input
-                    type="radio"
-                    placeholder="digite seu genero ..."
+                <div className="col-4 field-radiobutton py-1">
+                  <RadioButton
+                    inputId="sexo"
                     name="sexo"
                     value="O"
-                    required
-                  />{" "}
-                  Outros
+                    onChange={(e) => this.setState({ sexo: e.target.value })}
+                    checked={this.state.sexo === "O"}
+                  />
+                  <label htmlFor="sexo" className="px-2">
+                    Outros
+                  </label>
                 </div>
               </div>
             </div>
             <div className="col-12 text-white py-4">
-              <span>CPF</span>
-              <input
-                className="col-12 border border-0 rounded-pill px-3"
-                type="cpf"
-                maxLength={12}
-                placeholder="digite seu CPF ..."
-                name="cpf"
-                required
-              />
+              <p>CPF</p>
+              <InputMask
+                className="col-12 border border-0 rounded-pill"
+                mask="999.999.999-99"
+                value={this.state.cpf}
+                onChange={(e) => this.setState({ cpf: e.target.value })}
+              ></InputMask>
             </div>
           </div>
         </div>
-        <div className="col-12 col-lg-1 text-center py-4 px-lg-0">
-          <span className="text-decoration-none text-dark" type="submit">
-            <button
-              style={{ width: "50px", height: "50px" }}
-              className="border border-dark border-2 rounded-pill bg-orange button-cadastro"
-            >
-              <i className="bi bi-caret-right-fill"></i>
-            </button>
-            <div className="col-12">
-              <span className="fw-bold"> Proximo </span>
-            </div>
-          </span>
-        </div>
-      </div>
-    </form>
-  );
+      </>
+    );
+  }
 }
 
 export default CadastroUsuario;
