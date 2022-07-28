@@ -1,11 +1,42 @@
 import React from "react";
 import iconAddImage from "../templates/images/icon-add-image.png";
 
+import { FileUpload } from "primereact/fileupload";
+
 class CadastroImagem extends React.Component {
+  state = {
+    imgPath: ''
+  }
+  
+  componentDidMount(){
+    this.setState({ imgPath: iconAddImage})
+  }
+  
   render() {
+    const customBase64Uploader = async (event) => {
+      if(this.state.imgPath === iconAddImage){
+        var base64data;
+        // convert file to base64 encoded
+        const file = event.files[0];
+        const reader = new FileReader();
+        let blob = await fetch(file.objectURL).then((r) => r.blob()); //blob:url
+        reader.readAsDataURL(blob);
+        reader.onloadend = function () {
+          base64data = reader.result;
+        };
+        this.setState({imgPath : base64data})
+        console.log(this.state.imgPath)
+      };
+
+      console.log(this.state.imgPath)
+    }
+
     return (
       <>
-        <div className="col-12 bg-blue rounded d-flex flex-wrap align-items-center justify-content-center">
+        <div
+          className="col-12 bg-blue rounded d-flex flex-wrap align-items-center justify-content-center"
+          style={{ height: "50vh" }}
+        >
           <h1 className="col-12 text-center text-white">Cadastro - Imagem</h1>
           <div className="col-12 d-flex flex-wrap align-items-center justify-content-center">
             <div
@@ -13,7 +44,7 @@ class CadastroImagem extends React.Component {
               style={{ height: "300px", width: "300px" }}
             >
               <img
-                src={iconAddImage}
+                src={this.state.imgPath}
                 alt=""
                 id="imgPhoto"
                 className="rounded-pill"
@@ -21,13 +52,12 @@ class CadastroImagem extends React.Component {
               />
             </div>
             <div className="col-12 text-center py-2">
-              <input
-                type="file"
-                name="img"
-                id="flImage"
-                className="btn btn-success bg-orange rounded-pill border border-dark border-2 fw-bold px-4 py-1 button-cadastro"
-                accept="image/png, image/jpeg"
-                required
+              <FileUpload
+                mode="basic"
+                name="demo[]"
+                accept="image/*"
+                customUpload
+                uploadHandler={customBase64Uploader}
               />
             </div>
           </div>
