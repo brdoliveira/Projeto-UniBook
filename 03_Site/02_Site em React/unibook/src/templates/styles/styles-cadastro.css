@@ -1,28 +1,21 @@
 @import url(./color.css);
 
-.container-cadastro {
-  height: 90vh;
-}
-
 .div-cadastro {
-  height: 70vh;
+    height: 70vh;
 }
 
-.div-cadastro .cadastro {
-  height: 50vh;
+.button-cadastro{
+    background-color: var(--orangebook) !important;
+    border: 2px solid black;
+    color: black;
 }
 
-.button-cadastro:hover {
-  background-color: var(--orangelightbook) !important;
-  transition: all 0.5s ease;
+.button-cadastro:hover{
+    background-color: var(--orangelightbook) !important;
+    border: 2px solid darkslategray !important;
+    color: darkslategray !important;
 }
 
-@media (max-width: 991.98px) {
-  .container-cadastro {
-    height: auto;
-  }
-
-  .div-cadastro {
-    height: auto;
-  }
+.p-tabview-nav-container{
+    display: none;
 }

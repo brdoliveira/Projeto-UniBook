@@ -1,11 +1,11 @@
 @import url(./color.css);
 
-li:hover {
+.li-menu:hover {
   background-color: var(--bluelightbook) !important;
   transition: all 0.5s ease;
 }
 
-a:hover {
+.a-menu:hover {
   background-color: var(--bluelightbook) !important;
   transition: all 0.5s ease;
 }
@@ -19,7 +19,7 @@ a:hover {
   transition: all 0.5s ease;
 }
 
-button:hover {
+.button-menu:hover {
   background-color: var(--bluelightbook) !important;
   transition: all 0.5s ease;
 }
