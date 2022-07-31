@@ -4,7 +4,7 @@ import { InputText } from "primereact/inputtext";
 import { InputMask } from "primereact/inputmask";
 import { Dropdown } from 'primereact/dropdown';
 
-import EnderecoService from "../app/service/enderecoServico";
+import EnderecoService from "../app/service/enderecoService";
 class CadastroEndereco extends React.Component {
   constructor(){
     super();
