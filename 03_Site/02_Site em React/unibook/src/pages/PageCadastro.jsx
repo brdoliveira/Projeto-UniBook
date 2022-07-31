@@ -85,6 +85,7 @@ class PageCadastro extends React.Component {
                     this.setState({ tabcard: e.index });
                     this.disabled(e.index);
                   }}
+                  className="cadastro"
                 >
                   <TabPanel header="Usuario">
                     <CadastroUsuario className="col-12" />
