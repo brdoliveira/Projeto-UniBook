@@ -34,7 +34,7 @@ function PerfilVendedor() {
           </div>
           <div className="col-12 d-flex align-items-center justify-content-center rounded flex-wrap">
             <ScrollPanel
-              className="col-11 scroll text-dark bg-white rounded mb-3 p-2 d-flex justify-content-center flex-wrap"
+              className="col-11 scroll text-dark bg-white rounded mb-3 ps-1 justify-content-center flex-wrap"
               style={{ height: "30vh" }}
             >
               <FeedbackMessage />
