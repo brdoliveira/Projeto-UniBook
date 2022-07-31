@@ -1,11 +1,11 @@
 @import url(./color.css);
 
-.container-perfil {
-  height: 90vh;
+.div-perfil {
+  height: 50vh;
 }
 
-.div-perfil {
-  height: 70vh;
+.div-perfil-items{
+  height: 30vh;
 }
 
 .div-perfil .perfil {
@@ -25,4 +25,30 @@
 .button-perfil:hover {
   background-color: var(--orangelightbook) !important;
   transition: all 0.5s ease;
+}
+
+.perfil-tabview .p-tabview-nav-container{
+  display: block !important;
+}
+
+.perfil-tabview .p-tabview-panels{
+  padding: 0px !important;
+}
+
+.scroll .p-scrollpanel-bar {
+  background-color: var(--bluelightbook) !important;
+  opacity: 1;
+  transition: background-color .3s;
+}
+
+.scroll .p-scrollpanel-bar:hover {
+  background-color: var(--skylightbook) !important;
+}
+
+.border-blue {
+  border-color: var(--bluelightbook) !important;
+}
+
+.color-blue {
+  color: var(--bluelightbook) !important;
 }
