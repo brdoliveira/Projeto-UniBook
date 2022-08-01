@@ -1,4 +1,4 @@
-import LocalStorageService from "./localstorageService";
+import LocalStorageService from "./localStorageService";
 
 export const USUARIO_LOGADO = "_usuario_logado";
 
