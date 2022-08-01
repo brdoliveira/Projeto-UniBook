@@ -6,6 +6,15 @@ public class EnderecoDto {
     private String bairro;
     private String localidade;
     private String uf;
+    private boolean erro;
+
+    public boolean isErro() {
+        return erro;
+    }
+
+    public void setErro(boolean erro) {
+        this.erro = erro;
+    }
 
     public String getLogradouro() {
         return logradouro;
