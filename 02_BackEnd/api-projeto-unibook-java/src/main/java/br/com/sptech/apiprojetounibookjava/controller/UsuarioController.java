@@ -11,6 +11,7 @@ import br.com.sptech.apiprojetounibookjava.services.ListaObj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -20,28 +21,24 @@ import java.util.Optional;
 public class UsuarioController {
 
     private List<Usuario> usuarios = new ArrayList<>();
-    
+
     @Autowired
     EnderecoRepository enderecoRepository;
     @Autowired
     UsuarioRepository usuarioRepository;
 
     @PostMapping("/login")
-    public ResponseEntity postLogin(@RequestBody UsuarioLoginLogoffDto usuarioDto){
+    public ResponseEntity postLogin(@RequestBody UsuarioLoginLogoffDto usuarioDto) {
         Optional<Usuario> usuario =
                 usuarioRepository.findByEmailAndSenha(
-                usuarioDto.getEmail(),
-                usuarioDto.getSenha());
+                        usuarioDto.getEmail(),
+                        usuarioDto.getSenha());
 
-        if (usuario.isPresent()){
-            if(!usuario.get().isAtivo()){
-                usuario.get().setAtivo(true);
-                usuarioRepository.save(usuario.get());
-                return ResponseEntity.status(200).build();
-            }else {
-                return ResponseEntity.status(406).build();
-            }
-        }else{
+        if (usuario.isPresent()) {
+            usuario.get().setAtivo(true);
+            usuarioRepository.save(usuario.get());
+            return ResponseEntity.status(200).body(usuarioRepository.findAll());
+        } else {
             return ResponseEntity.status(404).build();
         }
     }
@@ -64,7 +61,7 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public ResponseEntity getUsuario(){
+    public ResponseEntity getUsuario() {
 
         FilaObj<Usuario> filaUsuarios = new FilaObj<Usuario>((int) usuarioRepository.count());
 
@@ -75,7 +72,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/exportar")
-    public ResponseEntity exportarTopUsuarios(@RequestParam boolean ativo){
+    public ResponseEntity exportarTopUsuarios(@RequestParam boolean ativo) {
         ListaObj<UsuarioGeralDto> usuariosDto = new ListaObj<>(20);
         List<UsuarioGeralDto> usuarios = new ArrayList<>();
 
@@ -83,25 +80,26 @@ public class UsuarioController {
         for (int i = 0; i < 20; i++) {
             try {
                 usuariosDto.adiciona(usuarios.get(i));
-            }catch (Exception e){
-                System.out.println("Error: "+e);
+            } catch (Exception e) {
+                System.out.println("Error: " + e);
                 break;
-            }finally {
+            } finally {
                 AdministradorCsv admCsv = new AdministradorCsv();
                 admCsv.gravaArquivoCsv(usuariosDto.toString(), "exportUsuarios");
             }
         }
         return ResponseEntity.status(200).build();
     }
+
     @GetMapping("/relatorio")
-    public ResponseEntity getRelatorio(){
+    public ResponseEntity getRelatorio() {
         String relatorio = "";
 
         List<Usuario> lista = usuarioRepository.findAll();
         for (var usuario : lista) {
-            relatorio +=    "Email: " + usuario.getEmail() + "|" + "\r\n" +
-                            "Nome: " + usuario.getNome() + "|" + "\r\n" +
-                            "Ativo: " + usuario.isAtivo() + "|" + "\r\n" + "\r\n" + "\r\n" + "\r\n";
+            relatorio += "Email: " + usuario.getEmail() + "|" + "\r\n" +
+                    "Nome: " + usuario.getNome() + "|" + "\r\n" +
+                    "Ativo: " + usuario.isAtivo() + "|" + "\r\n" + "\r\n" + "\r\n" + "\r\n";
         }
 
         return ResponseEntity
