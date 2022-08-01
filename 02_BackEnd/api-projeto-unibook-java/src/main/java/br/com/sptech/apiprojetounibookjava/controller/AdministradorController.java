@@ -39,6 +39,7 @@ public class AdministradorController {
     @PostMapping("/cadastrar-administrador")
     public ResponseEntity postAdministrador(
             @RequestBody @Valid Administrador novoAdm) {
+        usuarioRepository.save(novoAdm);
         administradorRepository.save(novoAdm);
         return ResponseEntity.status(201).body(novoAdm);
     }
@@ -59,6 +60,7 @@ public class AdministradorController {
                 adm.setBairro(endereco.getBairro());
                 adm.setUf(endereco.getUf());
 
+                usuarioRepository.save(adm);
                 administradorRepository.save(adm);
             }
 
@@ -70,6 +72,7 @@ public class AdministradorController {
                 vend.setBairro(endereco.getBairro());
                 vend.setUf(endereco.getUf());
 
+                usuarioRepository.save(vend);
                 vendedorRepository.save(vend);
             }
 
@@ -81,6 +84,7 @@ public class AdministradorController {
                 comp.setBairro(endereco.getBairro());
                 comp.setUf(endereco.getUf());
 
+                usuarioRepository.save(comp);
                 compradorRepository.save(comp);
             }
             return ResponseEntity.status(200).body(iViaCep.getCep(cep));
@@ -123,6 +127,7 @@ public class AdministradorController {
     public ResponseEntity postComprador(
             @RequestBody @Valid Comprador novoComprador) {
         compradorRepository.save(novoComprador);
+        usuarioRepository.save(novoComprador);
         return ResponseEntity.status(201).body(novoComprador);
     }
 
@@ -158,6 +163,7 @@ public class AdministradorController {
     public ResponseEntity postVendedor(
             @RequestBody @Valid Vendedor novoVendedor) {
         vendedorRepository.save(novoVendedor);
+        usuarioRepository.save(novoVendedor);
         return ResponseEntity.status(201).body(novoVendedor);
     }
 
