@@ -74,7 +74,7 @@ class PageCadastro extends React.Component {
                   className="p-button-rounded button-cadastro"
                   style={{ width: "75px", height: "75px" }}
                   aria-label="Antes"
-                  disabled={this.state.buttonLeft}
+                  hidden={this.state.buttonLeft}
                   onClick={clickLeft}
                 />
               </div>
@@ -97,6 +97,13 @@ class PageCadastro extends React.Component {
                     <CadastroImagem className="col-12" />
                   </TabPanel>
                 </TabView>
+                <div className="col-12 d-flex justify-content-end pe-4">
+                  <Button
+                    className="bg-orange rounded-pill border border-dark border-2 fw-bold px-4 py-1 text-dark"
+                    label="Finalizar Cadastro"
+                    hidden={!this.state.buttonRight}
+                  />
+                </div>
               </div>
               <div className="col-1 d-flex justify-content-center align-items-center">
                 <Button
@@ -105,7 +112,7 @@ class PageCadastro extends React.Component {
                   style={{ width: "75px", height: "75px" }}
                   aria-label="Depois"
                   onClick={clickRight}
-                  disabled={this.state.buttonRight}
+                  hidden={this.state.buttonRight}
                 />
               </div>
             </div>
