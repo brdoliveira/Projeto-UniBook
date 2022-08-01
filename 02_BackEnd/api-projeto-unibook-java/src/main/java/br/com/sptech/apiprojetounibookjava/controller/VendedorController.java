@@ -2,7 +2,6 @@ package br.com.sptech.apiprojetounibookjava.controller;
 
 import br.com.sptech.apiprojetounibookjava.model.ProdutoAnuncio;
 import br.com.sptech.apiprojetounibookjava.model.Vendedor;
-import br.com.sptech.apiprojetounibookjava.repository.EnderecoRepository;
 import br.com.sptech.apiprojetounibookjava.repository.ProdutoAnuncioRepository;
 import br.com.sptech.apiprojetounibookjava.repository.VendedorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,6 @@ public class VendedorController {
     VendedorRepository vendedorRepository;
     @Autowired
     ProdutoAnuncioRepository produtoAnuncioRepository;
-
     @GetMapping
     public ResponseEntity getVendedores() {
         if (vendedorRepository.findAll().isEmpty()) {

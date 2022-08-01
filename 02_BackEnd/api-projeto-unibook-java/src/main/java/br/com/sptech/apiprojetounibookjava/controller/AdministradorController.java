@@ -126,7 +126,6 @@ public class AdministradorController {
         return ResponseEntity.status(201).body(novoComprador);
     }
 
-
     @GetMapping("/lista-compradores")
     public ResponseEntity getCompradores() {
         if (compradorRepository.findAll().isEmpty()) {

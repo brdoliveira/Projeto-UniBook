@@ -25,7 +25,6 @@ public class Carrinho {
     @JoinColumn(name = "fkUsuarioComprador", referencedColumnName = "id", nullable = false)
     private Comprador comprador;
 
-
     public Carrinho(Long id,
                     String status,
                     Comprador comprador) {
@@ -33,7 +32,6 @@ public class Carrinho {
         this.status = status;
         this.comprador = comprador;
     }
-
 
     public Long getId() {
         return id;
@@ -58,6 +56,5 @@ public class Carrinho {
     public void setComprador(Comprador comprador) {
         this.comprador = comprador;
     }
-
 
 }

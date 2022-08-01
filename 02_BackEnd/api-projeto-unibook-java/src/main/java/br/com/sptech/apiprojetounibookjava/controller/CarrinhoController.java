@@ -8,10 +8,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/carrinhos")
 public class CarrinhoController {
-
     @Autowired
     CarrinhoRepository carrinhoRepository;
-
     @GetMapping
     public ResponseEntity getCarrinho(){
 

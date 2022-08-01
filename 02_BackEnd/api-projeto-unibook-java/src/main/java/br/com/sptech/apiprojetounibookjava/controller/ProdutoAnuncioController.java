@@ -10,10 +10,8 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/produtos-anuncio")
 public class ProdutoAnuncioController {
-
     @Autowired
     ProdutoAnuncioRepository produtoAnuncioRepository;
-
     @GetMapping
     public ResponseEntity getProdutosAnuncio(){
         if(produtoAnuncioRepository.findAll().isEmpty()){

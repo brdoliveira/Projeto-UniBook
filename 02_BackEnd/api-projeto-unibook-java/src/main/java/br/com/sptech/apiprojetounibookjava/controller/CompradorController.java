@@ -19,7 +19,6 @@ public class CompradorController {
     ProdutoAnuncioRepository produtoAnuncioRepository;
     @Autowired
     ProdutoFavoritoRepository produtoFavoritoRepository;
-
     @GetMapping
     public ResponseEntity getCompradores(){
         if(compradorRepository.findAll().isEmpty()){

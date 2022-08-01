@@ -11,7 +11,6 @@ import br.com.sptech.apiprojetounibookjava.services.ListaObj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -101,7 +100,6 @@ public class UsuarioController {
                     "Nome: " + usuario.getNome() + "|" + "\r\n" +
                     "Ativo: " + usuario.isAtivo() + "|" + "\r\n" + "\r\n" + "\r\n" + "\r\n";
         }
-
         return ResponseEntity
                 .status(200)
                 .header("content-type", "text/csv")

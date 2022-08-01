@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 public class FavoritoController {
     @Autowired
     ProdutoFavoritoRepository favoritoRepository;
-
     @GetMapping
     public ResponseEntity getFavoritos(){
 
