@@ -1,6 +1,7 @@
 import "../templates/styles/styles-perfil.css";
 
 import { Button } from "primereact/button";
+import { Link } from "react-router-dom"
 
 function PerfilUsuario() {
   return (
@@ -35,10 +36,14 @@ function PerfilUsuario() {
         </div>
         <div className="col-12 d-flex flex-wrap">
           <div className="col-12 col-lg-5 text-center py-2 px-3">
-            <Button
-              className="bg-orange rounded-pill border border-dark text-dark border-2 fw-bold px-4 py-3 w-100 w-lg-75 button-perfil"
-              label="Editar"
-            />
+            <Link to="editar" className="text-decoration-none">
+              <Button
+                className="bg-orange rounded-pill border border-dark text-dark border-2 fw-bold px-4 py-3 w-100 w-lg-75 button-perfil"
+                label="Editar"
+                icon="pi pi-user-edit"
+                iconPos="right"
+              />
+            </Link>
           </div>
           <div className="col-12 col-lg-7 text-center py-2 px-3">
             <Button
@@ -51,7 +56,10 @@ function PerfilUsuario() {
         </div>
       </div>
       <div className="div-perfil-items py-2 col-12">
-        <div className="w-100 col-12 border-dark border-3 border-bottom"><h2 className="text-dark">Historico de Compras</h2></div>
+        <div className="w-100 col-12 border-dark border-3 border-bottom">
+          <h2 className="text-dark">Historico de Compras</h2>
+          
+        </div>
       </div>
     </div>
   );
