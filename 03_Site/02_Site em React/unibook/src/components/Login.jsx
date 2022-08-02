@@ -1,18 +1,43 @@
 import React from "react";
+
 import { Button } from "primereact/button";
 import { Password } from "primereact/password";
 import { InputText } from "primereact/inputtext";
 
+import UsuarioService from "../app/service/usuarioService";
+import AuthService from "../app/service/authService";
+import { mensagemErro } from "../components/Toastr";
+
+import { Link } from "react-router-dom"
+
 import "../templates/styles/styles-login.css";
 
 class Login extends React.Component {
+  constructor(){
+    super()
+    this.service = new UsuarioService();
+  }
+
   state = {
-    login: "",
+    email: "",
     senha: "",
   };
 
   doLogin = () => {
-    console.log(this.state);
+    this.service
+    .login({
+      email: this.state.email,
+      senha: this.state.senha,
+    })
+    .then((response) => {
+      AuthService.logar(response.data)
+      window.location.href = "/perfil"
+    })
+    .catch((erro) => {
+      mensagemErro(erro.message);
+      return
+    });
+
   };
 
   render() {
@@ -22,13 +47,13 @@ class Login extends React.Component {
           <div className="d-block col-12">
             <h1 className="text-white text-center">Login</h1>
             <div className="col-12 text-white py-2">
-              <p>Login</p>
+              <p>Email</p>
               <InputText
-                value={this.state.login}
-                onChange={(e) => this.setState({ login: e.target.value })}
+                value={this.state.email}
+                onChange={(e) => this.setState({ email: e.target.value })}
                 className="col-12 border border-0 rounded-pill px-3"
-                name="login"
-                placeholder="Digite seu usuario..."
+                name="email"
+                placeholder="Digite seu email..."
                 required
               />
             </div>
@@ -39,6 +64,7 @@ class Login extends React.Component {
                 value={this.state.senha}
                 onChange={(e) => this.setState({ senha: e.target.value })}
                 feedback={false}
+                placeholder="Digite sua senha..."
                 toggleMask
               />
             </div>
@@ -46,11 +72,11 @@ class Login extends React.Component {
               <p>Esqueci a senha</p>
             </div>
             <div className="col-12 text-white text-end">
-              <a href="/cadastro" className="text-decoration-none text-white">
+              <Link to="/cadastro" className="text-decoration-none text-white">
                 <span className="pe-2" style={{ fontSize: "13px" }}>
                   Criar conta <b>clique aqui</b>
                 </span>
-              </a>
+              </Link>
               <Button
                 className="bg-orange rounded-pill border border-dark border-2 fw-bold px-4 py-1 button-entrar"
                 label="Entrar"
