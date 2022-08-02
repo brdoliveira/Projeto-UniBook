@@ -4,3 +4,20 @@
     background-color: var(--orangelightbook);
     transition: all 0.5s ease;
 }
+
+.accordion-demo .accordion-custom i, .accordion-demo .accordion-custom span {
+    vertical-align: middle;
+}
+
+.accordion-demo .accordion-custom span {
+    margin: 0 .5rem;
+}
+
+.accordion-demo .p-accordion p {
+    line-height: 1.5;
+    margin: 0;
+}
+
+.div-editar-perfil{
+    height: 70vh;
+}
