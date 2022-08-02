@@ -1,4 +1,4 @@
-import Card from "../components/Card";
+import CardProduto from "../components/CardProduto";
 import Menu from "../components/Menu";
 
 import imageHome from "../templates/images/imagem-home.jpg";
@@ -17,7 +17,7 @@ function PageHome() {
             Editora Globo
           </h2>
           <div className="row mb-md-2 py-3">
-            <Card />
+            <CardProduto/>
           </div>
         </div>
       </div>
