@@ -10,6 +10,9 @@ public class UsuarioLoginLogoffDto {
         this.senha = senha;
     }
 
+    public UsuarioLoginLogoffDto() {
+    }
+
     public String getEmail() {
         return email;
     }

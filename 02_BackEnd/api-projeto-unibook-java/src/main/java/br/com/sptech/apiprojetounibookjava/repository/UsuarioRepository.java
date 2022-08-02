@@ -11,6 +11,4 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     Optional<Usuario> findByEmailAndSenha(String email, String senha);
     List<UsuarioGeralDto> findByAtivoOrderByNome(boolean ativo);
 
-
-
 }
