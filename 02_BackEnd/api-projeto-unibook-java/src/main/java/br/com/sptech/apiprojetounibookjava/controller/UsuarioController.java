@@ -35,8 +35,7 @@ public class UsuarioController {
 
         if (usuario.isPresent()) {
             usuario.get().setAtivo(true);
-            usuarioRepository.save(usuario.get());
-            return ResponseEntity.status(200).body(usuarioRepository.findAll());
+            return ResponseEntity.status(200).body(usuario.get());
         } else {
             return ResponseEntity.status(404).build();
         }
