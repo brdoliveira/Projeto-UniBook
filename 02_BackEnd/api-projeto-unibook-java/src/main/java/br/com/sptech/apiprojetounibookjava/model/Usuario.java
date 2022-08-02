@@ -1,5 +1,7 @@
 package br.com.sptech.apiprojetounibookjava.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,6 +9,18 @@ import javax.persistence.*;
 @DiscriminatorColumn(name="tipo_usuario",discriminatorType = DiscriminatorType.INTEGER)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Usuario {
+
+    @JsonIgnore
+    @Column(length = 50_000_000)
+    private byte[] foto;
+
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
+    }
 
     public Usuario() {
     }

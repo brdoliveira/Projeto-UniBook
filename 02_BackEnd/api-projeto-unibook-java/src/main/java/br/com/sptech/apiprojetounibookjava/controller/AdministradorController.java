@@ -242,6 +242,57 @@ public class AdministradorController {
         }
     }
 
+    @PatchMapping(value = "/adicionar-foto-perfil/{codigoUsuario}", consumes = "image/jpeg")
+    public ResponseEntity patchFoto(@PathVariable long codigoUsuario,
+                                    @RequestBody byte[] novaFoto) {
+
+        if (!usuarioRepository.existsById(codigoUsuario)) {
+            if (!administradorRepository.existsById(codigoUsuario)) {
+                administradorRepository.atualizarFoto(codigoUsuario, novaFoto);
+            }
+            if (!vendedorRepository.existsById(codigoUsuario)) {
+                vendedorRepository.atualizarFoto(codigoUsuario, novaFoto);
+            }
+            if (!compradorRepository.existsById(codigoUsuario)) {
+                compradorRepository.atualizarFoto(codigoUsuario, novaFoto);
+            }
+            return ResponseEntity.status(200).build();
+        } else {
+            return ResponseEntity.status(404).build();
+        }
+    }
+
+    @GetMapping(value = "/adicionar-foto-perfil/{codigoUsuario}", produces = "image/jpeg")
+    public ResponseEntity<byte[]> getFoto(@PathVariable long codigoUsuario) {
+
+        if (usuarioRepository.existsById(codigoUsuario)) {
+            if (administradorRepository.existsById(codigoUsuario)) {
+                byte[] foto = administradorRepository.getFoto(codigoUsuario);
+                if (foto == null) {
+                    return ResponseEntity.status(404).build();
+                }
+                return ResponseEntity.status(200).body(foto);
+            }
+
+            if (vendedorRepository.existsById(codigoUsuario)) {
+                byte[] foto = vendedorRepository.getFoto(codigoUsuario);
+                if (foto == null) {
+                    return ResponseEntity.status(404).build();
+                }
+                return ResponseEntity.status(200).body(foto);
+            }
+
+            if (compradorRepository.existsById(codigoUsuario)) {
+                byte[] foto = compradorRepository.getFoto(codigoUsuario);
+                if (foto == null) {
+                    return ResponseEntity.status(404).build();
+                }
+            }
+            return ResponseEntity.status(200).build();
+        } else {
+            return ResponseEntity.status(404).build();
+        }
+    }
     private boolean isCepExiste(String cep) {
         if (iViaCep.getCep(cep).isErro()) {
             return false;

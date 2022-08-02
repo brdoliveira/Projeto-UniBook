@@ -1,5 +1,8 @@
 package br.com.sptech.apiprojetounibookjava.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import java.util.concurrent.ThreadLocalRandom;
@@ -7,6 +10,19 @@ import java.util.concurrent.ThreadLocalRandom;
 @Entity
 @DiscriminatorValue("1")
 public class Administrador extends Usuario implements IBoleto {
+
+    @JsonIgnore
+    @Column(length = 50_000_000)
+    private byte[] foto;
+
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
+    }
+
     public Administrador() {
     }
 
