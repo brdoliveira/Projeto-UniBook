@@ -223,8 +223,9 @@ public class AdministradorController {
         }
     }
 
-    @PatchMapping("/alterar/senha-usuario/{codigo}/{senhaNova}")
+    @PatchMapping("/alterar/senha-usuario/{codigo}/{senhaAntiga}/{senhaNova}")
     public ResponseEntity patchAlterarSenha(@PathVariable @Valid long codigo,
+                                            @PathVariable String senhaAntiga,
                                             @PathVariable String senhaNova
     ) {
 
