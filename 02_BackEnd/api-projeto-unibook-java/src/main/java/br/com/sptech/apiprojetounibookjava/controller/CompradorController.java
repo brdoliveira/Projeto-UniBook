@@ -63,10 +63,5 @@ public class CompradorController {
             return ResponseEntity.status(200).build();
         }
     }
-     /*
-    @GetMapping("/gerar-boleto/{valor}")
-    public String gerarBoleto(@Valid @RequestBody Vendedor vendedor,
-                              @PathVariable double valor){
-        return vendedor.gerarBoleto(valor);
-    }*/
+
 }

@@ -299,10 +299,5 @@ public class AdministradorController {
             return false;
         }
         return true;
-//    @GetMapping("/gerar-boleto/{valor}")
-//    public String gerarBoleto(@Valid @RequestBody Administrador administrador,
-//                              @PathVariable double valor){
-//        return administrador.gerarBoleto(valor);
-//    }
     }
 }
