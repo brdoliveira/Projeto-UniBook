@@ -2,7 +2,6 @@ export class FormatService {
   static formatData(data) {
     var dataFormat =
       data.slice(0, 2) + "/" + data.slice(2, 4) + "/" + data.slice(-4);
-    console.log(dataFormat);
     return dataFormat;
   }
 

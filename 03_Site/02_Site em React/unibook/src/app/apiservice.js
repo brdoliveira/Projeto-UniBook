@@ -20,6 +20,11 @@ class ApiService{
         return httpClient.put(requestUrl,objeto);
     }
 
+    patch(url){
+        const requestUrl = `${this.apiUrl}${url}`
+        return httpClient.patch(requestUrl);
+    }
+
     delete(url){
         const requestUrl = `${this.apiUrl}${url}`
         return httpClient.delete(requestUrl);

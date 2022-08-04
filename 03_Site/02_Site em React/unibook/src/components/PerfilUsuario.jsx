@@ -1,12 +1,13 @@
 import React from "react";
 
 import { Button } from "primereact/button";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import AuthService from "../app/service/authService";
 import { FormatService } from "../app/service/formatService";
 
 import "../templates/styles/styles-perfil.css";
+import AlterarSenha from "./AlterarSenha";
 
 class PerfilUsuario extends React.Component {
   state = {
@@ -60,14 +61,17 @@ class PerfilUsuario extends React.Component {
           </div>
           <div className="col-12 d-flex flex-wrap">
             <div className="col-12 col-lg-5 text-center py-2 px-3">
+                {/*
               <Link to="editar" className="text-decoration-none">
-                <Button
+                 <Button
                   className="bg-orange rounded-pill border border-dark text-dark border-2 fw-bold px-4 py-3 w-100 w-lg-75 button-perfil"
                   label="Editar"
                   icon="pi pi-user-edit"
                   iconPos="right"
-                />
+                /> 
               </Link>
+              */}
+                <AlterarSenha/>
             </div>
             <div className="col-12 col-lg-7 text-center py-2 px-3">
               <Button
