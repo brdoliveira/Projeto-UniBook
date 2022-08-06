@@ -5,7 +5,6 @@ import { Button } from "primereact/button";
 import { Steps } from "primereact/steps";
 
 import CadastroUsuario from "../components/CadastroUsuario";
-// import CadastroEndereco from "../components/CadastroEndereco";
 import CadastroImagem from "../components/CadastroImagem";
 import Menu from "../components/Menu";
 
@@ -32,9 +31,6 @@ class PageCadastro extends React.Component {
       this.setState({ buttonLeft: true });
       this.setState({ buttonRight: false });
     } else if (index === 1) {
-      //   this.setState({ buttonLeft: false });
-      //   this.setState({ buttonRight: false });
-      // } else if (index === 2) {
       this.setState({ buttonLeft: false });
       this.setState({ buttonRight: true });
     }
@@ -42,7 +38,6 @@ class PageCadastro extends React.Component {
 
   items = [
     { label: "Usuario" },
-    //  { label: "Endereço" },
     { label: "Imagem" },
   ];
 
@@ -129,9 +124,6 @@ class PageCadastro extends React.Component {
                       className="col-12"
                     />
                   </TabPanel>
-                  {/* <TabPanel header="Endereço">
-                    <CadastroEndereco className="col-12" />
-                  </TabPanel> */}
                   <TabPanel header="Imagem">
                     <CadastroImagem className="col-12" />
                   </TabPanel>
