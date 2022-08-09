@@ -1,9 +1,12 @@
 import React from "react";
 import iconAddImage from "../templates/images/icon-add-image.png";
 
+import { ScrollPanel } from "primereact/scrollpanel";
 import { FileUpload } from "primereact/fileupload";
 import { InputText } from "primereact/inputtext";
-import AdicionarEtiquetas from "./AdicionarEtiquetas";
+import { Chips } from "primereact/chips";
+
+import "../templates/styles/styles-cadastro.css";
 
 class AdicionarProduto extends React.Component {
   state = {
@@ -15,6 +18,7 @@ class AdicionarProduto extends React.Component {
     isbn: "",
     idioma: "",
     imgPath: "",
+    etiquetas: [],
   };
 
   render() {
@@ -102,7 +106,7 @@ class AdicionarProduto extends React.Component {
             </div>
           </div>
           <div className="col-12 col-md-8 px-4" hidden={!this.props.page}>
-            <div className="col-12 text-white py-4 d-flex">
+            <div className="col-12 text-white pt-4 d-flex">
               <div className="col-6 text-white py-4 pe-2">
                 <p>Data de Lancamento</p>
                 <InputText
@@ -124,7 +128,7 @@ class AdicionarProduto extends React.Component {
                 />
               </div>
             </div>
-            <div className="col-12 text-white py-4 d-flex">
+            <div className="col-12 text-white pt-4 d-flex">
               <div className="col-6 text-white py-4 pe-2">
                 <p>Data de Lancamento</p>
                 <InputText
@@ -146,9 +150,21 @@ class AdicionarProduto extends React.Component {
                 />
               </div>
             </div>
-            <div className="col-12 text-white py-4">
+            <div className="col-12 text-white pt-4">
               <p>Etiquetas</p>
-              <AdicionarEtiquetas/>
+              <ScrollPanel
+              className="col-12 scroll rounded"
+              style={{ height: " 5vh" }}
+            >
+              <Chips
+                value={this.state.etiquetas}
+                onChange={(e) => this.setState({ etiquetas: e.value })}
+                className="col-12 border border-0 rounded-pill"
+                separator=","
+                placeholder="Adicionar etiqueta..."
+                max={5}
+              />
+              </ScrollPanel>
             </div>
           </div>
         </div>
