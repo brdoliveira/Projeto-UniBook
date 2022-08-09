@@ -19,3 +19,7 @@
 .cadastro .p-tabview-nav-container{
     display: none;
 }
+
+.p-chips .p-inputtext{
+    width: 100%;
+}
