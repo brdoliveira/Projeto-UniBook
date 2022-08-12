@@ -1,30 +1,25 @@
 import React from "react";
 
-import { TabView, TabPanel } from "primereact/tabview";
+import Menu from "../components/Menu";
+import AdicionarProduto from "../components/AdicionarProduto";
+
 import { Button } from "primereact/button";
 import { Steps } from "primereact/steps";
 
-import CadastroUsuario from "../components/CadastroUsuario";
-import CadastroImagem from "../components/CadastroImagem";
-import Menu from "../components/Menu";
-
-import CompradorService from "../app/service/compradorService";
-import { mensagemErro } from "../components/Toastr";
-
 import "../templates/styles/styles-cadastro.css";
 
-class PageCadastro extends React.Component {
+class PageAdicionarProduto extends React.Component {
   state = {
     tabcard: 0,
     buttonLeft: true,
     buttonRight: false,
     data: [],
   };
-  
-  constructor(){
-    super()
-    this.service = new CompradorService();
-  };
+
+  items = [
+    { label: "Livro - Informações Basicas" },
+    { label: "Livro - Informações Técnicas" },
+  ];
 
   disabled(index) {
     if (index === 0) {
@@ -34,34 +29,6 @@ class PageCadastro extends React.Component {
       this.setState({ buttonLeft: false });
       this.setState({ buttonRight: true });
     }
-  }
-
-  items = [
-    { label: "Usuario" },
-    { label: "Imagem" },
-  ];
-
-  handleCallback = (childData) => {
-    this.setState({ data: childData });
-  };
-
-  doRegistration = () => {
-    this.service
-    .cadastrar({
-      nome: this.state.data.email,
-      dataNascimento: this.state.data.dataNasc,
-      senha: this.state.data.senha,
-      cpf: this.state.data.cpf,
-      email: this.state.data.email,
-      sexo:this.state.data.sexo
-    })
-    .then((response) => {
-      window.location.href = "/login"
-    })
-    .catch((erro) => {
-      mensagemErro(erro.message);
-      return
-    });
   }
 
   render() {
@@ -109,26 +76,9 @@ class PageCadastro extends React.Component {
                   onClick={clickLeft}
                 />
               </div>
-              <div className="col-10">
-                <TabView
-                  activeIndex={this.state.tabcard}
-                  onTabChange={(e) => {
-                    this.setState({ tabcard: e.index });
-                    this.disabled(e.index);
-                  }}
-                  className="cadastro"
-                >
-                  <TabPanel header="Usuario">
-                    <CadastroUsuario
-                      parentCallback={this.handleCallback}
-                      className="col-12"
-                    />
-                  </TabPanel>
-                  <TabPanel header="Imagem">
-                    <CadastroImagem className="col-12" />
-                  </TabPanel>
-                </TabView>
-                <div className="col-12 d-flex justify-content-end pe-4">
+              <div className="col-10 pt-4">
+                <AdicionarProduto page={this.state.buttonRight} />
+                <div className="col-12 d-flex justify-content-end pe-4 pt-4">
                   <Button
                     className="bg-orange rounded-pill border border-dark border-2 fw-bold px-4 py-1 text-dark"
                     label="Finalizar Cadastro"
@@ -155,4 +105,4 @@ class PageCadastro extends React.Component {
   }
 }
 
-export default PageCadastro;
+export default PageAdicionarProduto;

@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Button } from "primereact/button";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import AuthService from "../app/service/authService";
 import { FormatService } from "../app/service/formatService";
@@ -24,7 +24,7 @@ class PerfilUsuario extends React.Component {
       return;
     }
 
-    var usuario = AuthService.obterUsuarioAutenticado()
+    var usuario = AuthService.obterUsuarioAutenticado();
     this.setState(usuario);
   }
 
@@ -39,7 +39,11 @@ class PerfilUsuario extends React.Component {
             <img alt="" />
           </div>
           <span className="col-12 text-center text-dark py-2">
-            <span className="fs-3"> {this.state.nome} , {FormatService.formatYears(this.state.dataNascimento)} Anos</span>
+            <span className="fs-3">
+              {" "}
+              {this.state.nome} ,{" "}
+              {FormatService.formatYears(this.state.dataNascimento)} Anos
+            </span>
             <br />
             <span>
               <i className="bi bi-geo-alt-fill"></i> Endereço
@@ -57,11 +61,14 @@ class PerfilUsuario extends React.Component {
             <span>Email: {this.state.email} </span>
           </div>
           <div className="col-12 bg-blue text-white py-3 my-2 rounded px-3">
-            <span>Data de nascimento: { FormatService.formatData(this.state.dataNascimento)}</span>
+            <span>
+              Data de nascimento:{" "}
+              {FormatService.formatData(this.state.dataNascimento)}
+            </span>
           </div>
           <div className="col-12 d-flex flex-wrap">
             <div className="col-12 col-lg-5 text-center py-2 px-3">
-                {/*
+              {/*
               <Link to="editar" className="text-decoration-none">
                  <Button
                   className="bg-orange rounded-pill border border-dark text-dark border-2 fw-bold px-4 py-3 w-100 w-lg-75 button-perfil"
@@ -71,15 +78,17 @@ class PerfilUsuario extends React.Component {
                 /> 
               </Link>
               */}
-                <AlterarSenha/>
+              <AlterarSenha />
             </div>
             <div className="col-12 col-lg-7 text-center py-2 px-3">
-              <Button
-                className="bg-orange rounded-pill border border-dark text-dark border-2 fw-bold px-4 py-3 w-100 button-perfil"
-                label="Adicionar Produto"
-                icon="pi pi-plus"
-                iconPos="right"
-              />
+              <Link to="adicionar-produto" className="text-decoration-none">
+                <Button
+                  className="bg-orange rounded-pill border border-dark text-dark border-2 fw-bold px-4 py-3 w-100 button-perfil"
+                  label="Adicionar Produto"
+                  icon="pi pi-plus"
+                  iconPos="right"
+                />
+              </Link>
             </div>
           </div>
         </div>
