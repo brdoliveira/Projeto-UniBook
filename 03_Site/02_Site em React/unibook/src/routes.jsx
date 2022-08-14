@@ -10,6 +10,9 @@ import PageHome from "./pages/PageHome";
 import PageQuemSomos from "./pages/PageQuemSomos";
 import PageCadastro from "./pages/PageCadastro";
 import PageAdicionarProduto from "./pages/PageAdicionarProduto";
+import PageProdutos from "./pages/PageProdutos";
+import PageMaisVendidos from "./pages/PageMaisVendidos";
+import PageChat from "./pages/PageChat";
 
 function Rotas() {
   return (
@@ -24,6 +27,9 @@ function Rotas() {
         <Route path="/cadastro" element={<PageCadastro />} />
         <Route path="/fale-conosco" element={<PageFaleConosco />} />
         <Route path="/quem-somos" element={<PageQuemSomos />} />
+        <Route path="/produtos" element={<PageProdutos />} />
+        <Route path="/mais-vendidos" element={<PageMaisVendidos />} />
+        <Route path="/chat" element={<PageChat />} />
       </Routes>
     </BrowserRouter>
   );
