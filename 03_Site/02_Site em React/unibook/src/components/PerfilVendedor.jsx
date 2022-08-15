@@ -1,7 +1,7 @@
 import "../templates/styles/styles-perfil.css";
 
 import FeedbackMessage from "./FeedbackMessage";
-import EnviarFeedback from "./EnviarFeedback";
+import EnviarMensagem from "./EnviarMensagem";
 
 import { Rating } from "primereact/rating";
 import { ScrollPanel } from "primereact/scrollpanel";
@@ -47,7 +47,7 @@ function PerfilVendedor() {
               <FeedbackMessage />
             </ScrollPanel>
             <div className="col-11 rounded">
-              <EnviarFeedback />
+              <EnviarMensagem />
             </div>
           </div>
         </div>
