@@ -45,10 +45,7 @@
   background-color: var(--skylightbook) !important;
 }
 
-.border-blue {
-  border-color: var(--bluelightbook) !important;
-}
-
-.color-blue {
-  color: var(--bluelightbook) !important;
+.usuarios-chat:hover{
+  background-color: var(--orangelightbook);
+  transition: 0.5s;
 }

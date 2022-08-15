@@ -22,3 +22,19 @@ body {
 .bg-orange {
   background-color: var(--orangebook);
 }
+
+.border-blue {
+  border-color: var(--bluelightbook) !important;
+}
+
+.color-blue {
+  color: var(--bluelightbook) !important;
+}
+
+.border-orange {
+  border-color: var(--orangebook) !important;
+}
+
+.color-orange {
+  color: var(--orangebook) !important;
+}
