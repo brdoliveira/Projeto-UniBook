@@ -13,6 +13,7 @@ import PageAdicionarProduto from "./pages/PageAdicionarProduto";
 import PageProdutos from "./pages/PageProdutos";
 import PageMaisVendidos from "./pages/PageMaisVendidos";
 import PageChat from "./pages/PageChat";
+import PageProduto from "./pages/PageProduto";
 
 function Rotas() {
   return (
@@ -27,6 +28,7 @@ function Rotas() {
         <Route path="/cadastro" element={<PageCadastro />} />
         <Route path="/fale-conosco" element={<PageFaleConosco />} />
         <Route path="/quem-somos" element={<PageQuemSomos />} />
+        <Route path="/produto" element={<PageProduto />} />
         <Route path="/produtos" element={<PageProdutos />} />
         <Route path="/mais-vendidos" element={<PageMaisVendidos />} />
         <Route path="/chat" element={<PageChat />} />
