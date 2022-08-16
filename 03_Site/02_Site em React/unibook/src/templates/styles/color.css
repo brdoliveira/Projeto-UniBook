@@ -4,6 +4,8 @@
   --skylightbook: rgba(111, 128, 233, 1) !important;
   --orangebook: rgba(251, 133, 0, 1) !important;
   --orangelightbook: rgba(255, 160, 53, 1) !important;
+  --yellowbook: rgba(251,220,0,1) !important;
+  --yellowlightbook: rgba(255,236,102) !important;
 }
 
 body {
@@ -17,6 +19,10 @@ body {
 
 .bg-bluelight {
   background-color: var(--bluelightbook) !important;
+}
+
+.bg-yellow{
+  background-color: var(--yellowbook);
 }
 
 .bg-orange {
