@@ -16,7 +16,7 @@ class MaisVendidosCategorias extends React.Component {
 
   render() {
     return (
-      <div className="col-2">
+      <div className="col-2 p-2 py-4">
         <h2>Filtrar Por</h2>
         <Divider />
         <ListaMaisVendidos lista={this.state.opcoes} />
