@@ -1,0 +1,5 @@
+@import url(./color.css);
+
+.rating-book .p-rating .p-rating-icon.pi-star-fill {
+    color: var(--orangebook) !important;
+}
