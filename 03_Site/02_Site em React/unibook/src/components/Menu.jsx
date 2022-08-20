@@ -1,6 +1,29 @@
+import React from "react";
 import "../templates/styles/styles-menu.css";
 
-function Menu() {
+import AuthService from "../app/service/authService";
+
+import { Avatar } from 'primereact/avatar';
+
+class Menu extends React.Component{
+  constructor(){
+    super()
+    this.service = new AuthService();
+  }
+
+  logado = false;
+
+  componentDidMount(){
+    if(this.service.isUsuarioAutenticado){
+      this.logado = true;
+      console.log("logado = ", this.logado);
+    }else{
+      this.logado = false;
+      console.log("logado = ", this.logado);
+    }
+  }
+
+  render(){
   return (
     <nav className="navbar navbar-expand-lg bg-blue">
       <div className="container-fluid">
@@ -36,7 +59,7 @@ function Menu() {
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent"
-            aria-expanded="true"
+            aria-expanded="false"
             aria-label="Toggle navigation"
           >
             <i className="bi bi-list text-white"></i>
@@ -61,7 +84,7 @@ function Menu() {
                 Quem Somos
               </a>
             </li>
-            <li className="nav-item dropdown li-menu">
+            <li className="nav-item dropdown li-menu" hidden={this.logado}>
               <button
                 className="text-white nav-link dropdown-toggle btn btn-secondary dropdown-toggle bg-blue border border-white border-1 p-2 d-lg-block d-none button-menu"
                 id="navbarDropdown"
@@ -94,8 +117,56 @@ function Menu() {
                 </li>
               </ul>
             </li>
-            <div className="col-12 d-block d-lg-none py-2">
-              <div className="col-12 bg-blue rounded border border-white border-2 p-2 text-center">
+            <li className="nav-item dropdown li-menu" hidden={!this.logado}>
+              <button
+                className="text-white nav-link dropdown-toggle btn btn-secondary dropdown-toggle bg-blue border border-0 d-lg-block d-none button-menu py-1 p-0 m-0"
+                id="navbarDropdown"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <Avatar icon="pi pi-user"/>
+              </button>
+              <ul
+                className="w-25 dropdown-menu bg-blue border border-white border-2 p-2"
+                aria-labelledby="navbarDropdown"
+              >
+                <li className="li-menu my-1">
+                  <span
+                    className="dropdown-item rounded border border-white border-3 px-2 fw-bold text-center text-white a-menu"
+                  >
+                    <i className="pi pi-user"></i>
+                    Perfil
+                  </span>
+                </li>
+                <li className="li-menu my-1">
+                  <span
+                    className="dropdown-item rounded border border-white border-3 px-2 fw-bold text-center text-white a-menu"
+                  >
+                    <i className="pi pi-bookmark"></i>
+                    Favoritos
+                  </span>
+                </li>
+                <li className="li-menu my-1">
+                  <span
+                    className="dropdown-item rounded border border-white border-3 px-2 fw-bold text-center text-white a-menu"
+                  >
+                    <i className="pi pi-shopping-cart"></i>
+                    Carrinho
+                  </span>
+                </li>
+                <li className="li-menu my-1">
+                  <span
+                    className="dropdown-item rounded border border-white border-3 px-2 fw-bold text-center text-white a-menu"
+                  >
+                    <i className="pi pi-sign-out"></i>
+                    Sair
+                  </span>
+                </li>
+               
+              </ul>
+            </li>
+            <div className="col-12 d-block d-lg-none py-2" hidden={this.logado}>
+              <div className="col-12 bg-blue rounded border border-white border-2 p-2 text-center" hidden={this.logado}>
                 <a className="text-decoration-none a-menu" href="/login">
                   <li className="col-12 rounded border border-white border-3 px-2 fw-bold text-center text-white py-2 li-menu">
                     Login
@@ -111,10 +182,30 @@ function Menu() {
                 </div>
               </div>
             </div>
+            <div className="col-12 d-block d-lg-none py-2" hidden={!this.logado}>
+              <div className="col-12 bg-blue rounded border border-white border-2 p-2 text-center" hidden={!this.logado}>
+                <li className="col-12 rounded border border-white border-3 px-2 fw-bold text-center text-white py-2 li-menu my-1">
+                  <i className="pi pi-user"></i> Perfil
+                </li>
+                <li className="col-12 rounded border border-white border-3 px-2 fw-bold text-center text-white py-2 li-menu my-1">
+                  <i className="pi pi-bookmark"></i> Favoritos
+                </li>
+                <li className="col-12 rounded border border-white border-3 px-2 fw-bold text-center text-white py-2 li-menu my-1">
+                  <i className="pi pi-shopping-cart"></i> Carrinho
+                </li>
+                <li className="col-12 rounded border border-white border-3 px-2 fw-bold text-center text-white py-2 li-menu my-1">
+                  <i className="pi pi-sign-out"></i> Sair
+                </li>
+
+
+              </div>
+            </div>
           </ul>
         </div>
       </div>
     </nav>
   );
+  }
 }
+
 export default Menu;
