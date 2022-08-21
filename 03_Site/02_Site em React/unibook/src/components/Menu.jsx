@@ -3,6 +3,9 @@ import "../templates/styles/styles-menu.css";
 
 import AuthService from "../app/service/authService";
 
+import Favoritos from "./Favoritos";
+import Carrinho from "./Carrinho";
+
 import { Avatar } from 'primereact/avatar';
 
 class Menu extends React.Component{
@@ -11,20 +14,42 @@ class Menu extends React.Component{
     this.service = new AuthService();
   }
 
-  logado = false;
+  logado = true; // setar depois false
+
+  showFavoritos = false;
+  showCarrinho = false;
 
   componentDidMount(){
     if(this.service.isUsuarioAutenticado){
       this.logado = true;
       console.log("logado = ", this.logado);
     }else{
-      this.logado = false;
+      this.logado = true; // setar depois false
       console.log("logado = ", this.logado);
     }
   }
 
+  perfil = () => {
+    console.log("Perfil")
+  }
+
+  favoritos = () => {
+    console.log("Favorito")
+    this.showFavoritos = true;
+  }
+  
+  carrinho = () => {
+    console.log("Carrinho")
+    this.showCarrinho = true;
+  }
+
+  sair = () => {
+    console.log("Sair")
+  }
+
   render(){
   return (
+    <>
     <nav className="navbar navbar-expand-lg bg-blue">
       <div className="container-fluid">
         <div className="col-3 col-sm-2">
@@ -44,7 +69,7 @@ class Menu extends React.Component{
                 <button
                   className="btn btn-search text-white search-button border border-0 py-2 button-menu"
                   type="submit"
-                >
+                  >
                   <i className="bi bi-search"></i>
                 </button>
               </div>
@@ -61,21 +86,21 @@ class Menu extends React.Component{
             aria-controls="navbarSupportedContent"
             aria-expanded="false"
             aria-label="Toggle navigation"
-          >
+            >
             <i className="bi bi-list text-white"></i>
           </button>
         </div>
         <div
           className="navbar-collapse collapse show col-12 col-lg-6"
           id="navbarSupportedContent"
-        >
+          >
           <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-auto">
             <li className="nav-item rounded mx-1 li-menu">
               <a
                 className="nav-link text-white px-3 a-menu"
                 aria-current="page"
                 href="/fale-conosco"
-              >
+                >
                 Fale Conosco
               </a>
             </li>
@@ -90,7 +115,7 @@ class Menu extends React.Component{
                 id="navbarDropdown"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
-              >
+                >
                 Faça seu Login
               </button>
               <ul
@@ -101,7 +126,7 @@ class Menu extends React.Component{
                   <a
                     className="dropdown-item rounded border border-white border-3 px-2 fw-bold text-center text-white a-menu"
                     href="/login"
-                  >
+                    >
                     Login
                   </a>
                 </li>
@@ -109,7 +134,7 @@ class Menu extends React.Component{
                   <a
                     className="dropdown-item mt-2 rounded text-white rounded a-menu"
                     href="/cadastro"
-                  >
+                    >
                     Cliente novo?
                     <br />
                     <b>Comece aqui.</b>
@@ -123,17 +148,18 @@ class Menu extends React.Component{
                 id="navbarDropdown"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
-              >
+                >
                 <Avatar icon="pi pi-user"/>
               </button>
               <ul
                 className="w-25 dropdown-menu bg-blue border border-white border-2 p-2"
                 aria-labelledby="navbarDropdown"
-              >
+                >
                 <li className="li-menu my-1">
                   <span
                     className="dropdown-item rounded border border-white border-3 px-2 fw-bold text-center text-white a-menu"
-                  >
+                    onClick={this.perfil}
+                    >
                     <i className="pi pi-user"></i>
                     Perfil
                   </span>
@@ -141,7 +167,8 @@ class Menu extends React.Component{
                 <li className="li-menu my-1">
                   <span
                     className="dropdown-item rounded border border-white border-3 px-2 fw-bold text-center text-white a-menu"
-                  >
+                    onClick={this.favoritos}
+                    >
                     <i className="pi pi-bookmark"></i>
                     Favoritos
                   </span>
@@ -149,6 +176,7 @@ class Menu extends React.Component{
                 <li className="li-menu my-1">
                   <span
                     className="dropdown-item rounded border border-white border-3 px-2 fw-bold text-center text-white a-menu"
+                    onClick={this.carrinho}
                   >
                     <i className="pi pi-shopping-cart"></i>
                     Carrinho
@@ -157,7 +185,8 @@ class Menu extends React.Component{
                 <li className="li-menu my-1">
                   <span
                     className="dropdown-item rounded border border-white border-3 px-2 fw-bold text-center text-white a-menu"
-                  >
+                    onClick={this.sair}
+                    >
                     <i className="pi pi-sign-out"></i>
                     Sair
                   </span>
@@ -184,26 +213,35 @@ class Menu extends React.Component{
             </div>
             <div className="col-12 d-block d-lg-none py-2" hidden={!this.logado}>
               <div className="col-12 bg-blue rounded border border-white border-2 p-2 text-center" hidden={!this.logado}>
-                <li className="col-12 rounded border border-white border-3 px-2 fw-bold text-center text-white py-2 li-menu my-1">
+                <li className="col-12 rounded border border-white border-3 px-2 fw-bold text-center text-white py-2 li-menu my-1"
+                onClick={this.perfil}
+                >
                   <i className="pi pi-user"></i> Perfil
                 </li>
-                <li className="col-12 rounded border border-white border-3 px-2 fw-bold text-center text-white py-2 li-menu my-1">
+                <li className="col-12 rounded border border-white border-3 px-2 fw-bold text-center text-white py-2 li-menu my-1"
+                onClick={this.favoritos}
+                >
                   <i className="pi pi-bookmark"></i> Favoritos
                 </li>
-                <li className="col-12 rounded border border-white border-3 px-2 fw-bold text-center text-white py-2 li-menu my-1">
+                <li className="col-12 rounded border border-white border-3 px-2 fw-bold text-center text-white py-2 li-menu my-1"
+                onClick={this.carrinho}
+                >
                   <i className="pi pi-shopping-cart"></i> Carrinho
                 </li>
-                <li className="col-12 rounded border border-white border-3 px-2 fw-bold text-center text-white py-2 li-menu my-1">
+                <li className="col-12 rounded border border-white border-3 px-2 fw-bold text-center text-white py-2 li-menu my-1"
+                onClick={this.sair}
+                >
                   <i className="pi pi-sign-out"></i> Sair
                 </li>
-
-
               </div>
             </div>
           </ul>
         </div>
       </div>
     </nav>
+    <Favoritos showFavoritos={this.showFavoritos}/>
+    <Carrinho showCarrinho={this.showCarrinho}/>
+    </>
   );
   }
 }
