@@ -17,15 +17,11 @@ function CardProduto() {
   const footer = (
     <span>
       <div className="col-12 d-flex flex-wrap">
-        <div className="col-3">
-          <p className="fw-bold m-0">Qtdade</p>
-          <span>2</span>
-        </div>
-        <div className="col-3">
+        <div className="col-6">
           <p className="fw-bold m-0">Preço</p>
           <p>R$ 10,00</p>
         </div>
-        <div className="col-6">
+        <div className="col-6 d-flex justify-content-end align-items-start">
           <Button
             label="Comprar"
             icon="pi pi-shopping-cart"
