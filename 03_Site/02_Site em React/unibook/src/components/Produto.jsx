@@ -1,11 +1,24 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 import { Divider } from "primereact/divider";
 import { Rating } from "primereact/rating";
 import { Button } from "primereact/button";
 import { Chip } from "primereact/chip";
 
+import { useParams } from "react-router-dom";
+
+function withParams(Component) {
+  return props => <Component {...props} params={useParams()} />;
+}
+
 class Produto extends React.Component {
+  componentDidMount() {
+    let { id } = this.props.params;
+    console.log("id = ",id)
+}
+
   render() {
     return (
       <div className="col-12 d-flex flex-wrap">
@@ -46,10 +59,12 @@ class Produto extends React.Component {
               className="p-button-rounded me-1"
               aria-label="Chat"
             />
+            <Link to="pagamento" className="text-decoration-none">
             <Button
               className="bg-orange rounded-pill border border-dark text-dark border-2 fw-bold px-4 button-perfil ms-1"
               label="Comprar"
-            />
+              />
+            </Link>
           </div>
         </div>
         <div className="div-perfil-items py-4 col-12">
@@ -62,4 +77,4 @@ class Produto extends React.Component {
   }
 }
 
-export default Produto;
+export default withParams(Produto);
