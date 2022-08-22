@@ -8,9 +8,9 @@ import FormasPagamento from "./FormasPagamento";
 class ProdutoPagamento extends React.Component {
   render() {
     return (
-      <div className="col-12 h-auto">
+      <div className="col-12">
         <div className="col-12 d-flex flex-wrap">
-          <div className="col-6 bg-bluelight">
+          <div className="col-6 bg-bluelight" style={{height : '87.5vh'}}>
             <div className="col-12 text-white fw-bold text-center py-4">
                 <h1>Nome do livro</h1>
             </div>
