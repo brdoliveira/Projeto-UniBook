@@ -9,9 +9,14 @@ class PageProdutoPagamento extends React.Component {
   render() {
     return (
       <>
-        <Menu />
-        <div className="col-12 d-flex flex-wrap h-100" style={{ height: "90vh" }}>
-          <ProdutoPagamento />
+        <div className="col-12" style={{ height: "100vh" }}>
+          <Menu />
+          <div
+            className="col-12 d-flex flex-wrap h-auto"
+            style={{ height: "90vh" }}
+          >
+            <ProdutoPagamento />
+          </div>
         </div>
       </>
     );
