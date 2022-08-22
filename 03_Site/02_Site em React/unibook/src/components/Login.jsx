@@ -6,7 +6,7 @@ import { InputText } from "primereact/inputtext";
 
 import UsuarioService from "../app/service/usuarioService";
 import AuthService from "../app/service/authService";
-import { mensagemErro } from "../components/Toastr";
+import { Notification } from "./Notification";
 
 import { Link } from "react-router-dom"
 
@@ -34,8 +34,7 @@ class Login extends React.Component {
       window.location.href = "/perfil"
     })
     .catch((erro) => {
-      mensagemErro(erro.message);
-      return
+      return <Notification type="error" message={erro.message} />;
     });
 
   };
@@ -71,7 +70,7 @@ class Login extends React.Component {
             <div className="col-12 text-end text-white pb-3">
               <p>Esqueci a senha</p>
             </div>
-            <div className="col-12 text-white text-end">
+            <div className="col-12 text-white align-items-center justify-content-end d-flex">
               <Link to="/cadastro" className="text-decoration-none text-white">
                 <span className="pe-2" style={{ fontSize: "13px" }}>
                   Criar conta <b>clique aqui</b>
