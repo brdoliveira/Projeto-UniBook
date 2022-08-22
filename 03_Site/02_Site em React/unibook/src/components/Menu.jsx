@@ -14,38 +14,45 @@ class Menu extends React.Component{
     this.service = new AuthService();
   }
 
-  logado = true; // setar depois false
+  state = {
+    showCarrinho : false,
+    showFavoritos : false
+  }
 
-  showFavoritos = false;
-  showCarrinho = false;
+  logado = false; //
 
   componentDidMount(){
     if(this.service.isUsuarioAutenticado){
       this.logado = true;
-      console.log("logado = ", this.logado);
     }else{
-      this.logado = true; // setar depois false
-      console.log("logado = ", this.logado);
+      this.logado = false; //
     }
   }
 
   perfil = () => {
-    console.log("Perfil")
+    window.location.href = "/perfil"
   }
 
   favoritos = () => {
-    console.log("Favorito")
-    this.showFavoritos = true;
+    this.setState({ showFavoritos : true});
   }
   
   carrinho = () => {
-    console.log("Carrinho")
-    this.showCarrinho = true;
+    this.setState({ showCarrinho : true});
   }
 
   sair = () => {
-    console.log("Sair")
+    this.service.removerUsuarioAutenticado();
+    window.location.href = "/login"
   }
+
+  handleCallbackFavoritos = (childData) => {
+    this.setState({ showFavoritos: childData });
+  };
+
+  handleCallbackCarrinho = (childData) => {
+    this.setState({ showCarrinho: childData});
+  };
 
   render(){
   return (
@@ -239,8 +246,8 @@ class Menu extends React.Component{
         </div>
       </div>
     </nav>
-    <Favoritos showFavoritos={this.showFavoritos}/>
-    <Carrinho showCarrinho={this.showCarrinho}/>
+    <Favoritos showFavoritos={this.state.showFavoritos} parentCallbackFavoritos={this.handleCallbackFavoritos} />
+    <Carrinho showCarrinho={this.state.showCarrinho} parentCallbackCarrinho={this.handleCallbackCarrinho} />
     </>
   );
   }
