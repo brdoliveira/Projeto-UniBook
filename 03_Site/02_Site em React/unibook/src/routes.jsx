@@ -29,8 +29,8 @@ function Rotas() {
         <Route path="/cadastro" element={<PageCadastro />} />
         <Route path="/fale-conosco" element={<PageFaleConosco />} />
         <Route path="/quem-somos" element={<PageQuemSomos />} />
-        <Route path="/produto" element={<PageProduto />} />
-        <Route path="/produto/pagamento" element={<PageProdutoPagamento />} />
+        <Route path="/produto/:id" element={<PageProduto />} />
+        <Route path="/produto/:id/pagamento" element={<PageProdutoPagamento />} />
         <Route path="/produtos" element={<PageProdutos />} />
         <Route path="/mais-vendidos" element={<PageMaisVendidos />} />
         <Route path="/chat" element={<PageChat />} />
