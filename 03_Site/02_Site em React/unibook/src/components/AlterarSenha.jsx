@@ -5,8 +5,8 @@ import { Password } from "primereact/password";
 import { Divider } from "primereact/divider";
 import AdministradorService from "../app/service/administradorService";
 import AuthService from "../app/service/authService";
-import { mensagemErro } from "./Toastr";
 
+import { Notification } from "./Notification";
 
 const service = new AdministradorService();
 
@@ -56,8 +56,7 @@ const AlterarSenha = () => {
         window.location.href = "/login"
       })
       .catch((erro) => {
-        mensagemErro(erro.message);
-        return
+        return <Notification type="error" message={erro} />;
       });
   
   } 
