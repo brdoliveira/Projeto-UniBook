@@ -29,6 +29,10 @@ body {
   background-color: var(--orangebook);
 }
 
+.bg-orangelightbook{
+  background-color: var(--orangelightbook);
+}
+
 .border-blue {
   border-color: var(--bluelightbook) !important;
 }
@@ -43,4 +47,8 @@ body {
 
 .color-orange {
   color: var(--orangebook) !important;
+}
+
+.cursor-pointer{
+  cursor: pointer;
 }
