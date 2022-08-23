@@ -9,7 +9,7 @@ import CadastroImagem from "../components/CadastroImagem";
 import Menu from "../components/Menu";
 
 import CompradorService from "../app/service/compradorService";
-import { mensagemErro } from "../components/Toastr";
+import { Notification } from "../components/Notification";
 
 import "../templates/styles/styles-cadastro.css";
 
@@ -59,8 +59,7 @@ class PageCadastro extends React.Component {
       window.location.href = "/login"
     })
     .catch((erro) => {
-      mensagemErro(erro.message);
-      return
+      return <Notification type="error" message={erro.message} />;
     });
   }
 
