@@ -19,7 +19,7 @@ class CadastroUsuario extends React.Component {
 
   onTrigger = () => {
     this.props.parentCallback(this.state);
-}
+  }
 
   render() {
     const header = <h6>Insire sua senha</h6>;
