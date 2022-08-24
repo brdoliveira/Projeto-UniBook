@@ -7,18 +7,7 @@ import { Rating } from "primereact/rating";
 import { Button } from "primereact/button";
 import { Chip } from "primereact/chip";
 
-import { useParams } from "react-router-dom";
-
-function withParams(Component) {
-  return props => <Component {...props} params={useParams()} />;
-}
-
 class Produto extends React.Component {
-  componentDidMount() {
-    let { id } = this.props.params;
-    console.log("id = ",id)
-}
-
   render() {
     return (
       <div className="col-12 d-flex flex-wrap">
@@ -77,4 +66,4 @@ class Produto extends React.Component {
   }
 }
 
-export default withParams(Produto);
+export default Produto;
