@@ -4,7 +4,7 @@ import Menu from "../components/Menu";
 
 import { TabView, TabPanel } from "primereact/tabview";
 import PerfilVendedor from "../components/PerfilVendedor";
-import withParams from "../components/pegarParametros";
+import withParams from "../components/PegarParametros";
   
 
 class PageUsuario extends React.Component{

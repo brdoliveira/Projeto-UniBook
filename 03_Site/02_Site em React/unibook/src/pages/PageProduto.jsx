@@ -1,5 +1,5 @@
 import React from "react";
-import withParams from "../components/pegarParametros";
+import withParams from "../components/PegarParametros";
 
 import Menu from "../components/Menu";
 import Produto from "../components/Produto";
