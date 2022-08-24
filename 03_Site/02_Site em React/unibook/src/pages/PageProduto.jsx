@@ -1,9 +1,16 @@
 import React from "react";
+import withParams from "../components/pegarParametros";
 
 import Menu from "../components/Menu";
 import Produto from "../components/Produto";
 
+
 class PageProduto extends React.Component {
+  componentDidMount() {
+    let { id } = this.props.params;
+    console.log("id = ",id)
+  }
+
   render() {
     return (
       <>
@@ -21,4 +28,4 @@ class PageProduto extends React.Component {
   }
 }
 
-export default PageProduto;
+export default withParams(PageProduto);
