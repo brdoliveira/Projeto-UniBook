@@ -2,7 +2,7 @@ import { ScrollPanel } from "primereact/scrollpanel";
 import { Button } from "primereact/button";
 
 export default function CartoesOpcoes(props) {
-  labelsCartao = {
+  var labelsCartao = {
     title: "",
     subtitle: "",
     selectCard : []
