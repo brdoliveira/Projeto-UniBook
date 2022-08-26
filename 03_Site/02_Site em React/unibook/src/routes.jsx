@@ -16,6 +16,7 @@ import PageMaisVendidos from "./pages/PageMaisVendidos";
 import PageChat from "./pages/PageChat";
 import PageProduto from "./pages/PageProduto";
 import PageProdutoPagamento from "./pages/PageProdutoPagamento";
+import PagePagamentoEscolhido from "./pages/PagePagamentoEscolhido";
 
 function Rotas() {
   return (
@@ -33,6 +34,7 @@ function Rotas() {
         <Route path="/quem-somos" element={<PageQuemSomos />} />
         <Route path="/produto/:id" element={<PageProduto />} />
         <Route path="/produto/:id/pagamento" element={<PageProdutoPagamento />} />
+        <Route path="/produto/:id/pagamento/:escolhido" element={<PagePagamentoEscolhido />} />
         <Route path="/produtos" element={<PageProdutos />} />
         <Route path="/mais-vendidos" element={<PageMaisVendidos />} />
         <Route path="/chat" element={<PageChat />} />
