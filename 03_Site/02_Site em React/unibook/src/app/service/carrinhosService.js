@@ -4,8 +4,6 @@ class CarrinhosService extends ApiService{
     constructor(){
         super("/carrinhos")
     }
-
-
 }
 
 export default CarrinhosService;
