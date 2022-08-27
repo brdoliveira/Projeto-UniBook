@@ -10,7 +10,7 @@ import { Button } from "primereact/button";
 
 import "../templates/styles/styles-pagamento.css";
 
-class PagePagamentoEscolhidoBoleto extends React.Component {  
+class PagePagamentoEscolhidoBoleto extends React.Component {
   render() {
     let { escolhido } = this.props.params;
     const loadPayment = () => {
@@ -23,7 +23,7 @@ class PagePagamentoEscolhidoBoleto extends React.Component {
       } else if (escolhido === "debito") {
         return <CartoesOpcoes />;
       } else {
-        window.location.href = "/"
+        window.location.href = "/";
       }
     };
 
@@ -44,7 +44,12 @@ class PagePagamentoEscolhidoBoleto extends React.Component {
                   aria-label="Voltar"
                 />
               </div>
-              <div className="col-10 bg-blue h-75">{loadPayment()}</div>
+              <div
+                className="col-10 bg-blue rounded"
+                style={{ height: "70vh" }}
+              >
+                {loadPayment()}
+              </div>
               <div className="col-1 d-flex justify-content-center align-items-center"></div>
             </div>
           </div>
