@@ -1,4 +1,10 @@
-class EnderecoService {
+import ApiService from "../apiservice";
+
+class EnderecoService extends ApiService{
+  constructor(){
+    super("/endereco")
+  } 
+
   obterListaEstados() {
     return [
         { name: "Acre", code: "AC" },
