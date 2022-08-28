@@ -6,13 +6,21 @@ import { Button } from "primereact/button";
 import FormasPagamento from "./FormasPagamento";
 
 class ProdutoPagamento extends React.Component {
+  state = {
+    pagamentoEscolhido: "credito",
+  };
+
+  handleCallbackPagamentoEscolhido = (childData) => {
+    this.setState({ pagamentoEscolhido: childData });
+  };
+
   render() {
     return (
       <div className="col-12">
         <div className="col-12 d-flex flex-wrap">
-          <div className="col-6 bg-bluelight" style={{height : '87.5vh'}}>
+          <div className="col-6 bg-bluelight" style={{ height: "87.5vh" }}>
             <div className="col-12 text-white fw-bold text-center py-4">
-                <h1>Nome do livro</h1>
+              <h1>Nome do livro</h1>
             </div>
             <div className="col-12 d-flex align-items-center justify-content-center">
               <div
@@ -21,16 +29,19 @@ class ProdutoPagamento extends React.Component {
               ></div>
             </div>
             <div className="col-12 d-flex flex-wrap justify-content-center py-4">
-                <div className="col-2 rating-book">
-                    <Rating value={5} readOnly stars={5} cancel={false} /> 
-                </div>
-                <span className="fw-bold text-white">
-                    10.000 Avaliações
-                </span>
+              <div className="col-2 rating-book">
+                <Rating value={5} readOnly stars={5} cancel={false} />
+              </div>
+              <span className="fw-bold text-white">10.000 Avaliações</span>
             </div>
           </div>
           <div className="col-6 d-flex justify-content-center align-items-center">
-            <FormasPagamento />
+            <FormasPagamento
+              pagamentoEscolhido={this.state.pagamentoEscolhido}
+              parentCallbackPagamentoEscolhido={
+                this.handleCallbackPagamentoEscolhido
+              }
+            />
           </div>
         </div>
         <div className="col-12 d-flex flex-wrap bg-blue py-3">
