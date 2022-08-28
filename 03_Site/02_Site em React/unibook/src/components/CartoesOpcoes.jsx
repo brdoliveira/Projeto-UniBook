@@ -1,28 +1,35 @@
+import React, { useState } from "react";
+
 import { ScrollPanel } from "primereact/scrollpanel";
 import { Button } from "primereact/button";
 
+import AdicionarCartao from "./AdicionarCartao";
+
 export default function CartoesOpcoes(props) {
-  var labelsCartao = {
-    title: "",
-    subtitle: "",
-    selectCard: [],
+  const [showAdicionarCartao, setAdicionarCartao] = useState(false);
+  var labelsCartao = [];
+
+  const handleAdicionarCartao = (childData) => {
+    setAdicionarCartao(childData);
   };
 
-  if (props.isCredit) {
-    labelsCartao.title = "Cartão de Crédito";
-    labelsCartao.subtitle = "Seus cartões de crédito";
-  } else {
-    labelsCartao.title = "Cartão de Débito";
-    labelsCartao.subtitle = "Seus cartões de débito";
-  }
+  const adicionarCartao = () => {
+    setAdicionarCartao(true);
+  };
 
   return (
     <div className="col-12 d-flex flex-wrap justiy-content-center align-items-center">
       <div className="col-12 text-center fw-bold text-white">
-        <h1 className="fw-bold py-4">{labelsCartao.title}</h1>
+        <h1 className="fw-bold py-4">
+          {props.isCredit ? "Cartão de Crédito" : "Cartão de Débito"}
+        </h1>
       </div>
       <div className="col-12 text-white">
-        <h2>{labelsCartao.subtitle}</h2>
+        <h2>
+          {props.isCredit
+            ? "Seus cartões de crédito"
+            : "Seus cartões de débito"}
+        </h2>
       </div>
       <div className="col-12 d-flex align-items-center">
         <div className="col-11 d-flex">
@@ -32,10 +39,15 @@ export default function CartoesOpcoes(props) {
       <div className="col-12 d-flex flex-wrap px-2">
         <div className="col-6 d-flex justify-content-start">
           <Button
-            label="Adicionar cartão de crédito"
+            label={
+              props.isCredit
+                ? "Adicionar cartão de crédito"
+                : "Adicionar cartão de débito"
+            }
             className="bg-yellow border border-1 border-dark text-dark rounded"
             icon="pi pi-plus"
             iconPos="right"
+            onClick={adicionarCartao}
           />
         </div>
         <div className="col-6 d-flex justify-content-end">
@@ -45,6 +57,11 @@ export default function CartoesOpcoes(props) {
           />
         </div>
       </div>
+      <AdicionarCartao
+        isCredit={props.isCredit ? true : false}
+        showAdicionarCartao={showAdicionarCartao}
+        parentCallbackAdicionarCartao={handleAdicionarCartao}
+      />
     </div>
   );
 }
