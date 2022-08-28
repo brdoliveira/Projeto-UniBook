@@ -1,43 +1,61 @@
+import React, { useState , useEffect } from "react";
+
 import { InputText } from "primereact/inputtext";
+import { Calendar } from "primereact/calendar";
 import { Password } from "primereact/password";
+import { Button } from "primereact/button";
+import { Dialog } from "primereact/dialog";
 
-import React from "react";
+export default function AdicionarCartao(props) {
+  const [displayModal, setDisplayModal] = useState(props.showAdicionarCartao);
 
-class AdicionarCartao extends React.Component {
-  state = {
+  useEffect(() => {
+    setDisplayModal(props.showAdicionarCartao);
+  }, [props.showAdicionarCartao]);
+  
+  function onTriggerAdicionarCartao() {
+    props.parentCallbackAdicionarCartao(false);
+  }
+
+  const [state, setState] = useState({
     brand: "",
     number: "",
     cvv: "",
     expiration_date: "",
     holder: "",
+  });
+
+  const onHide = () => {
+    setDisplayModal(false);
   };
 
-  render(props) {
-    if (props.isCredit) {
-      title = "Adicionar Cartão de Crédito";
-    } else {
-      title = "Adicionar Cartão de Débito";
-    }
-
-    return (
+  return (
+    <Dialog
+      header={
+        props.isCredit
+          ? "Adicionar Cartão de Crédito"
+          : "Adicionar Cartão de Débito"
+      }
+      visible={displayModal}
+      modal={false}
+      style={{ width: "50vw" }}
+      onHide={() => {onHide(); onTriggerAdicionarCartao()}}
+    >
       <div className="col-12 d-flex flex-wrap">
-        <div className="col-12 text-center">
-          <h1>{title}</h1>
-        </div>
         <div className="col-12">
           <div className="col-12">
             <p>Nome do titular</p>
             <InputText
-              value={this.state.holder}
-              onChange={(e) => this.setState({ holder: e.target.value })}
+              value={state.holder}
+              onChange={(e) => setState({ holder: e.target.value })}
               className="col-12 border border-0 rounded-pill"
               type="text"
               placeholder="Digite o nome do titular..."
             />
             <p>Número do cartão</p>
             <InputText
-              value={this.state.number}
-              onChange={(e) => this.setState({ number: e.target.value })}
+              value={state.number}
+              onChange={(e) => setState({ number: e.target.value })}
               className="col-12 border border-0 rounded-pill"
               type="text"
               placeholder="Digite o numero do cartão..."
@@ -45,16 +63,16 @@ class AdicionarCartao extends React.Component {
             <p>Data de validade</p>
             <Calendar
               id="monthpicker"
-              value={this.state.expiration_date}
-              onChange={(e) => this.setState({ expiration_date: e.value })}
+              value={state.expiration_date}
+              onChange={(e) => setState({ expiration_date: e.value })}
               view="month"
               dateFormat="mm/yy"
             />
             <p>
               Código de segurança (CVV){" "}
               <Password
-                value={this.state.cvv}
-                onChange={(e) => this.setState({ cvv: e.target.value })}
+                value={state.cvv}
+                onChange={(e) => setState({ cvv: e.target.value })}
                 feedback={false}
               />
               <div className="text-white">(O que é isso?)</div>
@@ -69,8 +87,6 @@ class AdicionarCartao extends React.Component {
           </div>
         </div>
       </div>
-    );
-  }
+    </Dialog>
+  );
 }
-
-export default AdicionarCartao;
