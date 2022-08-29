@@ -14,6 +14,10 @@ class ProdutoPagamento extends React.Component {
     this.setState({ pagamentoEscolhido: childData });
   };
 
+  pagamento = () => {
+    window.location.href = this.state.pagamentoEscolhido
+  }
+
   render() {
     return (
       <div className="col-12">
@@ -47,15 +51,16 @@ class ProdutoPagamento extends React.Component {
         <div className="col-12 d-flex flex-wrap bg-blue py-3">
           <div className="col-6 d-flex justify-content-start align-items-center">
             <Button
-              className="bg-orange rounded-pill border border-dark border-2 fw-bold px-4 py-1 text-dark py-2 ms-2"
+              className="bg-orange rounded-pill border border-dark border-2 fw-bold px-4 py-1 text-dark py-2 ms-2 hover-orange"
               label="Continuar Comprando"
             />
           </div>
           <div className="col-6 d-flex justify-content-end align-items-center">
             <span className="text-white fw-bold px-4">R$ 00,00</span>
             <Button
-              className="bg-yellow rounded-pill border border-dark border-2 fw-bold px-4 py-1 text-dark py-2 px-4 me-2"
+              className="bg-yellow rounded-pill border border-dark border-2 fw-bold px-4 py-1 text-dark py-2 px-4 me-2 hover-yellow"
               label="Comprar"
+              onClick={this.pagamento}
             />
           </div>
         </div>
