@@ -80,7 +80,7 @@ class PageAdicionarProduto extends React.Component {
                 <AdicionarProduto page={this.state.buttonRight} />
                 <div className="col-12 d-flex justify-content-end pe-4 pt-4">
                   <Button
-                    className="bg-orange rounded-pill border border-dark border-2 fw-bold px-4 py-1 text-dark"
+                    className="bg-orange rounded-pill border border-dark border-2 fw-bold px-4 py-1 text-dark hover-orange"
                     label="Finalizar Cadastro"
                     hidden={!this.state.buttonRight}
                     onClick={this.doRegistration}
