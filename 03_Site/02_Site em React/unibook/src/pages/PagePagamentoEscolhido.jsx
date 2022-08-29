@@ -11,6 +11,11 @@ import { Button } from "primereact/button";
 import "../templates/styles/styles-pagamento.css";
 
 class PagePagamentoEscolhidoBoleto extends React.Component {
+
+  voltar = () => {
+    window.history.back();
+  }
+
   render() {
     let { escolhido } = this.props.params;
     const loadPayment = () => {
@@ -42,6 +47,7 @@ class PagePagamentoEscolhidoBoleto extends React.Component {
                   className="p-button-rounded button-cadastro"
                   style={{ width: "75px", height: "75px" }}
                   aria-label="Voltar"
+                  onClick={this.voltar}
                 />
               </div>
               <div
