@@ -40,7 +40,7 @@ class CadastroUsuario extends React.Component {
       <>
         <div className="col-12 bg-blue d-flex flex-wrap align-items-center justify-content-center" style={{height:'50vh'}}>
           <h1 className="col-12 text-center text-white py-1">Cadastro - Usuário</h1>
-          <div className="col-12 col-md-6 px-4">
+          <div className="col-md-12 col-lg-6 px-4">
             <div className="col-12 text-white py-4">
               <p>Nome</p>
               <InputText
@@ -77,7 +77,7 @@ class CadastroUsuario extends React.Component {
               />
             </div>
           </div>
-          <div className="col-12 col-md-6 px-4">
+          <div className="col-md-12 col-lg-6 px-4">
             <div className="col-12 text-white py-4">
               <p>Data Nascimento</p>
               <Calendar
@@ -87,7 +87,7 @@ class CadastroUsuario extends React.Component {
                 onChange={(e) => this.setState({ dataNasc: e.target.value }, this.onTrigger)}
               ></Calendar>
             </div>
-            <div className="col-12 text-white py-4">
+            <div className="row text-white py-4">
               <p className="col-12">Sexo</p>
               <div className="col-12 d-flex flex-wrap py-2">
                 <div className="col-4 field-radiobutton py-1">
@@ -114,18 +114,6 @@ class CadastroUsuario extends React.Component {
                     Masculino
                   </label>
                 </div>
-                {/* <div className="col-4 field-radiobutton py-1">
-                  <RadioButton
-                    inputId="sexo"
-                    name="sexo"
-                    value="O"
-                    onChange={(e) => this.setState({ sexo: e.target.value })}
-                    checked={this.state.sexo === "O"}
-                  />
-                  <label htmlFor="sexo" className="px-2">
-                    Outros
-                  </label>
-                </div> */}
               </div>
             </div>
             <div className="col-12 text-white py-4">
