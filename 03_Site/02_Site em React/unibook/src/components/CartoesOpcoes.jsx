@@ -7,7 +7,7 @@ import AdicionarCartao from "./AdicionarCartao";
 
 export default function CartoesOpcoes(props) {
   const [showAdicionarCartao, setAdicionarCartao] = useState(false);
-  var labelsCartao = [];
+  // var labelsCartao = [];
 
   const handleAdicionarCartao = (childData) => {
     setAdicionarCartao(childData);
@@ -44,7 +44,7 @@ export default function CartoesOpcoes(props) {
                 ? "Adicionar cartão de crédito"
                 : "Adicionar cartão de débito"
             }
-            className="bg-yellow border border-1 border-dark text-dark rounded"
+            className="bg-yellow border border-1 border-dark text-dark rounded-pill hover-yellow"
             icon="pi pi-plus"
             iconPos="right"
             onClick={adicionarCartao}
@@ -53,7 +53,7 @@ export default function CartoesOpcoes(props) {
         <div className="col-6 d-flex justify-content-end">
           <Button
             label="Confirmar"
-            className="bg-orange border border-1 border-dark text-dark rounded"
+            className="bg-orange border border-1 border-dark text-dark rounded-pill hover-orange"
           />
         </div>
       </div>
