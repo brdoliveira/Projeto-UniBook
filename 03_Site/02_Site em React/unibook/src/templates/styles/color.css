@@ -25,6 +25,11 @@ body {
   background-color: var(--yellowbook);
 }
 
+.hover-yellow:hover{
+  background-color: var(--yellowlightbook) !important;
+  transition: all 0.5s ease;
+}
+
 .bg-orange {
   background-color: var(--orangebook);
 }
@@ -47,6 +52,11 @@ body {
 
 .color-orange {
   color: var(--orangebook) !important;
+}
+
+.hover-orange:hover{
+  background-color: var(--orangelightbook) !important;
+  transition: all 0.5s ease;
 }
 
 .cursor-pointer{
