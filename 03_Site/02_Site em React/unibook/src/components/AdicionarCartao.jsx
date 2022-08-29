@@ -1,8 +1,9 @@
-import React, { useState , useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import { InputText } from "primereact/inputtext";
 import { Calendar } from "primereact/calendar";
 import { Password } from "primereact/password";
+import { Tooltip } from "primereact/tooltip";
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
 
@@ -12,7 +13,7 @@ export default function AdicionarCartao(props) {
   useEffect(() => {
     setDisplayModal(props.showAdicionarCartao);
   }, [props.showAdicionarCartao]);
-  
+
   function onTriggerAdicionarCartao() {
     props.parentCallbackAdicionarCartao(false);
   }
@@ -29,6 +30,8 @@ export default function AdicionarCartao(props) {
     setDisplayModal(false);
   };
 
+  var tooltipCvv = "Na maioria dos cartões, ele fica no verso,\n logo abaixo da linha magnética.\n São três ou quatro dígitos.";
+
   return (
     <Dialog
       header={
@@ -38,8 +41,11 @@ export default function AdicionarCartao(props) {
       }
       visible={displayModal}
       modal={false}
-      style={{ width: "50vw" }}
-      onHide={() => {onHide(); onTriggerAdicionarCartao()}}
+      style={{ width: "25vw" }}
+      onHide={() => {
+        onHide();
+        onTriggerAdicionarCartao();
+      }}
     >
       <div className="col-12 d-flex flex-wrap">
         <div className="col-12">
@@ -48,7 +54,7 @@ export default function AdicionarCartao(props) {
             <InputText
               value={state.holder}
               onChange={(e) => setState({ holder: e.target.value })}
-              className="col-12 border border-0 rounded-pill"
+              className="col-12 border border-1 rounded-pill mb-3"
               type="text"
               placeholder="Digite o nome do titular..."
             />
@@ -56,9 +62,25 @@ export default function AdicionarCartao(props) {
             <InputText
               value={state.number}
               onChange={(e) => setState({ number: e.target.value })}
-              className="col-12 border border-0 rounded-pill"
+              className="col-12 border border-1 rounded-pill mb-3"
               type="text"
               placeholder="Digite o numero do cartão..."
+            />
+            <p>
+              <div className="col-12">Código de segurança (CVV)</div>
+              <Tooltip target=".disabled-button" />
+              <span
+                className="disabled-button color-orange cursor-pointer"
+                data-pr-tooltip={tooltipCvv}
+              >
+                (O que é isso?)
+              </span>
+            </p>
+            <Password
+              value={state.cvv}
+              onChange={(e) => setState({ cvv: e.target.value })}
+              feedback={false}
+              className="col-12 border border-1 rounded-pill mb-3"
             />
             <p>Data de validade</p>
             <Calendar
@@ -67,22 +89,16 @@ export default function AdicionarCartao(props) {
               onChange={(e) => setState({ expiration_date: e.value })}
               view="month"
               dateFormat="mm/yy"
+              className="col-6 border border-1 rounded-pill mb-3"
             />
-            <p>
-              Código de segurança (CVV){" "}
-              <Password
-                value={state.cvv}
-                onChange={(e) => setState({ cvv: e.target.value })}
-                feedback={false}
-              />
-              <div className="text-white">(O que é isso?)</div>
-            </p>
           </div>
-          <div className="col-12 d-flex justify-content-end align-items-end">
-            <span className="text-white fw-bold">Cancelar</span>
+          <div className="col-12 d-flex justify-content-end align-items-center">
+            <span className="text-dark px-2 cursor-pointer" onClick={onHide}>
+              Cancelar
+            </span>
             <Button
               label="Adicionar"
-              className="bg-orange border border-1 border-dark text-dark rounded"
+              className="bg-orange border border-1 border-dark text-dark rounded-pill hover-orange"
             />
           </div>
         </div>
