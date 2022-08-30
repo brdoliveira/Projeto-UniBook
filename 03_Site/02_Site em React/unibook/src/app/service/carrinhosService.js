@@ -5,8 +5,16 @@ class CarrinhosService extends ApiService {
     super("/carrinhos");
   }
 
-  adicionarProduto(crendencial) {
-    return this.post("/adicionar-produto", crendencial);
+  adicionarProduto(idUsuario,idAnuncioProduto,quantidade) {
+    return this.post(`/adicionar-produto?idUsuario=${idUsuario}&idAnuncioProduto=${idAnuncioProduto}&quantidade=${quantidade}`);
+  }
+
+  listarProdutos(idUsuario){
+    return this.get(`/listar-produtos?idUsuario=${idUsuario}`)
+  }
+
+  realizarComprar(idUsuario){
+    return this.post(`/realizar-compra?idUsuario=${idUsuario}`)
   }
 }
 
