@@ -1,4 +1,10 @@
-class creditCardService {
+import ApiService from "../apiservice";
+
+class meioPagamentoService extends ApiService{
+     constructor() {
+          super("/meios-pagamentos");
+        }
+
     creditCardTypes = {
        'Visa' : {
             'Inicio' : [4],
@@ -52,5 +58,5 @@ class creditCardService {
     listCreditCard = ["Visa","Mastercard","Diners","Elo","Amex","Discover","Aura","jcb","Hipercard"]
 }
   
-export default creditCardService;
+export default meioPagamentoService;
   
