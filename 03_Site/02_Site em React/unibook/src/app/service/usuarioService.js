@@ -5,12 +5,24 @@ class UsuarioService extends ApiService {
     super("/usuarios");
   }
 
-  login(crendencial) {
-    return this.post("/login", crendencial);
+  salvarUsuario(usuario){
+    return this.post(`?usuario=${usuario}`)
   }
 
-  logoff(crendencial) {
-    return this.delete("/logoff", crendencial);
+  getUsuario(id){
+    return this.get(`/id=${id}`)
+  }
+
+  login(email,senha) {
+    return this.post(`/login?email=${email}&senha=${senha}`);
+  }
+
+  logoff(email,senha) {
+    return this.delete(`/logoff?email=${email}&senha=${senha}`);
+  }
+
+  filaTopUsuarios(){
+    return this.get("/listar/top-usuarios-logados")
   }
 }
 
