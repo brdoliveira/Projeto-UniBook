@@ -36,6 +36,10 @@ class EnderecoService extends ApiService{
         { name: "Tocantins", code: "TO" }
     ];
   }
+
+  postEndereco(cep,numero){
+    this.post(`?cep=${cep}&numero=${numero}`,)
+  }
 }
 
 export default EnderecoService;
