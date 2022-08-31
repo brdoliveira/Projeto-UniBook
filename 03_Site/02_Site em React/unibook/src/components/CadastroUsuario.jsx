@@ -10,8 +10,10 @@ import { RadioButton } from "primereact/radiobutton";
 class CadastroUsuario extends React.Component {
   state = {
     nome: "",
+    login: "",
     email: "",
     senha: "",
+    confirmarSenha: "",
     dataNasc: null,
     sexo: "",
     cpf: 0,
@@ -38,24 +40,34 @@ class CadastroUsuario extends React.Component {
 
     return (
       <>
-        <div className="col-12 bg-blue d-flex flex-wrap align-items-center justify-content-center" style={{height:'50vh'}}>
+        <div className="col-12 bg-blue d-flex flex-wrap align-items-center justify-content-center" style={{height:'60vh'}}>
           <h1 className="col-12 text-center text-white py-1">Cadastro - Usuário</h1>
           <div className="col-md-12 col-lg-6 px-4">
             <div className="col-12 text-white py-4">
               <p>Nome</p>
               <InputText
                 value={this.state.nome}
-                onChange={(e) => this.setState({ nome: e.target.value }, this.onTrigger)}
+                onChange={(e) => {this.setState({ nome: e.target.value }); this.onTrigger()}}
                 className="col-12 border border-0 rounded-pill"
                 type="text"
                 placeholder="digite seu nome..."
               />
             </div>
             <div className="col-12 text-white py-4">
+              <p>Login</p>
+              <InputText
+                value={this.state.login}
+                onChange={(e) => {this.setState({ login: e.target.value }); this.onTrigger()}}
+                className="col-12 border border-0 rounded-pill"
+                type="text"
+                placeholder="digite seu usuario..."
+              />
+            </div>
+            <div className="col-12 text-white py-4">
               <p>Email</p>
               <InputText
                 value={this.state.email}
-                onChange={(e) => this.setState({ email: e.target.value }, this.onTrigger)}
+                onChange={(e) => {this.setState({ email: e.target.value }); this.onTrigger()}}
                 className="col-12 border border-0 rounded-pill"
                 type="text"
                 placeholder="digite seu email..."
@@ -66,7 +78,7 @@ class CadastroUsuario extends React.Component {
               <Password
                 className="col-12 border border-0 rounded-pill"
                 value={this.state.senha}
-                onChange={(e) => this.setState({ senha: e.target.value }, this.onTrigger)}
+                onChange={(e) => {this.setState({ senha: e.target.value }); this.onTrigger()}}
                 feedback={true}
                 header={header} 
                 footer={footer}
@@ -84,7 +96,7 @@ class CadastroUsuario extends React.Component {
                 dateFormat="dd/mm/yy"
                 className="col-12 border border-0 rounded-pill py-0"
                 value={this.state.dataNasc}
-                onChange={(e) => this.setState({ dataNasc: e.target.value }, this.onTrigger)}
+                onChange={(e) => {this.setState({ dataNasc: e.target.value }); this.onTrigger()}}
               ></Calendar>
             </div>
             <div className="row text-white py-4">
@@ -95,7 +107,7 @@ class CadastroUsuario extends React.Component {
                     inputId="sexo"
                     name="sexo"
                     value="F"
-                    onChange={(e) => this.setState({ sexo: e.target.value }, this.onTrigger)}
+                    onChange={(e) => {this.setState({ sexo: e.target.value }); this.onTrigger()}}
                     checked={this.state.sexo === "F"}
                   />
                   <label htmlFor="sexo" className="px-2">
@@ -107,7 +119,7 @@ class CadastroUsuario extends React.Component {
                     inputId="sexo"
                     name="sexo"
                     value="M"
-                    onChange={(e) => this.setState({ sexo: e.target.value }, this.onTrigger)}
+                    onChange={(e) => {this.setState({ sexo: e.target.value }); this.onTrigger()}}
                     checked={this.state.sexo === "M"}
                   />
                   <label htmlFor="sexo" className="px-3">
@@ -122,8 +134,18 @@ class CadastroUsuario extends React.Component {
                 className="col-12 border border-0 rounded-pill"
                 mask="999.999.999-99"
                 value={this.state.cpf}
-                onChange={(e) => this.setState({ cpf: e.target.value }, this.onTrigger)}
+                onChange={(e) => {this.setState({ cpf: e.target.value }); this.onTrigger()}}
               ></InputMask>
+            </div>
+            <div className="col-12 text-white py-4">
+              <p>Confirmar Senha</p>
+              <Password
+                className="col-12 border border-0 rounded-pill"
+                value={this.state.confirmarSenha}
+                onChange={(e) => {this.setState({ confirmarSenha: e.target.value }); this.onTrigger()}}
+                feedback={false}
+                toggleMask
+              />
             </div>
           </div>
         </div>
