@@ -5,6 +5,7 @@ import { ScrollPanel } from "primereact/scrollpanel";
 import { FileUpload } from "primereact/fileupload";
 import { InputText } from "primereact/inputtext";
 import { Chips } from "primereact/chips";
+import { Button } from "primereact/button";
 
 import "../templates/styles/styles-cadastro.css";
 
@@ -17,7 +18,7 @@ class AdicionarProduto extends React.Component {
     editora: "",
     isbn: "",
     idioma: "",
-    imgPath: "",
+    imgPath: iconAddImage,
     etiquetas: [],
   };
 
@@ -25,19 +26,16 @@ class AdicionarProduto extends React.Component {
     const customBase64Uploader = async (event) => {
       if (this.state.imgPath === iconAddImage) {
         var base64data;
-        // convert file to base64 encoded
         const file = event.files[0];
         const reader = new FileReader();
-        let blob = await fetch(file.objectURL).then((r) => r.blob()); //blob:url
+        let blob = await fetch(file.objectURL).then((r) => r.blob());
         reader.readAsDataURL(blob);
-        reader.onloadend = function () {
+        reader.onloadend = () => {
           base64data = reader.result;
+          this.setState({ imgPath: base64data });
         };
-        this.setState({ imgPath: base64data });
-        console.log(this.state.imgPath);
+        return;
       }
-
-      console.log(this.state.imgPath);
     };
 
     return (
@@ -68,6 +66,7 @@ class AdicionarProduto extends React.Component {
                 accept="image/*"
                 customUpload
                 uploadHandler={customBase64Uploader}
+                auto
               />
             </div>
           </div>
@@ -75,13 +74,19 @@ class AdicionarProduto extends React.Component {
             <div className="col-12 text-white py-4 d-flex flex-wrap px-2">
               <div className="col-6 text-white py-4 pe-1">
                 <p>ISBN</p>
-                <InputText
-                  value={this.state.isbn}
-                  onChange={(e) => this.setState({ isbn: e.target.value })}
-                  className="col-12 border border-0 rounded-pill"
-                  type="text"
-                  placeholder="ISBN do livro..."
-                />
+                <div className="p-inputgroup">
+                  <InputText
+                    value={this.state.isbn}
+                    onChange={(e) => this.setState({ isbn: e.target.value })}
+                    className="col-12 border border-0 rounded-pill rounded-end"
+                    type="text"
+                    placeholder="ISBN do livro..."
+                  />
+                  <Button
+                    icon="pi pi-search"
+                    className="rounded-start rounded-pill"
+                  />
+                </div>
               </div>
               <div className="col-6 text-white py-4 ps-1">
                 <p>Nome do Livro</p>
@@ -153,17 +158,17 @@ class AdicionarProduto extends React.Component {
             <div className="col-12 text-white pt-4">
               <p>Etiquetas</p>
               <ScrollPanel
-              className="col-12 scroll rounded"
-              style={{ height: " 5vh" }}
-            >
-              <Chips
-                value={this.state.etiquetas}
-                onChange={(e) => this.setState({ etiquetas: e.value })}
-                className="col-12 border border-0 rounded-pill"
-                separator=","
-                placeholder="Adicionar etiqueta..."
-                max={5}
-              />
+                className="col-12 scroll rounded"
+                style={{ height: " 5vh" }}
+              >
+                <Chips
+                  value={this.state.etiquetas}
+                  onChange={(e) => this.setState({ etiquetas: e.value })}
+                  className="col-12 border border-0 rounded-pill"
+                  separator=","
+                  placeholder="Adicionar etiqueta..."
+                  max={5}
+                />
               </ScrollPanel>
             </div>
           </div>
