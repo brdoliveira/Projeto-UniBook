@@ -5,11 +5,10 @@ import { Button } from "primereact/button";
 import { Steps } from "primereact/steps";
 
 import CadastroUsuario from "../components/CadastroUsuario";
+import CadastroEndereco from "../components/CadastroEndereco";
 import CadastroImagem from "../components/CadastroImagem";
-import Menu from "../components/Menu";
 
-import CompradorService from "../app/service/compradorService";
-import { Notification } from "../components/Notification";
+import Menu from "../components/Menu";
 
 import "../templates/styles/styles-cadastro.css";
 
@@ -18,12 +17,6 @@ class PageCadastro extends React.Component {
     tabcard: 0,
     buttonLeft: true,
     buttonRight: false,
-    data: [],
-  };
-  
-  constructor(){
-    super()
-    this.service = new CompradorService();
   };
 
   disabled(index) {
@@ -32,36 +25,19 @@ class PageCadastro extends React.Component {
       this.setState({ buttonRight: false });
     } else if (index === 1) {
       this.setState({ buttonLeft: false });
+      this.setState({ buttonRight: false });
+    } else if (index === 2) {
+      this.setState({ buttonLeft: false });
       this.setState({ buttonRight: true });
     }
   }
-
-  items = [
-    { label: "Usuario" },
-    { label: "Imagem" },
-  ];
 
   handleCallback = (childData) => {
     this.setState({ data: childData });
   };
 
-  doRegistration = () => {
-    this.service
-    .cadastrar({
-      nome: this.state.data.email,
-      dataNascimento: this.state.data.dataNasc,
-      senha: this.state.data.senha,
-      cpf: this.state.data.cpf,
-      email: this.state.data.email,
-      sexo:this.state.data.sexo
-    })
-    .then((response) => {
-      window.location.href = "/login"
-    })
-    .catch((erro) => {
-      return <Notification type="error" message={erro.message} />;
-    });
-  }
+
+  items = [{ label: "Usuario" }, { label: "Endereço" }, { label: "Imagem" }];
 
   render() {
     const clickLeft = () => {
@@ -118,10 +94,10 @@ class PageCadastro extends React.Component {
                   className="cadastro"
                 >
                   <TabPanel header="Usuario">
-                    <CadastroUsuario
-                      parentCallback={this.handleCallback}
-                      className="col-12"
-                    />
+                    <CadastroUsuario className="col-12" parentCallback={this.handleCallback}/>
+                  </TabPanel>
+                  <TabPanel header="Endereço">
+                    <CadastroEndereco className="col-12" />
                   </TabPanel>
                   <TabPanel header="Imagem">
                     <CadastroImagem className="col-12" />
@@ -129,10 +105,9 @@ class PageCadastro extends React.Component {
                 </TabView>
                 <div className="col-12 d-flex justify-content-end pe-4">
                   <Button
-                    className="bg-orange rounded-pill border border-dark border-2 fw-bold px-4 py-1 text-dark hover-orange"
+                    className="bg-orange rounded-pill border border-dark border-2 fw-bold px-4 py-1 text-dark"
                     label="Finalizar Cadastro"
                     hidden={!this.state.buttonRight}
-                    onClick={this.doRegistration}
                   />
                 </div>
               </div>
