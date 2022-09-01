@@ -41,8 +41,8 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="col-12 px-0 bg-image bg-height d-flex justify-content-end">
-        <div className="col-12 col-md-6 col-lg-5 bg-bluelight bg-height d-flex align-items-center px-4">
+      <div className="col-12 px-0 bg-image vh-100 d-flex justify-content-end">
+        <div className="col-12 col-md-6 col-lg-5 bg-bluelight d-flex align-items-center px-4">
           <div className="d-block col-12">
             <h1 className="text-white text-center">Login</h1>
             <div className="col-12 text-white py-2">
