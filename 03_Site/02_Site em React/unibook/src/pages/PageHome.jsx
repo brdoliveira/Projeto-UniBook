@@ -6,7 +6,7 @@ import "../templates/styles/styles-index.css";
 
 function PageHome() {
   return (
-    <>
+    <div className="min-vh-100">
       <Menu />
       <div className="col-12 bg-image px-0 mx-0">
         <img src={imageHome} className="bg-image" alt="Imagem da home" />
@@ -16,12 +16,12 @@ function PageHome() {
           <h2 className="col-12 py-2 border-bottom border-3 border-dark">
             Editora Globo
           </h2>
-          <div className="row mb-md-2 py-3">
+          <div className="row mb-md-2 py-3 d-flex flex-wrap align-items-center justify-content-center justify-content-md-start">
             <CardProduto/>
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
