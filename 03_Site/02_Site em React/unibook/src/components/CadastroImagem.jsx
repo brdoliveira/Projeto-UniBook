@@ -26,7 +26,7 @@ export default function CadastroImagem() {
     <>
       <div
         className="col-12 bg-blue rounded d-flex flex-wrap align-items-center justify-content-center"
-        style={{ height: "60vh" }}
+        style={{ height: "40rem" }}
       >
         <h1 className="col-12 text-center text-white">Cadastro - Imagem</h1>
         <div className="col-12 d-flex flex-wrap align-items-center justify-content-center">
