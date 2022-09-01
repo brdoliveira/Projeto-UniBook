@@ -57,14 +57,14 @@ class Menu extends React.Component{
   render(){
   return (
     <>
-    <nav className="navbar navbar-expand-lg bg-blue">
+    <nav className="navbar navbar-expand-lg bg-blue fixed-top">
       <div className="container-fluid">
         <div className="col-3 col-sm-2">
           <a className="navbar-brand px-3 text-white" href="/">
             Unibook
           </a>
         </div>
-        <div className="col-9 col-sm-8 col-lg-4">
+        <div className="col-6 col-sm-7 col-lg-4">
           <form action="#" className="search-wrap">
             <div className="input-group w-100">
               <input
