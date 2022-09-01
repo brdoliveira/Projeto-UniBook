@@ -27,7 +27,7 @@ class CadastroEndereco extends React.Component {
       <>
         <div
           className="col-12 bg-blue d-flex flex-wrap align-items-center justify-content-center"
-          style={{ height: "60vh" }}
+          style={{ height: "40rem" }}
         >
           <h1 className="col-12 text-center text-white py-1">
             Cadastro - Endereço
