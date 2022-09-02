@@ -26,7 +26,7 @@ class CadastroEndereco extends React.Component {
     return (
       <>
         <div
-          className="col-12 bg-blue d-flex flex-wrap align-items-center justify-content-center"
+          className="col-12 bg-blue d-flex flex-wrap align-items-center justify-content-center rounded"
           style={{ height: "40rem" }}
         >
           <h1 className="col-12 text-center text-white py-1">
