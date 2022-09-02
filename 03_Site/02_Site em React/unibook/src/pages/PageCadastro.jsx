@@ -60,7 +60,7 @@ class PageCadastro extends React.Component {
         <div className="min-vh-100">
           <Menu />
           <div className="col-12 d-flex justify-content-center align-items-center min-vh-100">
-            <div className="col-10 div-cadastro h-100">
+            <div className="col-10 div-cadastro h-100 pt-5 mt-5">
               <div className="col-12 d-flex justify-content-center">
                 <div className="col-10">
                   <Steps
@@ -103,9 +103,9 @@ class PageCadastro extends React.Component {
                       <CadastroImagem className="col-12" />
                     </TabPanel>
                   </TabView>
-                  <div className="col-12 d-flex justify-content-end pe-4">
+                  <div className="col-12 d-flex justify-content-end pe-4 my-2">
                     <Button
-                      className="bg-orange rounded-pill border border-dark border-2 fw-bold px-4 py-1 text-dark"
+                      className="bg-orange rounded-pill border border-dark border-2 fw-bold px-4 pb-2 text-dark"
                       label="Finalizar Cadastro"
                       hidden={!this.state.buttonRight}
                     />
