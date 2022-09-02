@@ -7,9 +7,16 @@ import { InputText } from "primereact/inputtext";
 import { Chips } from "primereact/chips";
 import { Button } from "primereact/button";
 
+import BookService from "../app/service/bookService";
+
 import "../templates/styles/styles-cadastro.css";
 
 class AdicionarProduto extends React.Component {
+  constructor(){
+    super()
+    this.service = new BookService();
+  }
+
   state = {
     nome: "",
     preco: 0,
@@ -22,7 +29,11 @@ class AdicionarProduto extends React.Component {
     etiquetas: [],
   };
 
-  render() {
+render() {
+    const consultarLivro = (isbn) => {
+      this.service.consultarLivro(isbn)
+    };
+
     const customBase64Uploader = async (event) => {
       if (this.state.imgPath === iconAddImage) {
         var base64data;
@@ -85,6 +96,7 @@ class AdicionarProduto extends React.Component {
                   <Button
                     icon="pi pi-search"
                     className="rounded-start rounded-pill"
+                    onClick={ () => {consultarLivro("8532511015")}}
                   />
                 </div>
               </div>
