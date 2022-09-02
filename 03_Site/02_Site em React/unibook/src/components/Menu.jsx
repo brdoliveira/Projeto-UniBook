@@ -57,7 +57,7 @@ class Menu extends React.Component{
   render(){
   return (
     <>
-    <nav className="navbar navbar-expand-lg bg-blue fixed-top">
+    <nav className="navbar navbar-expand-lg bg-blue fixed-top border-bottom border-1 border-white">
       <div className="container-fluid">
         <div className="col-3 col-sm-2">
           <a className="navbar-brand px-3 text-white" href="/">
