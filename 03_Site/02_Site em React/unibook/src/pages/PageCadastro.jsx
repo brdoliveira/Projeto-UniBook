@@ -105,7 +105,7 @@ class PageCadastro extends React.Component {
                   </TabView>
                   <div className="col-12 d-flex justify-content-end pe-4 my-2">
                     <Button
-                      className="bg-orange rounded-pill border border-dark border-2 fw-bold px-4 pb-2 text-dark"
+                      className="bg-orange rounded-pill border border-dark border-2 fw-bold px-4 pb-2 text-dark hover-yellow"
                       label="Finalizar Cadastro"
                       hidden={!this.state.buttonRight}
                     />
