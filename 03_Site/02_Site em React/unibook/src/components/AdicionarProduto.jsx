@@ -30,8 +30,9 @@ class AdicionarProduto extends React.Component {
   };
 
 render() {
-    const consultarLivro = (isbn) => {
-      this.service.consultarLivro(isbn)
+    const consultarLivro = async (isbn) => {
+      let dadosLivros = await this.service.consultarLivro(isbn)
+      console.log(dadosLivros)
     };
 
     const customBase64Uploader = async (event) => {
@@ -96,7 +97,7 @@ render() {
                   <Button
                     icon="pi pi-search"
                     className="rounded-start rounded-pill"
-                    onClick={ () => {consultarLivro("8532511015")}}
+                    onClick={ () => {consultarLivro(this.state.isbn)}}
                   />
                 </div>
               </div>
