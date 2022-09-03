@@ -1,9 +1,7 @@
 class BookService {
-  consultarLivro(isbn) {
-    fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=isbn:${
-        isbn
-      }&startIndex=0&all&lite&orderBy=relevance`
+  async consultarLivro(isbn) {
+    return fetch(
+      `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}&startIndex=0&all&lite&orderBy=relevance`
     )
       .then(function (response) {
         return response.json();
