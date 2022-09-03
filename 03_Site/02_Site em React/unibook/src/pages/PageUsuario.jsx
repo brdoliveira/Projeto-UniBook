@@ -15,10 +15,10 @@ class PageUsuario extends React.Component{
 
     render(){
         return(
-            <>
+          <div className="min-vh-100">
             <Menu />
             <div
-              className="col-12 d-flex justify-content-center align-items-center"
+              className="col-12 d-flex justify-content-center align-items-center pt-5 mt-5"
               style={{ height: "90vh" }}
             >
               <div className="col-10">
@@ -29,7 +29,7 @@ class PageUsuario extends React.Component{
                 </TabView>
               </div>
             </div>
-          </>
+          </div>
         )
     }
 }
