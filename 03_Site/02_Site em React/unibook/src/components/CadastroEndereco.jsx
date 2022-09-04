@@ -1,28 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { InputText } from "primereact/inputtext";
 import { InputMask } from "primereact/inputmask";
-import { Dropdown } from 'primereact/dropdown';
 import { Button } from "primereact/button";
 
 import EnderecoService from "../app/service/enderecoService";
-class CadastroEndereco extends React.Component {
-  constructor(){
-    super();
-    this.enderecoService = new EnderecoService();
+
+export default function CadastroEndereco(props){
+  const [enderecoCadastro, setEnderecoCadastro] = useState(
+    props.endereco
+  );
+
+  const [ pesquisaEndereco , setPesquisaEndereco] = useState(
+    props.enderecoPesquisa
+  )
+
+  function onTriggerEnderecoCadastro() {
+    props.parentCallback(enderecoCadastro);
   }
 
-  state = {
-    cidade: "",
-    estado: "",
-    logradouro: "",
-    numero: "",
-    cep: "",
-    complemento: "",
+  const consultarCEP = async (cep) => {
+    let enderecoService = new EnderecoService();
+    let dadosCEP = await enderecoService.consultarCEP(cep.replace(/-/,"")).then()
+
+    if(!dadosCEP.success || dadosCEP.dados.erro === "true" ){
+      console.log("ERROR!")
+    }else{
+      var setDadosCEP = {
+        cidade : dadosCEP.dados.localidade,
+        logradouro : dadosCEP.dados.logradouro,
+        estado : dadosCEP.dados.uf
+      }
+
+      setPesquisaEndereco(setDadosCEP)
+      props.parentCallbackCEP(setDadosCEP);
+    }
   };
-  
-  render() {
-    const estados = this.enderecoService.obterListaEstados();
+
     return (
       <>
         <div
@@ -39,30 +53,31 @@ class CadastroEndereco extends React.Component {
                 <InputMask
                   className="col-12 border border-0 rounded-pill rounded-end"
                   mask="99999-999"
-                  value={this.state.cep}
-                  onChange={(e) => this.setState({ cep: e.target.value })}
+                  value={enderecoCadastro.cep}
+                  onChange={(e) => {
+                    setEnderecoCadastro({ cep: e.target.value });
+                    onTriggerEnderecoCadastro();
+                  }}
                 />
-                <Button icon="pi pi-search" className="rounded-start rounded-pill"/>
+                <Button icon="pi pi-search" className="rounded-start rounded-pill" onClick={() => {consultarCEP(enderecoCadastro.cep)}}/>
               </div>
             </div>
             <div className="col-12 text-white py-4">
               <p>Cidade</p>
               <InputText
-                value={this.state.cidade}
-                onChange={(e) => this.setState({ cidade: e.target.value })}
+                value={pesquisaEndereco.cidade}
                 className="col-12 border border-0 rounded-pill"
                 type="text"
-                placeholder="digite sua cidade..."
+                disabled={true}
               />
             </div>
             <div className="col-12 text-white py-4">
               <p>Logradouro</p>
               <InputText
-                value={this.state.logradouro}
-                onChange={(e) => this.setState({ logradouro: e.target.value })}
+                value={pesquisaEndereco.logradouro}
                 className="col-12 border border-0 rounded-pill"
                 type="text"
-                placeholder="digite o logradouro..."
+                disabled={true}
               />
             </div>
           </div>
@@ -70,30 +85,36 @@ class CadastroEndereco extends React.Component {
             <div className="col-12 text-white py-4">
               <p>Numero</p>
               <InputText
-                value={this.state.numero}
-                onChange={(e) => this.setState({ numero: e.target.value })}
+                value={enderecoCadastro.numeroResidencia}
+                onChange={(e) => {
+                  setEnderecoCadastro({ numeroResidencia: e.target.value });
+                  onTriggerEnderecoCadastro();
+                }}
                 className="col-12 border border-0 rounded-pill"
                 type="text"
                 placeholder="digite o numero da sua casa..."
               />
             </div>
             <div className="col-12 text-white py-4">
-              <p>Estado</p>
-              <Dropdown value={this.state.estado} 
-                options={estados} 
-                onChange={(e) => this.setState({ estado: e.target.value })}
-                className="col-12 border border-0 rounded-pill"
-                optionLabel="name"
-                placeholder="digite seu estado..." />
-            </div>
-            <div className="col-12 text-white py-4">
               <p>Complemento (Opcional)</p>
               <InputText
-                value={this.state.complemento}
-                onChange={(e) => this.setState({ complemento: e.target.value })}
+                value={enderecoCadastro.complemento}
+                onChange={(e) => {
+                  setEnderecoCadastro({ complemento: e.target.value });
+                  onTriggerEnderecoCadastro();
+                }}
                 className="col-12 border border-0 rounded-pill"
                 type="text"
                 placeholder="digite o complemento..."
+              />
+            </div>
+            <div className="col-12 text-white py-4">
+              <p>Estado</p>
+              <InputText
+                value={pesquisaEndereco.estado}
+                className="col-12 border border-0 rounded-pill"
+                type="text"
+                disabled={true}
               />
             </div>
           </div>
@@ -101,5 +122,3 @@ class CadastroEndereco extends React.Component {
       </>
     );
   }
-}
-export default CadastroEndereco;
