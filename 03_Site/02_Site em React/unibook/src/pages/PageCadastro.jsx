@@ -17,6 +17,25 @@ class PageCadastro extends React.Component {
     tabcard: 0,
     buttonLeft: true,
     buttonRight: false,
+    usuario: {
+      nome: "",
+      dataNascimento: new Date(),
+      sexo: "",
+      cpf: "",
+      email: "",
+      senha: "",
+      confirmarSenha: "",
+      tipoUsuario: "COMPRADOR",
+      cep: "",
+      numeroResidencia: ["",""],
+      login: "",
+      foto: [1],
+    },
+    enderecoPesquisa: {
+      cidade: "",
+      logradouro: "",
+      estado: "",
+    },
   };
 
   disabled(index) {
@@ -33,8 +52,13 @@ class PageCadastro extends React.Component {
   }
 
   handleCallback = (childData) => {
-    this.setState({ data: childData });
+    this.setState({ usuario: { ...this.state.usuario, ...childData } });
   };
+
+  handleCallbackCEP = (childData) => {
+    console.log(childData)
+    this.setState({ enderecoPesquisa: { ...this.state.enderecoPesquisa, ...childData } });
+  }
 
   items = [{ label: "Usuario" }, { label: "Endereço" }, { label: "Imagem" }];
 
@@ -94,10 +118,17 @@ class PageCadastro extends React.Component {
                       <CadastroUsuario
                         className="col-12"
                         parentCallback={this.handleCallback}
+                        usuario={this.state.usuario}
                       />
                     </TabPanel>
                     <TabPanel header="Endereço">
-                      <CadastroEndereco className="col-12" />
+                      <CadastroEndereco
+                        parentCallback={this.handleCallback}
+                        parentCallbackCEP={this.handleCallbackCEP}
+                        endereco={this.state.usuario}
+                        enderecoPesquisa={this.state.enderecoPesquisa}
+                        className="col-12"
+                      />
                     </TabPanel>
                     <TabPanel header="Imagem">
                       <CadastroImagem className="col-12" />
