@@ -8,6 +8,7 @@ import { Chips } from "primereact/chips";
 import { Button } from "primereact/button";
 
 import BookService from "../app/service/bookService";
+import { mensagemErro , mensagemSucesso } from "./Toastr";
 
 import "../templates/styles/styles-cadastro.css";
 
@@ -31,8 +32,15 @@ class AdicionarProduto extends React.Component {
 
 render() {
     const consultarLivro = async (isbn) => {
-      let dadosLivros = await this.service.consultarLivro(isbn)
-      console.log(dadosLivros)
+      console.log(isbn)
+      let dadosLivros = await this.service.consultarLivro(isbn === "" ? "0" : isbn)
+      
+      if(dadosLivros.sucesso){
+        mensagemSucesso("ISBN do Livro encontrado com sucesso")
+        console.log(dadosLivros.dados)
+      }else{
+        mensagemErro("ISBN do Livro não encontrado")
+      }
     };
 
     const customBase64Uploader = async (event) => {
