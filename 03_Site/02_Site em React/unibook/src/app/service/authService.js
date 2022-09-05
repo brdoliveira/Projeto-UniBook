@@ -8,7 +8,7 @@ export default class AuthService {
     return usuario && usuario.id;
   }
 
-  static removerUsuarioAutenticado() {
+  static removerUsuarioAutenticado = () => {
     LocalStorageService.removerItem(USUARIO_LOGADO);
   }
 
@@ -18,5 +18,13 @@ export default class AuthService {
 
   static obterUsuarioAutenticado() {
     return LocalStorageService.obterItem(USUARIO_LOGADO);
+  }
+
+  static usuarioTemAutenticacao = () => {
+    if(LocalStorageService.obterItem(USUARIO_LOGADO) !== ""){
+      return true;
+    }else{
+      return false;
+    }
   }
 }
