@@ -10,14 +10,19 @@ class ApiService{
         this.apiUrl = apiUrl;
     }
 
-    post(url,objeto){
+    post(url){
         const requestUrl = `${this.apiUrl}${url}`
-        return httpClient.post(requestUrl,objeto);
+        return httpClient.post(requestUrl);
     }
 
-    put(url,objeto){
+    postObject(url,objeto){
         const requestUrl = `${this.apiUrl}${url}`
-        return httpClient.put(requestUrl,objeto);
+        return httpClient.post(requestUrl,objeto)
+    }
+
+    put(url){
+        const requestUrl = `${this.apiUrl}${url}`
+        return httpClient.put(requestUrl);
     }
 
     patch(url){
