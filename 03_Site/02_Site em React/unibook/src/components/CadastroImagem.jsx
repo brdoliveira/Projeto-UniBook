@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-import iconAddImage from "../templates/images/icon-add-image.png";
-
 import { FileUpload } from "primereact/fileupload";
 
-export default function CadastroImagem() {
-  const [imgPath, setImgPath] = useState(iconAddImage);
+import iconAddImage from "../templates/images/icon-add-image.png";
+
+export default function CadastroImagem(props) {
+  const [imgPath, setImgPath] = useState(props.foto);
 
   const customBase64Uploader = async (event) => {
     if (imgPath === iconAddImage) {
@@ -17,10 +17,16 @@ export default function CadastroImagem() {
       reader.onloadend = function () {
         base64data = reader.result;
         setImgPath(base64data);
+        onTriggerFoto(base64data)
       };
+      onTriggerFoto()
       return;
     }
   };
+
+  function onTriggerFoto(img) {
+    props.parentCallbackFoto(img);
+  }
 
   return (
     <>
