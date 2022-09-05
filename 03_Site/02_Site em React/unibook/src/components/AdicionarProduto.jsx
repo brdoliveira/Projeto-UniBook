@@ -1,10 +1,10 @@
 import React from "react";
 import iconAddImage from "../templates/images/icon-add-image.png";
 
-import { ScrollPanel } from "primereact/scrollpanel";
+// import { ScrollPanel } from "primereact/scrollpanel";
+// import { Chips } from "primereact/chips";
 import { FileUpload } from "primereact/fileupload";
 import { InputText } from "primereact/inputtext";
-import { Chips } from "primereact/chips";
 import { Button } from "primereact/button";
 
 import BookService from "../app/service/bookService";
@@ -26,6 +26,8 @@ class AdicionarProduto extends React.Component {
     editora: "",
     isbn: "",
     idioma: "",
+    quantidade: "",
+    estado : "",
     imgPath: iconAddImage,
     etiquetas: [],
   };
@@ -134,7 +136,7 @@ render() {
           <div className="col-12 col-md-8 px-4" hidden={!this.props.page}>
             <div className="col-12 text-white pt-4 d-flex">
               <div className="col-6 text-white py-4 pe-2">
-                <p>Data de Lancamento</p>
+                <p>Ano de Lancamento</p>
                 <InputText
                   value={this.state.data}
                   onChange={(e) => this.setState({ data: e.target.value })}
@@ -144,10 +146,10 @@ render() {
                 />
               </div>
               <div className="col-6 text-white py-4 ps-2">
-                <p>Editora</p>
+                <p>Editora ou Autor</p>
                 <InputText
-                  value={this.state.editora}
-                  onChange={(e) => this.setState({ editora: e.target.value })}
+                  value={this.state.autor}
+                  onChange={(e) => this.setState({ autor: e.target.value })}
                   className="col-12 border border-0 rounded-pill"
                   type="text"
                   placeholder="Editora do livro..."
@@ -156,7 +158,7 @@ render() {
             </div>
             <div className="col-12 text-white pt-4 d-flex">
               <div className="col-6 text-white py-4 pe-2">
-                <p>Data de Lancamento</p>
+                <p>Estado de Uso</p>
                 <InputText
                   value={this.state.data}
                   onChange={(e) => this.setState({ data: e.target.value })}
@@ -166,17 +168,17 @@ render() {
                 />
               </div>
               <div className="col-6 text-white py-4 ps-2">
-                <p>Editora</p>
+                <p>Quantidade</p>
                 <InputText
-                  value={this.state.editora}
-                  onChange={(e) => this.setState({ editora: e.target.value })}
+                  value={this.state.quantidade}
+                  onChange={(e) => this.setState({ quantidade: e.target.value })}
                   className="col-12 border border-0 rounded-pill"
                   type="text"
-                  placeholder="Editora do livro..."
+                  placeholder="Quantidade..."
                 />
               </div>
             </div>
-            <div className="col-12 text-white pt-4">
+            {/* <div className="col-12 text-white pt-4">
               <p>Etiquetas</p>
               <ScrollPanel
                 className="col-12 scroll rounded"
@@ -191,7 +193,7 @@ render() {
                   max={5}
                 />
               </ScrollPanel>
-            </div>
+            </div> */}
           </div>
         </div>
       </>
