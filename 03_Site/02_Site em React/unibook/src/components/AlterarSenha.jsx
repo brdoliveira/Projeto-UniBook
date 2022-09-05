@@ -6,15 +6,12 @@ import { Divider } from "primereact/divider";
 import AdministradorService from "../app/service/administradorService";
 import AuthService from "../app/service/authService";
 
-import { Notification } from "./Notification";
-
 const service = new AdministradorService();
 
 const AlterarSenha = () => {
   const [displayBasic, setDisplayBasic] = useState(false);
   const [inputSenha, setInputSenha] = useState();
   const [setPosition] = useState("center");
-
 
   const dialogFuncMap = {
     displayBasic: setDisplayBasic,
@@ -56,7 +53,6 @@ const AlterarSenha = () => {
         window.location.href = "/login"
       })
       .catch((erro) => {
-        return <Notification type="error" message={erro} />;
       });
   
   } 
