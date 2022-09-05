@@ -104,7 +104,8 @@ export default function CadastroUsuario(props) {
             <Calendar
               dateFormat="dd/mm/yy"
               className="col-12 border border-0 rounded-pill py-0"
-              value={usuarioCadastro.dataNascimento}
+              value={usuarioCadastro.dataNascimento || ''}
+              defaultValue={Date()}
               onChange={(e) => {
                 setUsuarioCadastro({ dataNascimento: e.target.value });
                 onTriggerUsuarioCadastro();
@@ -123,7 +124,7 @@ export default function CadastroUsuario(props) {
                     setUsuarioCadastro({ sexo: e.target.value });
                     onTriggerUsuarioCadastro();
                   }}
-                  checked={usuarioCadastro.sexo === "FEMININO"}
+                  checked={usuarioCadastro.sexo !== "MASCULINO"}
                 />
                 <label htmlFor="sexo" className="px-2">
                   Feminino
