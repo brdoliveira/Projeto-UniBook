@@ -27,7 +27,7 @@ class Login extends React.Component {
     this.service
     .login(this.state.email,this.state.senha)
     .then((response) => {
-      AuthService.logar(response)
+      AuthService.logar(response.data)
       window.location.href = "/perfil"
     })
     .catch((erro) => {
