@@ -3,10 +3,10 @@ import React from "react";
 import { Button } from "primereact/button";
 import { Password } from "primereact/password";
 import { InputText } from "primereact/inputtext";
+import { mensagemErro } from "./Toastr";
 
 import UsuarioService from "../app/service/usuarioService";
 import AuthService from "../app/service/authService";
-import { Notification } from "./Notification";
 
 import { Link } from "react-router-dom"
 
@@ -25,16 +25,13 @@ class Login extends React.Component {
 
   doLogin = () => {
     this.service
-    .login({
-      email: this.state.email,
-      senha: this.state.senha,
-    })
+    .login(this.state.email,this.state.senha)
     .then((response) => {
-      AuthService.logar(response.data)
+      AuthService.logar(response)
       window.location.href = "/perfil"
     })
     .catch((erro) => {
-      return <Notification type="error" message={erro.message} />;
+      mensagemErro(erro.response.data.message);
     });
 
   };
