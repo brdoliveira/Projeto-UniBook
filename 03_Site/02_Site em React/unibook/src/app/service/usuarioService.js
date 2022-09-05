@@ -6,7 +6,7 @@ class UsuarioService extends ApiService {
   }
 
   salvarUsuario(usuario){
-    return this.post(`?usuario=${usuario}`)
+    return this.postObject("",usuario)
   }
 
   getUsuario(id){
