@@ -1,31 +1,32 @@
 import React from "react";
 import "../templates/styles/styles-menu.css";
 
-import AuthService from "../app/service/authService";
+import UsuarioService from "../app/service/usuarioService";
 
 import Favoritos from "./Favoritos";
 import Carrinho from "./Carrinho";
+import { mensagemErro } from "./Toastr";
 
 import { Avatar } from 'primereact/avatar';
 
 class Menu extends React.Component{
   constructor(){
     super()
-    this.service = new AuthService();
+    this.service = new UsuarioService();
   }
 
   state = {
     showCarrinho : false,
-    showFavoritos : false
+    showFavoritos : false,
+    logado : false
   }
 
-  logado = false; //
 
   componentDidMount(){
-    if(this.service.isUsuarioAutenticado){
-      this.logado = true;
+    if(localStorage.getItem("_usuario_logado")){
+      this.setState({logado : true}); //
     }else{
-      this.logado = false; //
+      this.setState({logado : false});
     }
   }
 
@@ -42,8 +43,16 @@ class Menu extends React.Component{
   }
 
   sair = () => {
-    this.service.removerUsuarioAutenticado();
-    window.location.href = "/login"
+    var usuarioLogado = JSON.parse(localStorage.getItem("_usuario_logado"))
+    this.service
+    .logoff(usuarioLogado.email,usuarioLogado.senha)
+    .then(() => {
+      localStorage.removeItem("_usuario_logado")
+      window.location.href = "/login"
+    })
+    .catch((erro) => {
+      mensagemErro(erro.response.data.message);
+    });
   }
 
   handleCallbackFavoritos = (childData) => {
@@ -116,7 +125,7 @@ class Menu extends React.Component{
                 Quem Somos
               </a>
             </li>
-            <li className="nav-item dropdown li-menu" hidden={this.logado}>
+            <li className="nav-item dropdown li-menu" hidden={this.state.logado}>
               <button
                 className="text-white nav-link dropdown-toggle btn btn-secondary dropdown-toggle bg-blue border border-white border-1 p-2 d-lg-block d-none button-menu"
                 id="navbarDropdown"
@@ -149,7 +158,7 @@ class Menu extends React.Component{
                 </li>
               </ul>
             </li>
-            <li className="nav-item dropdown li-menu" hidden={!this.logado}>
+            <li className="nav-item dropdown li-menu" hidden={!this.state.logado}>
               <button
                 className="text-white nav-link dropdown-toggle btn btn-secondary dropdown-toggle bg-blue border border-0 d-lg-block d-none button-menu py-1 p-0 m-0"
                 id="navbarDropdown"
@@ -201,8 +210,8 @@ class Menu extends React.Component{
                
               </ul>
             </li>
-            <div className="col-12 d-block d-lg-none py-2" hidden={this.logado}>
-              <div className="col-12 bg-blue rounded border border-white border-2 p-2 text-center" hidden={this.logado}>
+            <div className="col-12 d-block d-lg-none py-2" hidden={this.state.logado}>
+              <div className="col-12 bg-blue rounded border border-white border-2 p-2 text-center" hidden={this.state.logado}>
                 <a className="text-decoration-none a-menu" href="/login">
                   <li className="col-12 rounded border border-white border-3 px-2 fw-bold text-center text-white py-2 li-menu">
                     Login
@@ -218,8 +227,8 @@ class Menu extends React.Component{
                 </div>
               </div>
             </div>
-            <div className="col-12 d-block d-lg-none py-2" hidden={!this.logado}>
-              <div className="col-12 bg-blue rounded border border-white border-2 p-2 text-center" hidden={!this.logado}>
+            <div className="col-12 d-block d-lg-none py-2" hidden={!this.state.logado}>
+              <div className="col-12 bg-blue rounded border border-white border-2 p-2 text-center" hidden={!this.state.logado}>
                 <li className="col-12 rounded border border-white border-3 px-2 fw-bold text-center text-white py-2 li-menu my-1"
                 onClick={this.perfil}
                 >
