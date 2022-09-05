@@ -16,6 +16,9 @@ class PerfilUsuario extends React.Component {
     sexo: "",
     cpf: "",
     email: "",
+    endereco : {
+      localidade : ""
+    }
   };
 
   componentDidMount() {
@@ -39,23 +42,23 @@ class PerfilUsuario extends React.Component {
             <img alt="" />
           </div>
           <span className="col-12 text-center text-dark py-2">
-            <span className="fs-3">
+            <span className="fs-3" style={{textTransform: 'capitalize'}}>
               {" "}
               {this.state.nome} ,{" "}
               {FormatService.formatYears(this.state.dataNascimento)} Anos
             </span>
             <br />
             <span>
-              <i className="bi bi-geo-alt-fill"></i> Endereço
+              <i className="bi bi-geo-alt-fill"></i> {this.state.endereco.localidade}
             </span>
           </span>
         </div>
         <div className="col-md-12 col-lg-6 flex-wrap align-items-start px-2">
           <div className="col-12 bg-blue text-white py-3 my-2 rounded px-3">
-            <span>Sexo: {FormatService.formatGender(this.state.sexo)}</span>
+            <span>Sexo: {this.state.sexo}</span>
           </div>
           <div className="col-12 bg-blue text-white py-3 my-2 rounded px-3">
-            <span>CPF: {FormatService.formatCpf(this.state.cpf)}</span>
+            <span>CPF: {this.state.cpf}</span>
           </div>
           <div className="col-12 bg-blue text-white py-3 my-2 rounded px-3">
             <span>Email: {this.state.email} </span>
