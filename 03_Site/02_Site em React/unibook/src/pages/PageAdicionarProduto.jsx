@@ -2,6 +2,8 @@ import React from "react";
 
 import Menu from "../components/Menu";
 import AdicionarProduto from "../components/AdicionarProduto";
+import iconAddImage from "../templates/images/icon-add-image.png";
+import BookService from "../app/service/bookService";
 
 import { Button } from "primereact/button";
 import { Steps } from "primereact/steps";
@@ -9,11 +11,29 @@ import { Steps } from "primereact/steps";
 import "../templates/styles/styles-cadastro.css";
 
 class PageAdicionarProduto extends React.Component {
+  constructor(){
+    super()
+    this.service = new BookService();
+  }
+
   state = {
     tabcard: 0,
     buttonLeft: true,
     buttonRight: false,
-    data: [],
+    livro: {
+      idVendedor:0,
+      nome: "",
+      preco: 0,
+      descricao: "",
+      dataLanc: "",
+      editora: "",
+      isbn: "",
+      idioma: "",
+      quantidade: "",
+      estado : "",
+      imgPath: iconAddImage,
+      etiquetas: [],
+    }
   };
 
   items = [
@@ -77,7 +97,7 @@ class PageAdicionarProduto extends React.Component {
                 />
               </div>
               <div className="col-10 pt-4">
-                <AdicionarProduto page={this.state.buttonRight} />
+                <AdicionarProduto livro={this.state.livro} page={this.state.buttonRight} />
                 <div className="col-12 d-flex justify-content-end pe-4 pt-4">
                   <Button
                     className="bg-orange rounded-pill border border-dark border-2 fw-bold px-4 py-1 text-dark hover-orange"
