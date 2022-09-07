@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const httpClient = axios.create({
-    baseURL: "10.0.1.118:8004/"
+    baseURL: "http://10.0.1.118:8004/"
 })
 
 
