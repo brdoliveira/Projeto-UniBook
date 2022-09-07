@@ -11,8 +11,8 @@ import { Steps } from "primereact/steps";
 import "../templates/styles/styles-cadastro.css";
 
 class PageAdicionarProduto extends React.Component {
-  constructor(){
-    super()
+  constructor() {
+    super();
     this.service = new BookService();
   }
 
@@ -21,19 +21,19 @@ class PageAdicionarProduto extends React.Component {
     buttonLeft: true,
     buttonRight: false,
     livro: {
-      idVendedor:0,
+      idVendedor: 0,
       nome: "",
       preco: 0,
       descricao: "",
       dataLanc: "",
       editora: "",
       isbn: "",
-      idioma: "",
+      // idioma: "",
       quantidade: "",
-      estado : "",
-      imgPath: iconAddImage,
-      etiquetas: [],
-    }
+      estado: "",
+      // etiquetas: [],
+    },
+    foto: iconAddImage
   };
 
   items = [
@@ -43,13 +43,27 @@ class PageAdicionarProduto extends React.Component {
 
   disabled(index) {
     if (index === 0) {
-      this.setState({ buttonLeft: true });
-      this.setState({ buttonRight: false });
+      this.setState({ buttonLeft: true, buttonRight: false });
     } else if (index === 1) {
-      this.setState({ buttonLeft: false });
-      this.setState({ buttonRight: true });
+      this.setState({ buttonLeft: false, buttonRight: true });
     }
   }
+
+  doRegistration = () => {
+    console.log("this.state.livro = ", this.state.livro)
+  }
+
+  handleCallback = (childData) => {
+    this.setState({
+      livro: { ...this.state.livro, ...childData },
+    });
+  };
+
+  handleCallbackFoto = (childData) => {
+    this.setState({
+      foto: {...childData },
+    });
+  };
 
   render() {
     const clickLeft = () => {
@@ -69,11 +83,10 @@ class PageAdicionarProduto extends React.Component {
     };
 
     return (
-      <>
+      <div className="min-vh-100">
         <Menu />
         <div
-          className="col-12 d-flex justify-content-center align-items-center"
-          style={{ height: "90vh" }}
+          className="col-12 d-flex justify-content-center align-items-center min-vh-100"
         >
           <div className="col-10 div-cadastro">
             <div className="col-12 d-flex justify-content-center">
@@ -97,7 +110,13 @@ class PageAdicionarProduto extends React.Component {
                 />
               </div>
               <div className="col-10 pt-4">
-                <AdicionarProduto livro={this.state.livro} page={this.state.buttonRight} />
+                <AdicionarProduto
+                  page={this.state.buttonRight}
+                  livro={this.state.livro}
+                  foto={this.state.foto}
+                  parentCallback={this.handleCallback}
+                  parentCallbackFoto={this.handleCallbackFoto}
+                />
                 <div className="col-12 d-flex justify-content-end pe-4 pt-4">
                   <Button
                     className="bg-orange rounded-pill border border-dark border-2 fw-bold px-4 py-1 text-dark hover-orange"
@@ -120,7 +139,7 @@ class PageAdicionarProduto extends React.Component {
             </div>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }
