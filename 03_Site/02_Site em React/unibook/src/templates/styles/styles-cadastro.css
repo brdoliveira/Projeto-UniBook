@@ -23,3 +23,7 @@
 .p-chips .p-inputtext{
     width: 100%;
 }
+
+.p-inputnumber-input {
+    border-radius: 50rem !important;
+}
