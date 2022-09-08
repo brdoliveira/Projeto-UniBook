@@ -9,7 +9,7 @@ import { ScrollPanel } from "primereact/scrollpanel";
 function PerfilVendedor() {
   return (
     <div className="col-12 d-flex flex-wrap">
-      <div className="col-12 col-md-6 bg-orange div-perfil rounded d-flex flex-wrap align-items-center justify-content-center py-4">
+      <div className="col-12 col-md-6 bg-orange div-perfil rounded d-flex flex-wrap align-items-center justify-content-center py-4 h-100">
         <div
           className="col-12 bg-white rounded-pill d-flex flex-wrap align-items-center justify-content-center"
           style={{ height: "300px", width: "300px" }}
