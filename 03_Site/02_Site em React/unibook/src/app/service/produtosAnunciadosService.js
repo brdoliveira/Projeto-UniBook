@@ -2,11 +2,11 @@ import ApiService from "../apiservice";
 
 class ProdutosAnunciadosService extends ApiService {
   constructor() {
-    super("/produtos-anuciados");
+    super("/produtos-anunciados");
   }
 
   salvarProduto(produto){
-    return this.post(`?produto=${produto}`);
+    return this.postObject("",produto);
   }
 
   listarTodos(){
