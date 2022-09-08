@@ -3,8 +3,9 @@ import React from "react";
 import Menu from "../components/Menu";
 import AdicionarProduto from "../components/AdicionarProduto";
 import iconAddImage from "../templates/images/icon-add-image.png";
-import BookService from "../app/service/bookService";
 
+import ProdutosAnunciadosService from "../app/service/produtosAnunciadosService";
+import { mensagemErro , mensagemSucesso } from "../components/Toastr";
 import { Button } from "primereact/button";
 import { Steps } from "primereact/steps";
 
@@ -13,28 +14,28 @@ import "../templates/styles/styles-cadastro.css";
 class PageAdicionarProduto extends React.Component {
   constructor() {
     super();
-    this.service = new BookService();
+    this.service = new ProdutosAnunciadosService();
+    this.state = {
+      tabcard: 0,
+      buttonLeft: true,
+      buttonRight: false,
+      livro: {
+        idVendedor: 0,
+        nome: "",
+        valor: 0,
+        descricao: "",
+        dataLanc: 2000,
+        autor: "",
+        isbn: "",
+        // idioma: "",
+        quantidade: "",
+        estado: {name: 'Perfeito', code: 'PERFEITO'},
+        // etiquetas: [],
+      },
+      foto: iconAddImage
+    };
   }
 
-  state = {
-    tabcard: 0,
-    buttonLeft: true,
-    buttonRight: false,
-    livro: {
-      idVendedor: 0,
-      nome: "",
-      preco: 0,
-      descricao: "",
-      dataLanc: "",
-      editora: "",
-      isbn: "",
-      // idioma: "",
-      quantidade: "",
-      estado: "",
-      // etiquetas: [],
-    },
-    foto: iconAddImage
-  };
 
   items = [
     { label: "Livro - Informações Basicas" },
@@ -50,9 +51,31 @@ class PageAdicionarProduto extends React.Component {
   }
 
   doRegistration = () => {
-    console.log("this.state.livro = ", this.state.livro)
+    var usuarioLogado = JSON.parse(localStorage.getItem("_usuario_logado")) 
+    const produto = {
+      "idVendedor": usuarioLogado.id,
+      "titulo": this.state.livro.nome,
+      "autor": this.state.livro.autor,
+      "quantidade": this.state.livro.quantidade,
+      "estadoUso": this.state.livro.estado.code,
+      "anoPublicacao": this.state.livro.dataLanc,
+      "descricao": this.state.livro.descricao,
+      "valor": this.state.livro.valor
+    }
+    
+    this.service.salvarProduto(produto).then((response) => {
+      mensagemSucesso("LIVRO CADASTRADO")
+      console.log(response)
+      setInterval(1000000)
+      window.location.href = "/perfil"
+    })
+    .catch((erro) => {
+      mensagemErro(erro.response.data.message);
+      return;
+    });
   }
 
+  
   handleCallback = (childData) => {
     this.setState({
       livro: { ...this.state.livro, ...childData },
