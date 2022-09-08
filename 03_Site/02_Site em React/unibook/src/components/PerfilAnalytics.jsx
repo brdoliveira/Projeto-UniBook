@@ -29,8 +29,8 @@ function PerfilAnalitycs() {
   };
 
   return (
-    <div className="col-12 d-flex flex-wrap">
-      <div className="col-md-12 col-lg-4 d-flex flex-wrap align-items-center justify-content-start bg-orange div-perfil p-4">
+    <div className="col-12 d-flex flex-wrap h-50">
+      <div className="col-md-12 col-lg-4 d-flex flex-wrap align-items-center justify-content-start bg-orange div-perfil p-4 h-100">
         <div className="col-12 bg-white p-3 rounded h-100">
           <h2 className="d-flex align-items-center">
             Volume total de vendas
@@ -48,7 +48,7 @@ function PerfilAnalitycs() {
           </div>
         </div>
       </div>
-      <div className="col-md-12 col-lg-4 d-flex flex-wrap align-items-center justify-content-center bg-orange div-perfil p-4">
+      <div className="col-md-12 col-lg-4 d-flex flex-wrap align-items-center justify-content-center bg-orange div-perfil p-4 h-100">
         <div className="col-12 bg-white p-3 rounded h-100">
           <h2 className="d-flex align-items-center">
             Quantidade de vendas
@@ -66,7 +66,7 @@ function PerfilAnalitycs() {
           </div>
         </div>
       </div>
-      <div className="col-md-12 col-lg-4 d-flex flex-wrap align-items-center justify-content-end bg-orange div-perfil p-4">
+      <div className="col-md-12 col-lg-4 d-flex flex-wrap align-items-center justify-content-end bg-orange div-perfil p-4 h-100">
         <div className="col-12 bg-white p-3 rounded h-100">
           <h2 className="d-flex align-items-center">
             Média de vendas
