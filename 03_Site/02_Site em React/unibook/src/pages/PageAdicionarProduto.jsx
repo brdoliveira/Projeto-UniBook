@@ -65,7 +65,6 @@ class PageAdicionarProduto extends React.Component {
     
     this.service.salvarProduto(produto).then((response) => {
       mensagemSucesso("LIVRO CADASTRADO")
-      console.log(response)
       setInterval(1000000)
       window.location.href = "/perfil"
     })
