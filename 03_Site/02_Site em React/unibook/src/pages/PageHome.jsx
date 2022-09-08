@@ -1,10 +1,30 @@
+import React from "react";
 import CardProduto from "../components/CardProduto";
 import Menu from "../components/Menu";
 
 import imageHome from "../templates/images/imagem-home.jpg";
 import "../templates/styles/styles-index.css";
 
-function PageHome() {
+import ProdutosAnunciadosService from "../app/service/produtosAnunciadosService";
+
+class PageHome extends React.Component {
+  constructor(){
+    super()
+    this.service = new ProdutosAnunciadosService();
+    this.state = {
+      livros : ""
+    }
+  }
+
+  async componentDidMount(){
+    let response = await this.service.listarTodos()
+
+    this.setState({livros : response.data.map((livro) => {
+      return( <CardProduto key={livro.id} livro={livro}/> )
+    })})
+  }
+
+  render(){
   return (
     <div className="min-vh-100">
       <Menu />
@@ -17,12 +37,13 @@ function PageHome() {
             Editora Globo
           </h2>
           <div className="row mb-md-2 py-3 d-flex flex-wrap align-items-center justify-content-center justify-content-md-start">
-            <CardProduto/>
+            {this.state.livros}
           </div>
         </div>
       </div>
     </div>
   )
+  }
 }
 
 export default PageHome;
