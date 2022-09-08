@@ -4,12 +4,14 @@ import React, { useState } from "react";
 // import { Chips } from "primereact/chips";
 
 import iconAddImage from "../templates/images/icon-add-image.png";
-import { mensagemErro, mensagemSucesso } from "./Toastr";
-import BookService from "../app/service/bookService";
 import { FileUpload } from "primereact/fileupload";
 import { InputText } from "primereact/inputtext";
 import { InputNumber } from 'primereact/inputnumber';
+import { Dropdown } from 'primereact/dropdown';
 import { Button } from "primereact/button";
+
+import BookService from "../app/service/bookService";
+import { mensagemErro, mensagemSucesso } from "./Toastr";
 
 import "../templates/styles/styles-cadastro.css";
 
@@ -17,13 +19,15 @@ export default function AdicionarProduto(props) {
   const [livroInformacoes, setLivroInformacoes] = useState(props.livro);
   const [fotoEscolhida, setFotoEscolhida] = useState(props.foto);
 
+  var dataAtual = new Date();
+  const anoAtual = dataAtual.getFullYear();
+
   const consultarLivro = async (isbn) => {
     const service = new BookService();
     let dadosLivros = await service.consultarLivro(isbn === "" ? "0" : isbn);
 
     if (dadosLivros.sucesso) {
       mensagemSucesso("ISBN do Livro encontrado com sucesso");
-      console.log(dadosLivros.dados);
     } else {
       mensagemErro("ISBN do Livro não encontrado");
     }
@@ -48,6 +52,14 @@ export default function AdicionarProduto(props) {
     props.parentCallback(livroInformacoes);
     props.parentCallbackFoto(fotoEscolhida);
   }
+
+  const estados = [
+    {name: 'Perfeito', code: 'PERFEITO'},
+    {name: 'Otimo', code: 'OTIMO'},
+    {name: 'Bom', code: 'BOM'},
+    {name: 'Mediano', code: 'MEDIANO'},
+    {name: 'Muito Usado', code: 'MUITO_USADO'}
+];
 
   return (
     <>
@@ -136,11 +148,10 @@ export default function AdicionarProduto(props) {
             <div className="col-6 text-white py-4 ps-1">
               <p>Preço</p>
               <InputNumber
-                value={livroInformacoes.preco}
+                value={livroInformacoes.valor}
                 onChange={(e) => {
-                  setLivroInformacoes({ preco: e.value });
+                  setLivroInformacoes({ valor: e.value });
                   onTriggerProduto();
-                  console.log(e)
                 }}
                 className="col-12 border border-0 rounded-pill"
                 type="text"
@@ -153,18 +164,21 @@ export default function AdicionarProduto(props) {
           </div>
         </div>
         <div className="col-12 col-md-8 px-4" hidden={!props.page}>
-          <div className="col-12 text-white pt-4 d-flex">
+          <div className="col-12 text-white py-4 d-flex">
             <div className="col-6 text-white py-4 pe-2">
               <p>Ano de Lancamento</p>
-              <InputText
+              <InputNumber
                 value={livroInformacoes.dataLanc}
                 onChange={(e) => {
-                  setLivroInformacoes({ dataLanc: e.target.value });
+                  setLivroInformacoes({ dataLanc: e.value });
                   onTriggerProduto();
                 }}
                 className="col-12 border border-0 rounded-pill"
                 type="text"
                 placeholder="Data de lancamento..."
+                mode="decimal" useGrouping={false}
+                min={0}
+                max={anoAtual}
               />
             </div>
             <div className="col-6 text-white py-4 ps-2">
@@ -181,26 +195,28 @@ export default function AdicionarProduto(props) {
               />
             </div>
           </div>
-          <div className="col-12 text-white pt-4 d-flex">
+          <div className="col-12 text-white py-4 d-flex">
             <div className="col-6 text-white py-4 pe-2">
               <p>Estado de Uso</p>
-              <InputText
+              <Dropdown 
+                optionLabel="name" 
+                options={estados} 
                 value={livroInformacoes.estado}
                 onChange={(e) => {
-                  setLivroInformacoes({ estado: e.target.value });
+                  setLivroInformacoes({ estado: e.value });
                   onTriggerProduto();
                 }}
                 className="col-12 border border-0 rounded-pill"
                 type="text"
-                placeholder="Data de lancamento..."
+                placeholder="Digite estado de uso..."
               />
             </div>
             <div className="col-6 text-white py-4 ps-2">
               <p>Quantidade</p>
-              <InputText
+              <InputNumber 
                 value={livroInformacoes.quantidade}
                 onChange={(e) => {
-                  setLivroInformacoes({ quantidade: e.target.value });
+                  setLivroInformacoes({ quantidade: e.value });
                   onTriggerProduto();
                 }}
                 className="col-12 border border-0 rounded-pill"
