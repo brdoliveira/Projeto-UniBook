@@ -10,16 +10,16 @@ class PageProduto extends React.Component {
   constructor(){
     super()
     this.service = new ProdutosAnunciadosService();
-    this.state = {
-      livro : ""
-    }
+    this.state = {}
   }
 
   async componentDidMount() {
     let { id } = this.props.params;
     if(id){
       var livro = await JSON.parse(localStorage.getItem("_livro_escolhido"))
-      this.setState({livro : {livro}})
+      console.log(livro)
+      this.setState(livro)
+      console.log(this.state.livro)
     }else{
       window.location.href = "/"
     }
@@ -33,7 +33,7 @@ class PageProduto extends React.Component {
           className="col-12 d-flex justify-content-center align-items-center min-vh-100 pt-5 mt-5"
         >
           <div className="col-10">
-            <Produto informacoes={this.state.livro}/>
+            <Produto livro={this.state}/>
           </div>
         </div>
       </div>
