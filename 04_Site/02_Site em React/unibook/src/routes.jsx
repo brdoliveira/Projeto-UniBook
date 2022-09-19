@@ -17,6 +17,7 @@ import PageChat from "./pages/PageChat";
 import PageProduto from "./pages/PageProduto";
 import PageProdutoPagamento from "./pages/PageProdutoPagamento";
 import PagePagamentoEscolhido from "./pages/PagePagamentoEscolhido";
+import PageAdicionar from "./pages/PageAdministrador";
 
 function Rotas() {
   return (
@@ -24,6 +25,7 @@ function Rotas() {
       <Routes>
         <Route path="/*" element={<PageNotFound />} />
         <Route path="/" element={<PageHome />} />
+        <Route path="/administracao" element={<PageAdicionar />} />
         <Route path="/login" element={<PageLogin />} />
         <Route path="/perfil" element={<PagePerfil />} />
         <Route path="/perfil/editar" element={<PageEditarPerfil />} />
