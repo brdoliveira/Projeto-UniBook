@@ -8,8 +8,8 @@ import "../templates/styles/styles-index.css";
 import ProdutosAnunciadosService from "../app/service/produtosAnunciadosService";
 
 class PageHome extends React.Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.service = new ProdutosAnunciadosService();
     this.state = {
       livros : ""
