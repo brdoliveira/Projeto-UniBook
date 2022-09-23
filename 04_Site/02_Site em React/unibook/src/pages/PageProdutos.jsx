@@ -7,10 +7,13 @@ import CardProduto from "../components/CardProduto";
 import { Dropdown } from 'primereact/dropdown';
 
 class PageProdutos extends React.Component {
-  state = {
-    nomeLivro: "AAAA",
-    opcaoEscolhida: ""
-  };
+  constructor(){
+    super();
+    this.state = {
+      nomeLivro: "AAAA",
+      opcaoEscolhida: ""
+    };
+  }
 
   opcoes = [
     { name: "Preço: baixo a alto", code: "BAIXO" },
