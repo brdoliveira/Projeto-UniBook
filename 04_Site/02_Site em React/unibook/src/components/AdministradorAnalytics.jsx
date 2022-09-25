@@ -1,19 +1,44 @@
 import React from "react";
 
-import TabelaAdministrador from "./TabelaAdministrador"
+
+import TabelaAdministrador from "./TabelaAdministrador";
+
+import MapaBrasil from "./MapaBrasil";
+import GraficoBarra from "./GraficoBarra";
+import DadosVisitas from "./DadosVisitas";
 
 class AdministradorAnalytics extends React.Component {
-  constructor(props){
-    super(props);
-  }
-
   render() {
     return (
       <>
         <div className="col-12 text-center text-dark pt-5">
-          <h1>Analitycs Administração</h1>
+          <h1>Analytics Report</h1>
         </div>
-        <div className="col-12">
+        <div className="col-12 py-4">
+          <DadosVisitas/>
+        </div>
+        <div className="col-12 text-dark">
+          <h2>Quantidade de Usuários x Cadastros</h2>
+        </div>
+        <div className="col-12 py-4">
+          <GraficoBarra/>
+        </div>
+        <div className="col-12 text-dark">
+          <h2>Mapa Geográfico Volume de Compras</h2>
+        </div>
+        <div className="col-12 py-4">
+          <MapaBrasil/>
+        </div>
+        <div className="col-12 py-4">
+          <TabelaAdministrador/>
+        </div>
+        <div className="col-12 text-dark">
+          <h2>Volume de Vendas por Mês</h2>
+        </div>
+        <div className="col-12 py-4">
+          <GraficoBarra/>
+        </div>
+        <div className="col-12 py-4">
           <TabelaAdministrador/>
         </div>
       </>
