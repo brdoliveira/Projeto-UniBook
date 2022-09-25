@@ -1,13 +1,20 @@
 import React from "react";
 
+import TabelaAdministrador from "./TabelaAdministrador"
+
 class AdministradorAnalytics extends React.Component {
-  super() {}
+  constructor(props){
+    super(props);
+  }
 
   render() {
     return (
       <>
         <div className="col-12 text-center text-dark pt-5">
-          <h1>Analitycs Administrações</h1>
+          <h1>Analitycs Administração</h1>
+        </div>
+        <div className="col-12">
+          <TabelaAdministrador/>
         </div>
       </>
     );
