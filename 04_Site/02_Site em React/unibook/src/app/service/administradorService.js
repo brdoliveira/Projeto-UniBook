@@ -10,7 +10,7 @@ class AdministradorService extends ApiService{
     }  
     
     popularTabela(){
-        return fetch('data.json').then(res => res.json()).then(d => d.data);
+        return fetch("./data.json").then(res => res.json()).then(d => d.data);
     }
 }
 
