@@ -55,10 +55,10 @@ export default function AdicionarUsuario(props) {
         className="col-12 rounded bg-blue d-flex justify-content-center align-items-center flex-wrap"
         style={{ height: "40rem" }}
       >
-        <div className="col-11 text-white pt-4">
+        <div className="col-11 text-white pt-4 pt-lg-4 py-4 py-lg-0">
           <h2>Adicionar Usuario</h2>
         </div>
-        <div className="col-12 col-md-4 px-4  d-flex flex-wrap align-items-center justify-content-center">
+        <div className="col-12 col-lg-4 px-4  d-flex flex-wrap align-items-center justify-content-center">
           <div
             className="col-12 bg-white d-flex flex-wrap align-items-center justify-content-center"
             style={{ height: "40vh", width: "60%" }}
@@ -81,8 +81,8 @@ export default function AdicionarUsuario(props) {
             />
           </div>
         </div>
-        <div className="col-12 col-md-8 px-4 d-flex flex-wrap">
-          <div className="col-md-12 col-lg-6 px-4">
+        <div className="col-12 col-lg-8 px-4 d-flex flex-wrap">
+          <div className="col-12 col-lg-6 px-4">
             <div className="col-12 text-white py-4">
               <p>Nome</p>
               <InputText
@@ -141,7 +141,7 @@ export default function AdicionarUsuario(props) {
               />
             </div>
           </div>
-          <div className="col-md-12 col-lg-6 px-4">
+          <div className="col-12 col-lg-6 px-4">
             <div className="col-12 text-white py-4">
               <p>Data Nascimento</p>
               <Calendar
@@ -158,7 +158,7 @@ export default function AdicionarUsuario(props) {
             <div className="row text-white py-4">
               <p className="col-12">Sexo</p>
               <div className="col-12 d-flex flex-wrap py-2">
-                <div className="col-4 field-radiobutton py-1">
+                <div className="col-6 field-radiobutton py-1">
                   <RadioButton
                     inputId="sexo"
                     name="sexo"
@@ -173,7 +173,7 @@ export default function AdicionarUsuario(props) {
                     Feminino
                   </label>
                 </div>
-                <div className="col-4 field-radiobutton py-1">
+                <div className="col-6 field-radiobutton py-1">
                   <RadioButton
                     inputId="sexo"
                     name="sexo"
