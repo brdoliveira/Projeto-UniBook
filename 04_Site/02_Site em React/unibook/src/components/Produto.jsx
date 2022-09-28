@@ -12,10 +12,10 @@ export default function Produto(props) {
 
   return (
     <div className="col-12 d-flex flex-wrap">
-      <div className="col-4 d-flex justify-content-center align-items-center">
+      <div className="col-12 col-lg-4 d-flex justify-content-center align-items-center">
         <div className="col-11 bg-blue h-100"></div>
       </div>
-      <div className="col-8">
+      <div className="col-12 col-lg-8">
         <div className="col-12 py-2">
           <h3>{livro.titulo}</h3>
           <Divider />
