@@ -94,7 +94,7 @@ class Menu extends React.Component{
         </div>
         <div className="col-2 col-sm-2 d-bloc d-lg-none">
           <button
-            className="navbar-toggler mx-2 mt-y border border-1 border-white me-4 button-menu"
+            className="navbar-toggler mx-2 mt-y border border-1 border-white me-4 button-menu collapsed"
             style={{ width: "40px", height: "40px" }}
             type="button"
             data-bs-toggle="collapse"
@@ -107,7 +107,7 @@ class Menu extends React.Component{
           </button>
         </div>
         <div
-          className="navbar-collapse collapse show col-12 col-lg-6"
+          className="navbar-collapse col-12 col-lg-6 collapsed collapse"
           id="navbarSupportedContent"
           >
           <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-auto">
@@ -127,7 +127,7 @@ class Menu extends React.Component{
             </li>
             <li className="nav-item dropdown li-menu" hidden={this.state.logado}>
               <button
-                className="text-white nav-link dropdown-toggle btn btn-secondary dropdown-toggle bg-blue border border-white border-1 p-2 d-lg-block d-none button-menu"
+                className="text-white nav-link dropdown-toggle btn btn-secondary dropdown-toggle bg-blue border border-white border-1 p-2 d-lg-block d-none button-menu collapsed"
                 id="navbarDropdown"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
@@ -160,7 +160,7 @@ class Menu extends React.Component{
             </li>
             <li className="nav-item dropdown li-menu" hidden={!this.state.logado}>
               <button
-                className="text-white nav-link dropdown-toggle btn btn-secondary dropdown-toggle bg-blue border border-0 d-lg-block d-none button-menu py-1 p-0 m-0"
+                className="text-white nav-link dropdown-toggle btn btn-secondary dropdown-toggle bg-blue border border-0 d-lg-block d-none button-menu py-1 p-0 m-0 collapsed"
                 id="navbarDropdown"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
