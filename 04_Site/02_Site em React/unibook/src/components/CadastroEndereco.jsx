@@ -43,10 +43,10 @@ export default function CadastroEndereco(props){
           className="col-12 bg-blue d-flex flex-wrap align-items-center justify-content-center rounded"
           style={{ height: "40rem" }}
         >
-          <h1 className="col-12 text-center text-white py-1">
+          <h1 className="col-12 text-center text-white py-4 py-lg-1">
             Cadastro - Endereço
           </h1>
-          <div className="col-12 col-md-6 px-4">
+          <div className="col-12 col-lg-6 px-4">
           <div className="col-12 text-white py-4">
               <p>CEP</p>
               <div className="p-inputgroup">
@@ -81,7 +81,7 @@ export default function CadastroEndereco(props){
               />
             </div>
           </div>
-          <div className="col-12 col-md-6 px-4">
+          <div className="col-12 col-lg-6 px-4">
             <div className="col-12 text-white py-4">
               <p>Numero</p>
               <InputText
