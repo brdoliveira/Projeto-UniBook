@@ -31,36 +31,36 @@ export default function DadosVisitas() {
             />
           </div>
         </div>
-        <div className="col-12 d-flex flex-wrap py-3">
-          <div className="col-3 px-5">
-            <div className="col-12 text-center text-dark fw-bold">
+        <div className="row col-12 d-flex flex-wrap py-3">
+          <div className="col-12 col-md-6 col-lg-3 px-4 d-flex flex-wrap">
+            <div className="col-12 text-center text-dark fw-bold h-50">
               <h4>Visitas Mês</h4>
             </div>
-            <div className="col-12 text-center p-2 bg-blue rounded text-white display-6">
+            <div className="col-12 text-center p-2 bg-blue rounded text-white display-6 d-flex align-items-center justify-content-center h-50">
               <span className="fw-bold">140</span>
             </div>
           </div>
-          <div className="col-3 px-5">
-            <div className="col-12 text-center text-dark fw-bold">
+          <div className="col-12 col-md-6 col-lg-3 px-4 d-flex flex-wrap">
+            <div className="col-12 text-center text-dark fw-bold h-50">
               <h4>Visitas Últimos 7 dias</h4>
             </div>
-            <div className="col-12 text-center p-2 bg-blue rounded text-white display-6">
+            <div className="col-12 text-center p-2 bg-blue rounded text-white display-6 d-flex align-items-center justify-content-center h-50">
               <span className="fw-bold">140</span>
             </div>
           </div>
-          <div className="col-3 px-5">
-            <div className="col-12 text-center text-dark fw-bold">
+          <div className="col-12 col-md-6 col-lg-3 px-4 d-flex flex-wrap">
+            <div className="col-12 text-center text-dark fw-bold h-50">
               <h4>Cadastros Parciais</h4>
             </div>
-            <div className="col-12 text-center p-2 bg-blue rounded text-white display-6">
+            <div className="col-12 text-center p-2 bg-blue rounded text-white display-6 d-flex align-items-center justify-content-center h-50">
               <span className="fw-bold">140</span>
             </div>
           </div>
-          <div className="col-3 px-5">
-            <div className="col-12 text-center text-dark fw-bold">
+          <div className="col-12 col-md-6 col-lg-3 px-4 d-flex flex-wrap">
+            <div className="col-12 text-center text-dark fw-bold h-50">
               <h4>Cadastros Finalizados</h4>
             </div>
-            <div className="col-12 text-center p-2 bg-blue rounded text-white display-6">
+            <div className="col-12 text-center p-2 bg-blue rounded text-white display-6 d-flex align-items-center justify-content-center h-50">
               <span className="fw-bold">140</span>
             </div>
           </div>
