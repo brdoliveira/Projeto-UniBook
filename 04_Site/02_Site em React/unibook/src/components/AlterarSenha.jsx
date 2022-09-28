@@ -69,7 +69,7 @@ const AlterarSenha = () => {
       <Dialog
         header="Alterar Senha"
         visible={displayBasic}
-        style={{ width: "25vw" , height: "29vh" }}
+        style={{ width: "25vw" , height: "35vh" }}
         onHide={() => onHide("displayBasic")}
       >
         <label className="ps-1 py-2 fw-bold">Nova Senha</label>
