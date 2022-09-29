@@ -5,7 +5,9 @@ function PageFaleConosco() {
   return (
     <>
       <Menu />
-      <FaleConosco />
+      <div className="col-12 d-flex justify-content-center align-items-center pt-5 mt-5">
+        <FaleConosco />
+      </div>
     </>
   );
 }
