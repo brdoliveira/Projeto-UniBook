@@ -1,5 +1,3 @@
-import "../templates/styles/styles-quem-somos.css";
-
 import biaPic from "../templates/images/integrantes/bia.jpg";
 import brunoPic from "../templates/images/integrantes/bruno.jpg";
 import henriquePic from "../templates/images/integrantes/henrique.jpeg";
@@ -9,10 +7,10 @@ import luizPic from "../templates/images/integrantes/luiz.jpg";
 function QuemSomos() {
   return (
     <>
-      <div className="container bg-primary mt-4 rounded text-white">
+      <div className="container bg-bluelight mt-4 rounded text-white">
         <div className="row">
           <div className="col-12 col-md-6 p-1">
-            <h1 className="font-weight-bold text-center">Nossa Historia</h1>
+            <h1 className="font-weight-bold text-center py-4">Nossa Historia</h1>
             <p className="text-justify m-2">
               Um grupo de colegas de sala da faculdade São Paulo Tech School
               (SPTECH), tiveram a brilhante idéia, com contribuição de um de
@@ -31,7 +29,7 @@ function QuemSomos() {
         </div>
       </div>
       <br />
-      <div className="container bg-primary mt-4 rounded text-white">
+      <div className="container bg-bluelight mt-4 rounded text-white">
         <div className="row">
           <div className="col-12 col-md-6">
             <img
@@ -41,7 +39,7 @@ function QuemSomos() {
             />
           </div>
           <div className="col-12 col-md-6 p-1">
-            <h1 className="font-weight-bold text-center">Nossos Princípios</h1>
+            <h1 className="font-weight-bold text-center py-4">Nossos Princípios</h1>
             <p className="text-justify m-2">
               Temos como um de nossos princípios a passagem de livros antigos
               para pessoas que necessitam, já que além de pagar mais barato você
@@ -54,10 +52,10 @@ function QuemSomos() {
         </div>
       </div>
       <br />
-      <div className="container bg-primary my-4 rounded text-white">
+      <div className="container bg-bluelight my-4 rounded text-white">
         <div className="row">
           <div className="col-12 col-md-6 p-1">
-            <h1 className="font-weight-bold text-center">Propostas Futuras</h1>
+            <h1 className="font-weight-bold text-center py-4">Propostas Futuras</h1>
             <p className="text-justify m-2">
               Queremos aumentar a troca de livro no Brasil, para diminuir os
               gastos de livros e consequentemente diminuir o desperdício de
@@ -74,7 +72,7 @@ function QuemSomos() {
           </div>
         </div>
       </div>
-      <div className="container bg-primary my-4 rounded py-5 team4 text-white">
+      <div className="container bg-bluelight my-4 rounded py-5 team4 text-white">
         <div className="container">
           <div className="row justify-content-center mb-4 col-12 text-center">
             <h1 className="mb-3">Profissionais da Equipe</h1>
@@ -95,7 +93,7 @@ function QuemSomos() {
                     <h5 className="mt-4 font-weight-medium mb-0">
                       Beatriz Vitoria
                     </h5>
-                    <h6 className="subtitle mb-3">Front End, DevOps(Lider)</h6>
+                    <h6 className="subtitle mb-3">Back-End, DevOps</h6>
                   </div>
                 </div>
               </div>
@@ -138,7 +136,7 @@ function QuemSomos() {
                       Henrique Piassi
                     </h5>
                     <h6 className="subtitle mb-3">
-                      Analytics, Back-End (Lider)
+                      Back-End (Lider)
                     </h6>
                   </div>
                 </div>
@@ -158,7 +156,7 @@ function QuemSomos() {
                   <div className="pt-2">
                     <h5 className="mt-4 font-weight-medium mb-0">João Pedro</h5>
                     <h6 className="subtitle mb-3">
-                      Analytics, Negócios(Lider)
+                      Analytics (Lider), Negócios(Lider)
                     </h6>
                   </div>
                 </div>
@@ -179,7 +177,7 @@ function QuemSomos() {
                     <h5 className="mt-4 font-weight-medium mb-0">
                       Luiz Henrique
                     </h5>
-                    <h6 className="subtitle mb-3">Back-End e o Front-End</h6>
+                    <h6 className="subtitle mb-3">Back-End e o DevOps</h6>
                   </div>
                 </div>
               </div>
