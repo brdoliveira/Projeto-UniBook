@@ -5,7 +5,9 @@ function PageQuemSomos() {
   return (
     <>
       <Menu />
-      <QuemSomos />
+      <div className="col-12 pt-5 mt-5">
+        <QuemSomos />
+      </div>
     </>
   );
 }
