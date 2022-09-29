@@ -20,16 +20,16 @@ export default function RemoverEditarProdutoItem(props) {
   return (
     <>
       <div className="col-12 rounded bg-white my-2 d-flex flex-wrap p-2" style={{ height: "5rem" }}>
-        <div className="col-5">
+        <div className="col-12 col-lg-5">
             <span className="fw-bold">Nome: </span>
         </div>
-        <div className="col-3">
+        <div className="col-6 col-lg-3">
           <span className="fw-bold">Editora: </span>
         </div>
-        <div className="col-2">
+        <div className="col-6 col-lg-2">
             <span className="fw-bold">Ano: </span>
         </div>
-        <div className="col-2 d-flex align-items-center justify-content-end">
+        <div className="col-12 col-lg-2 d-flex align-items-center justify-content-end">
           <Button icon="pi pi-pencil" className="rounded-pill p-button-secondary"/>
           <div className="ps-2">
           <Button icon="pi pi-trash" className="rounded-pill p-button-danger" onClick={confirm}/>
