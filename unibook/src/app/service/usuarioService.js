@@ -1,28 +1,78 @@
 import ApiService from "../apiservice";
 
+import ValidacaoService from "./validacaoService";
+
 class UsuarioService extends ApiService {
   constructor() {
     super("/usuarios");
+    this.validacao = new ValidacaoService();
   }
 
-  salvarUsuario(usuario){
-    return this.postObject("",usuario)
+  salvarUsuario(usuario) {
+    return this.postObject("", usuario);
   }
 
-  getUsuario(id){
-    return this.get(`/id=${id}`)
+  validarUsuario(usuarioInserido) {
+    const erros = [];
+
+    if (this.validacao.validarCampo(usuarioInserido.nome)) {
+      erros.push("Insira o seu nome");
+    }
+
+    if (
+      this.validacao.validarCampo(usuarioInserido.dataNascimento) ||
+      this.validacao.validarData(usuarioInserido.dataNascimento)
+    ) {
+      erros.push("Data de nascimento inválida");
+    }
+
+    if (
+      this.validacao.validarCampo(usuarioInserido.cpf) ||
+      this.validacao.validarCpf(usuarioInserido.cpf)
+    ) {
+      erros.push("CPF inválido");
+    }
+
+    if (
+      this.validacao.validarCampo(usuarioInserido.senha) ||
+      this.validacao.validarCampo(usuarioInserido.confirmarSenha)
+    ) {
+      erros.push("Senha inválida!");
+    } else if (usuarioInserido.senha === usuarioInserido.confirmarSenha) {
+      erros.push("Senhas não são iguais");
+    }
+
+    if (this.validacao.validarCampo(usuarioInserido.cep)) {
+      erros.push("CEP inválido");
+    }
+
+    if (this.validacao.validarCampo(usuarioInserido.numeroResidencia)) {
+      erros.push("Numero de endereço inválida");
+    }
+
+    if (this.validacao.validarCampo(usuarioInserido.login)) {
+      erros.push("Login inválido");
+    }
+
+    if (erros && erros.length > 0) {
+      throw new ErroValidacao(erros);
+    }
   }
 
-  login(email,senha) {
+  getUsuario(id) {
+    return this.get(`/id=${id}`);
+  }
+
+  login(email, senha) {
     return this.post(`/login?email=${email}&senha=${senha}`);
   }
 
-  logoff(email,senha) {
+  logoff(email, senha) {
     return this.delete(`/logoff?email=${email}&senha=${senha}`);
   }
 
-  filaTopUsuarios(){
-    return this.get("/listar/top-usuarios-logados")
+  filaTopUsuarios() {
+    return this.get("/listar/top-usuarios-logados");
   }
 }
 
