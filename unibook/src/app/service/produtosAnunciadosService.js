@@ -9,6 +9,10 @@ class ProdutosAnunciadosService extends ApiService {
     return this.postObject("",produto);
   }
 
+  validarProduto(){
+    
+  }
+
   listarTodos(){
     return this.get("/listar-todos")
   }
