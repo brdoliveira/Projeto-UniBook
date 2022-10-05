@@ -6,8 +6,8 @@ import React, { useState } from "react";
 import iconAddImage from "../templates/images/icon-add-image.png";
 import { FileUpload } from "primereact/fileupload";
 import { InputText } from "primereact/inputtext";
-import { InputNumber } from 'primereact/inputnumber';
-import { Dropdown } from 'primereact/dropdown';
+import { InputNumber } from "primereact/inputnumber";
+import { Dropdown } from "primereact/dropdown";
 import { Button } from "primereact/button";
 
 import BookService from "../app/service/bookService";
@@ -54,12 +54,12 @@ export default function AdicionarProduto(props) {
   }
 
   const estados = [
-    {name: 'Perfeito', code: 'PERFEITO'},
-    {name: 'Otimo', code: 'OTIMO'},
-    {name: 'Bom', code: 'BOM'},
-    {name: 'Mediano', code: 'MEDIANO'},
-    {name: 'Muito Usado', code: 'MUITO_USADO'}
-];
+    { name: "Perfeito", code: "PERFEITO" },
+    { name: "Otimo", code: "OTIMO" },
+    { name: "Bom", code: "BOM" },
+    { name: "Mediano", code: "MEDIANO" },
+    { name: "Muito Usado", code: "MUITO_USADO" },
+  ];
 
   return (
     <>
@@ -156,8 +156,8 @@ export default function AdicionarProduto(props) {
                 className="col-12 border border-0 rounded-pill"
                 type="text"
                 placeholder="Preço do livro..."
-                mode="currency" 
-                currency="BRL" 
+                mode="currency"
+                currency="BRL"
                 locale="pt-BR"
               />
             </div>
@@ -165,28 +165,25 @@ export default function AdicionarProduto(props) {
         </div>
         <div className="col-12 col-md-8 px-4" hidden={!props.page}>
           <div className="col-12 text-white py-4 d-flex">
-            <div className="col-6 text-white py-4 pe-2">
-              <p>Ano de Lancamento</p>
-              <InputNumber
-                value={livroInformacoes.dataLanc}
-                onChange={(e) => {
-                  setLivroInformacoes({ dataLanc: e.value });
-                  onTriggerProduto();
-                }}
-                className="col-12 border border-0 rounded-pill"
-                type="text"
-                placeholder="Data de lancamento..."
-                mode="decimal" useGrouping={false}
-                min={0}
-                max={anoAtual}
-              />
-            </div>
             <div className="col-6 text-white py-4 ps-2">
-              <p>Editora ou Autor</p>
+              <p>Autor</p>
               <InputText
                 value={livroInformacoes.autor}
                 onChange={(e) => {
                   setLivroInformacoes({ autor: e.target.value });
+                  onTriggerProduto();
+                }}
+                className="col-12 border border-0 rounded-pill"
+                type="text"
+                placeholder="Autor do livro..."
+              />
+            </div>
+            <div className="col-6 text-white py-4 ps-2">
+              <p>Editora</p>
+              <InputText
+                value={livroInformacoes.editora}
+                onChange={(e) => {
+                  setLivroInformacoes({ editora: e.target.value });
                   onTriggerProduto();
                 }}
                 className="col-12 border border-0 rounded-pill"
@@ -198,9 +195,9 @@ export default function AdicionarProduto(props) {
           <div className="col-12 text-white py-4 d-flex">
             <div className="col-6 text-white py-4 pe-2">
               <p>Estado de Uso</p>
-              <Dropdown 
-                optionLabel="name" 
-                options={estados} 
+              <Dropdown
+                optionLabel="name"
+                options={estados}
                 value={livroInformacoes.estado}
                 onChange={(e) => {
                   setLivroInformacoes({ estado: e.value });
@@ -213,7 +210,7 @@ export default function AdicionarProduto(props) {
             </div>
             <div className="col-6 text-white py-4 ps-2">
               <p>Quantidade</p>
-              <InputNumber 
+              <InputNumber
                 value={livroInformacoes.quantidade}
                 onChange={(e) => {
                   setLivroInformacoes({ quantidade: e.value });
@@ -222,6 +219,38 @@ export default function AdicionarProduto(props) {
                 className="col-12 border border-0 rounded-pill"
                 type="text"
                 placeholder="Quantidade..."
+              />
+            </div>
+          </div>
+          <div className="col-12 text-white py-4 d-flex">
+            <div className="col-6 text-white py-4 pe-2">
+              <p>Ano de Lancamento</p>
+              <InputNumber
+                value={livroInformacoes.dataLanc}
+                onChange={(e) => {
+                  setLivroInformacoes({ dataLanc: e.value });
+                  onTriggerProduto();
+                }}
+                className="col-12 border border-0 rounded-pill"
+                type="text"
+                placeholder="Data de lancamento..."
+                mode="decimal"
+                useGrouping={false}
+                min={0}
+                max={anoAtual}
+              />
+            </div>
+            <div className="col-6 text-white py-4 ps-2">
+              <p>Idioma</p>
+              <InputText
+                value={livroInformacoes.idioma}
+                onChange={(e) => {
+                  setLivroInformacoes({ idioma: e.target.value });
+                  onTriggerProduto();
+                }}
+                className="col-12 border border-0 rounded-pill"
+                type="text"
+                placeholder="Idioma do livro..."
               />
             </div>
           </div>
