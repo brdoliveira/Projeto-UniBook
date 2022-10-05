@@ -88,7 +88,16 @@ class PageCadastro extends React.Component {
       "tipoUsuario": "VENDEDOR",
       "cep": this.state.usuario.cep.replace(/-/,""),
       "numeroResidencia": this.state.usuario.numeroResidencia + " " +  this.state.usuario.complemento ,
-      "login": this.state.usuario.login
+      "login": this.state.usuario.login,
+      "foto": [ this.state.usuario.foto ]
+    }
+
+    try{
+      this.service.validarUsuario(usuarioCadastro)
+    }catch(erro){
+      const msgs = erro.mensagens;
+      msgs.forEach((msg) => mensagemErro(msg));
+      return false;
     }
 
     this.service.salvarUsuario(usuarioCadastro).then((response) => {
