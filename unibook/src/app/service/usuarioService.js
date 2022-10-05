@@ -1,6 +1,7 @@
 import ApiService from "../apiservice";
 
 import ValidacaoService from "./validacaoService";
+import ErroValidacao from "../exception/erroValidacao";
 
 class UsuarioService extends ApiService {
   constructor() {
@@ -16,7 +17,7 @@ class UsuarioService extends ApiService {
     const erros = [];
 
     if (this.validacao.validarCampo(usuarioInserido.nome)) {
-      erros.push("Insira o seu nome");
+      erros.push("Nome de usuario inválido");
     }
 
     if (
