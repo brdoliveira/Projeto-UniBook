@@ -31,7 +31,7 @@ class ValidacaoService{
             '99999999999'
           ]
         
-          const cleaned = cpf.replace(/\./g, '').replace(/\-/g, '')
+          const cleaned = cpf.replace(/\./g, '').replace('')
         
           if (blacklist.includes(cleaned)) {
             return false
@@ -47,8 +47,8 @@ class ValidacaoService{
         
           if (
             ((check = (10 * sum) % 11),
-            (10 != check && 11 != check) || (check = 0),
-            check != parseInt(cleaned.substring(9, 10)))
+            (10 !== check && 11 !== check) || (check = 0),
+            check !== parseInt(cleaned.substring(9, 10)))
           ) {
             return false
           }
@@ -61,8 +61,8 @@ class ValidacaoService{
         
           return (
             (check = (10 * sum) % 11),
-            (10 != check && 11 != check) || (check = 0),
-            check == parseInt(cleaned.substring(10, 11))
+            (10 !== check && 11 !== check) || (check = 0),
+            check === parseInt(cleaned.substring(10, 11))
           )
     }
 }
