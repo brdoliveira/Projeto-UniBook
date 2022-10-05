@@ -25,9 +25,10 @@ class PageAdicionarProduto extends React.Component {
         valor: 0,
         descricao: "",
         dataLanc: 2000,
+        editora: "",
         autor: "",
         isbn: "",
-        // idioma: "",
+        idioma: "",
         quantidade: "",
         estado: {name: 'Perfeito', code: 'PERFEITO'},
         // etiquetas: [],
@@ -60,11 +61,21 @@ class PageAdicionarProduto extends React.Component {
       "estadoUso": this.state.livro.estado.code,
       "anoPublicacao": this.state.livro.dataLanc,
       "descricao": this.state.livro.descricao,
-      "valor": this.state.livro.valor
+      "valor": this.state.livro.valor,
+      "idioma": this.state.livro.idioma,
+      "foto": [ this.state.foto ]
     }
     
-    this.service.salvarProduto(produto).then((response) => {
-      mensagemSucesso("LIVRO CADASTRADO")
+    try{
+      this.service.validarProduto(produto)
+    }catch(erro){
+      const msgs = erro.mensagens;
+      msgs.forEach((msg) => mensagemErro(msg));
+      return false;
+    }
+    
+    this.service.salvarProduto(produto).then(() => {
+      mensagemSucesso("Livro Cadastrado!")
       setInterval(1000000)
       window.location.href = "/perfil"
     })
