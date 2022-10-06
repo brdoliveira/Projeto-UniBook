@@ -4,8 +4,15 @@ import NotFound from "../components/NotFound";
 function PageNotFound() {
   return (
     <>
-      <Menu />
-      <NotFound />
+      <div className="min-vh-100">
+        <Menu />
+        <div
+          className="col-12 d-flex justify-content-center align-items-center pt-4"
+          style={{ height: "90vh" }}
+        >
+          <NotFound />
+        </div>
+      </div>
     </>
   );
 }
