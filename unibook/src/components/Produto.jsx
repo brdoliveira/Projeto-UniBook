@@ -54,7 +54,8 @@ export default function Produto(props) {
             icon="pi pi-comments"
             className="p-button-rounded me-1"
             aria-label="Chat"
-          />
+          /> 
+          {/* Botão Chat */}
           <Link to="pagamento" className="text-decoration-none">
             <Button
               className="bg-orange rounded-pill border border-dark text-dark border-2 fw-bold px-4 button-perfil ms-1"
