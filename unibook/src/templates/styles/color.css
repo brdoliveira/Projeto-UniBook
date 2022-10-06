@@ -68,3 +68,7 @@ body {
 .cursor-pointer{
   cursor: pointer;
 }
+
+.bg-lightgray{
+  background-color: lightgray;
+}
