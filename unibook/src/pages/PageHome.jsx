@@ -8,6 +8,7 @@ import imageHome from "../templates/images/imagem-home.jpg";
 import "../templates/styles/styles-index.css";
 
 import ProdutosAnunciadosService from "../app/service/produtosAnunciadosService";
+import ComponenteVazioHome from "../components/ComponenteVazioHome";
 
 class PageHome extends React.Component {
   constructor(props) {
@@ -44,7 +45,10 @@ class PageHome extends React.Component {
               {this.state.livros}
             </div>
           </div>
-          <div className="container py-4 d-flex" hidden={this.state.livros}>
+          <div className="col-12 d-flex align-items-center justify-content-center" hidden={this.state.livros}>
+            <div className="col-10 py-3 d-flex flex-wrap align-items-center justify-content-center">
+              <ComponenteVazioHome/>
+            </div>
           </div>
         </div>
       </div>
