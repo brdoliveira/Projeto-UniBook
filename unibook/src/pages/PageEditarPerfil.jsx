@@ -23,7 +23,7 @@ class PageEditarPerfil extends React.Component {
             <div className="col-12 text-center">
               <h1>Editar Perfil</h1>
             </div>
-            <div className="col-12" style={{height: "60vh"}}>
+            <div className="col-12">
               <Accordion activeIndex={0} className="col-12 w-100">
                 <AccordionTab header="Imagem" className="col-12 w-100">
                   <EditarImagem />
