@@ -27,7 +27,7 @@ class EditarEndereco extends React.Component {
       <>
         <div
           className="col-12 bg-blue d-flex flex-wrap align-items-center justify-content-center"
-          style={{ height: "40vh" }}
+          style={{ height: "30rem" }}
         >
           <div className="col-12 col-md-6 px-4">
             <div className="col-12 text-white py-4">
