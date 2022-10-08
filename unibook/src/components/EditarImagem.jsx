@@ -35,7 +35,7 @@ class EditarImagem extends React.Component {
       <>
         <div
           className="col-12 bg-blue rounded d-flex flex-wrap align-items-center justify-content-center"
-          style={{ height: "40vh" }}
+          style={{ height: "30rem" }}
         >
           <div className="col-12 d-flex flex-wrap align-items-center justify-content-center">
             <div
