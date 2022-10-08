@@ -17,9 +17,9 @@ class PageProduto extends React.Component {
     let { id } = this.props.params;
     if(id){
       var livro = await JSON.parse(localStorage.getItem("_livro_escolhido"))
-      console.log(livro)
-      this.setState(livro)
-      console.log(this.state.livro)
+      if(!livro){
+        window.location.href = "/"
+      }
     }else{
       window.location.href = "/"
     }
