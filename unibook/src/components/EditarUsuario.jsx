@@ -4,7 +4,7 @@ import { Calendar } from "primereact/calendar";
 import { InputText } from "primereact/inputtext";
 import { InputMask } from "primereact/inputmask";
 import { Password } from "primereact/password";
-import { Divider } from 'primereact/divider';
+import { Divider } from "primereact/divider";
 import { RadioButton } from "primereact/radiobutton";
 
 class EditarUsuario extends React.Component {
@@ -20,21 +20,24 @@ class EditarUsuario extends React.Component {
   render() {
     const header = <h6>Insire sua senha</h6>;
     const footer = (
-        <React.Fragment>
-            <Divider />
-            <p className="mt-2">Sugestões</p>
-            <ul className="pl-2 ml-2 mt-0" style={{lineHeight: '1.5'}}>
-                <li>Pelo menos uma letra minúscula</li>
-                <li>Pelo menos uma letra maiúscula</li>
-                <li>Pelo menos um número</li>
-                <li>No mínimo 8 caracteres</li>
-            </ul>
-        </React.Fragment>
+      <React.Fragment>
+        <Divider />
+        <p className="mt-2">Sugestões</p>
+        <ul className="pl-2 ml-2 mt-0" style={{ lineHeight: "1.5" }}>
+          <li>Pelo menos uma letra minúscula</li>
+          <li>Pelo menos uma letra maiúscula</li>
+          <li>Pelo menos um número</li>
+          <li>No mínimo 8 caracteres</li>
+        </ul>
+      </React.Fragment>
     );
 
     return (
       <>
-        <div className="col-12 bg-blue d-flex flex-wrap align-items-center justify-content-center" style={{height:'40vh'}}>
+        <div
+          className="col-12 bg-blue d-flex flex-wrap align-items-center justify-content-center"
+          style={{ height: "30rem" }}
+        >
           <div className="col-12 col-md-6 px-4">
             <div className="col-12 text-white py-4">
               <p>Usuario</p>
@@ -63,7 +66,7 @@ class EditarUsuario extends React.Component {
                 value={this.state.senha}
                 onChange={(e) => this.setState({ senha: e.target.value })}
                 feedback={true}
-                header={header} 
+                header={header}
                 footer={footer}
                 weakLabel="Fraca"
                 mediumLabel="Media"
