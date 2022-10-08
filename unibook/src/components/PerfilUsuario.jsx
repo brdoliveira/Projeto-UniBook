@@ -8,6 +8,7 @@ import { FormatService } from "../app/service/formatService";
 
 import "../templates/styles/styles-perfil.css";
 import AlterarSenha from "./AlterarSenha";
+import ComponenteVazioHome from "./ComponenteVazioHome";
 
 class PerfilUsuario extends React.Component {
   state = {
@@ -101,6 +102,9 @@ class PerfilUsuario extends React.Component {
         <div className="div-perfil-items py-2 col-12">
           <div className="w-100 col-12 border-dark border-3 border-bottom">
             <h2 className="text-dark">Historico de Compras</h2>
+          </div>
+          <div className="col-12 d-flex flex-wrap py-4">
+            <ComponenteVazioHome/>
           </div>
         </div>
       </div>
