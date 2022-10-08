@@ -5,6 +5,7 @@ import EnviarMensagem from "./EnviarMensagem";
 
 import { Rating } from "primereact/rating";
 import { ScrollPanel } from "primereact/scrollpanel";
+import ComponenteVazioHome from "./ComponenteVazioHome";
 
 function PerfilVendedor() {
   return (
@@ -55,6 +56,9 @@ function PerfilVendedor() {
       <div className="div-perfil-items py-2 col-12">
         <div className="w-100 col-12 border-dark border-3 border-bottom">
           <h2 className="text-dark">Produtos</h2>
+        </div>
+        <div className="col-12 d-flex flex-wrap py-4">
+          <ComponenteVazioHome/>
         </div>
       </div>
     </div>
