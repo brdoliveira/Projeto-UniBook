@@ -11,9 +11,24 @@ export default function CadastroUsuario(props) {
   const [usuarioCadastro, setUsuarioCadastro] = useState(
     props.usuario
   );
+  const [dataNascimento, setDataNascimento] = useState(props.usuario.dataNascimento);
+  const [cpfInserido, setCpf] = useState(props.usuario.cpf);
+  const [sexo, setSexo] = useState(props.usuario.sexo);
 
   function onTriggerUsuarioCadastro() {
     props.parentCallback(usuarioCadastro);
+  }
+
+  function onTrigerUsuarioCadastroDataNascimento(){
+    props.parentCallback({dataNascimento: dataNascimento})
+  }
+
+  function onTrigerUsuarioCpf(){
+    props.parentCallback({ cpf: cpfInserido} )
+  }
+
+  function onTrigerUsuarioCadastroSexo(){
+    props.parentCallback({sexo: sexo})
   }
 
   const header = <h6>Insire sua senha</h6>;
@@ -104,11 +119,12 @@ export default function CadastroUsuario(props) {
             <Calendar
               dateFormat="dd/mm/yy"
               className="col-12 border border-0 rounded-pill py-0"
-              value={usuarioCadastro.dataNascimento || ''}
+              value={dataNascimento}
               defaultValue={Date()}
               onChange={(e) => {
+                setDataNascimento(e.target.value);
                 setUsuarioCadastro({ dataNascimento: e.target.value });
-                onTriggerUsuarioCadastro();
+                onTrigerUsuarioCadastroDataNascimento();
               }}
             ></Calendar>
           </div>
@@ -121,10 +137,11 @@ export default function CadastroUsuario(props) {
                   name="sexo"
                   value="FEMININO"
                   onChange={(e) => {
+                    setSexo(e.target.value)
                     setUsuarioCadastro({ sexo: e.target.value });
-                    onTriggerUsuarioCadastro();
+                    onTrigerUsuarioCadastroSexo();
                   }}
-                  checked={usuarioCadastro.sexo !== "MASCULINO"}
+                  checked={sexo === "FEMININO"}
                 />
                 <label htmlFor="sexo" className="px-2">
                   Feminino
@@ -136,10 +153,11 @@ export default function CadastroUsuario(props) {
                   name="sexo"
                   value="MASCULINO"
                   onChange={(e) => {
+                    setSexo(e.target.value)
                     setUsuarioCadastro({ sexo: e.target.value });
-                    onTriggerUsuarioCadastro();
+                    onTrigerUsuarioCadastroSexo();
                   }}
-                  checked={usuarioCadastro.sexo === "MASCULINO"}
+                  checked={sexo === "MASCULINO"}
                 />
                 <label htmlFor="sexo" className="px-3">
                   Masculino
@@ -152,10 +170,11 @@ export default function CadastroUsuario(props) {
             <InputMask
               className="col-12 border border-0 rounded-pill"
               mask="999.999.999-99"
-              value={usuarioCadastro.cpf}
+              value={cpfInserido}
               onChange={(e) => {
+                setCpf(e.target.value)
                 setUsuarioCadastro({ cpf: e.target.value });
-                onTriggerUsuarioCadastro();
+                onTrigerUsuarioCpf();
               }}
             ></InputMask>
           </div>
