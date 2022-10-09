@@ -18,7 +18,10 @@ import "../templates/styles/styles-cadastro.css";
 export default function AdicionarProduto(props) {
   const [livroInformacoes, setLivroInformacoes] = useState(props.livro);
   const [fotoEscolhida, setFotoEscolhida] = useState(props.foto);
-
+  const [dataLancamento, setDataLancamento] = useState(props.livro.dataLanc);
+  const [estadoUso, setEstadoUso] = useState(props.livro.estado);
+  const [precoLivro, setPrecoLivro] = useState(props.livro.valor);
+  const [quantidade, setQuantidade] = useState(props.livro.quantidade);
   var dataAtual = new Date();
   const anoAtual = dataAtual.getFullYear();
 
@@ -53,6 +56,26 @@ export default function AdicionarProduto(props) {
     props.parentCallbackFoto(fotoEscolhida);
   }
 
+  function onTriggerProdutoLancamento() {
+    props.parentCallback({ dataLanc: dataLancamento });
+    props.parentCallbackFoto(fotoEscolhida);
+  }
+
+  function onTriggerProdutoEstado() {
+    props.parentCallback({ estado: estadoUso });
+    props.parentCallbackFoto(fotoEscolhida);
+  }
+
+  function onTriggerProdutoPreco() {
+    props.parentCallback({ valor: precoLivro });
+    props.parentCallbackFoto(fotoEscolhida);
+  }
+
+  function onTriggerProdutoQuantidade() {
+    props.parentCallback({ quantidade: quantidade });
+    props.parentCallbackFoto(fotoEscolhida);
+  }
+
   const estados = [
     { name: "Perfeito", code: "PERFEITO" },
     { name: "Otimo", code: "OTIMO" },
@@ -65,14 +88,14 @@ export default function AdicionarProduto(props) {
     <>
       <div
         className="col-12 bg-blue d-flex flex-wrap align-items-center justify-content-center rounded"
-        style={{ height: "30rem" }}
+        style={{ height: "40rem" }}
       >
         <h1 className="col-12 text-center text-white py-1">
           Cadastro - Produto
         </h1>
         <div className="col-12 col-md-4 px-4  d-flex flex-wrap align-items-center justify-content-center">
           <div
-            className="col-12 bg-white d-flex flex-wrap align-items-center justify-content-center"
+            className="col-12 bg-white d-flex flex-wrap align-items-center justify-content-center rounded"
             style={{ height: "35vh", width: "60%" }}
           >
             <img
@@ -148,10 +171,11 @@ export default function AdicionarProduto(props) {
             <div className="col-6 text-white py-4 ps-1">
               <p>Preço</p>
               <InputNumber
-                value={livroInformacoes.valor}
+                value={precoLivro}
                 onChange={(e) => {
+                  setPrecoLivro(e.value);
                   setLivroInformacoes({ valor: e.value });
-                  onTriggerProduto();
+                  onTriggerProdutoPreco();
                 }}
                 className="col-12 border border-0 rounded-pill"
                 type="text"
@@ -198,10 +222,11 @@ export default function AdicionarProduto(props) {
               <Dropdown
                 optionLabel="name"
                 options={estados}
-                value={livroInformacoes.estado}
+                value={estadoUso}
                 onChange={(e) => {
+                  setEstadoUso(e.value);
                   setLivroInformacoes({ estado: e.value });
-                  onTriggerProduto();
+                  onTriggerProdutoEstado();
                 }}
                 className="col-12 border border-0 rounded-pill"
                 type="text"
@@ -211,10 +236,11 @@ export default function AdicionarProduto(props) {
             <div className="col-6 text-white py-4 ps-2">
               <p>Quantidade</p>
               <InputNumber
-                value={livroInformacoes.quantidade}
+                value={quantidade}
                 onChange={(e) => {
+                  setQuantidade(e.value);
                   setLivroInformacoes({ quantidade: e.value });
-                  onTriggerProduto();
+                  onTriggerProdutoQuantidade();
                 }}
                 className="col-12 border border-0 rounded-pill"
                 type="text"
@@ -226,10 +252,11 @@ export default function AdicionarProduto(props) {
             <div className="col-6 text-white py-4 pe-2">
               <p>Ano de Lancamento</p>
               <InputNumber
-                value={livroInformacoes.dataLanc}
+                value={dataLancamento}
                 onChange={(e) => {
+                  setDataLancamento(e.value);
                   setLivroInformacoes({ dataLanc: e.value });
-                  onTriggerProduto();
+                  onTriggerProdutoLancamento();
                 }}
                 className="col-12 border border-0 rounded-pill"
                 type="text"
