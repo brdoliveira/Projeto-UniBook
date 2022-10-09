@@ -5,6 +5,7 @@ import { InputMask } from "primereact/inputmask";
 import { Button } from "primereact/button";
 
 import EnderecoService from "../app/service/enderecoService";
+import { mensagemErro } from "./Toastr";
 
 export default function CadastroEndereco(props){
   const [enderecoCadastro, setEnderecoCadastro] = useState(
@@ -15,8 +16,14 @@ export default function CadastroEndereco(props){
     props.enderecoPesquisa
   )
 
+  const [cep , setCep] = useState(props.endereco.cep);
+
   function onTriggerEnderecoCadastro() {
     props.parentCallback(enderecoCadastro);
+  }
+
+  function onTriggerEnderecoCadastroCep() {
+    props.parentCallback({ cep : cep });
   }
 
   const consultarCEP = async (cep) => {
@@ -24,7 +31,7 @@ export default function CadastroEndereco(props){
     let dadosCEP = await enderecoService.consultarCEP(cep.replace(/-/,"")).then()
 
     if(!dadosCEP.success || dadosCEP.dados.erro === "true" ){
-      console.log("ERROR!")
+      mensagemErro("CEP não encontrado!")
     }else{
       var setDadosCEP = {
         cidade : dadosCEP.dados.localidade,
@@ -53,13 +60,14 @@ export default function CadastroEndereco(props){
                 <InputMask
                   className="col-12 border border-0 rounded-pill rounded-end"
                   mask="99999-999"
-                  value={enderecoCadastro.cep}
+                  value={cep}
                   onChange={(e) => {
+                    setCep(e.target.value);
                     setEnderecoCadastro({ cep: e.target.value });
-                    onTriggerEnderecoCadastro();
+                    onTriggerEnderecoCadastroCep();
                   }}
                 />
-                <Button icon="pi pi-search" className="rounded-start rounded-pill" onClick={() => {consultarCEP(enderecoCadastro.cep)}}/>
+                <Button icon="pi pi-search" className="rounded-start rounded-pill" onClick={() => {consultarCEP(cep)}}/>
               </div>
             </div>
             <div className="col-12 text-white py-4">
