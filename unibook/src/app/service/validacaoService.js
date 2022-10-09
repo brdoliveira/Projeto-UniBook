@@ -2,7 +2,7 @@
 class ValidacaoService{
 
     validarCampo(valor){
-        return !valor ? false : true 
+        return valor ? false : true 
     }
 
     validarData(data){
