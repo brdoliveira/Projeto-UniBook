@@ -12,13 +12,13 @@ class AdministradorAnalytics extends React.Component {
     return (
       <>
         <div className="col-12 text-center text-dark pt-5">
-          <h1>Analytics Report</h1>
+          <h1>Relatórios e Métricas</h1>
         </div>
         <div className="col-12 py-4">
           <DadosVisitas/>
         </div>
         <div className="col-12 text-dark">
-          <h2>Quantidade de Usuários x Cadastros</h2>
+          <h2>Quantidade de Usuários Ativos x Inativos</h2>
         </div>
         <div className="col-12 py-4">
           <GraficoBarra/>
