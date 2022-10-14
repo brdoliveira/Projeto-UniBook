@@ -39,7 +39,7 @@ class Admnistrador extends React.Component {
           </div>
           <div className="col-6 d-flex align-items-center justify-content-center h-100 px-2">
             <Button
-              label="Analitycs"
+              label="Relatórios e Métricas"
               onClick={() => {
                 changePage(1);
               }}
