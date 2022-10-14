@@ -29,11 +29,11 @@ function PerfilAnalitycs() {
   };
 
   return (
-    <div className="col-12 d-flex flex-wrap h-50">
+    <div className="col-12 d-flex flex-wrap" style={{height : '60vh'}}>
       <div className="col-md-12 col-lg-4 d-flex flex-wrap align-items-center justify-content-start bg-orange div-perfil p-4 h-100">
         <div className="col-12 bg-white p-3 rounded h-100">
           <h2 className="d-flex align-items-center">
-            Volume total de vendas
+            Volume de vendas
             <Button
               icon="pi pi-info"
               className="ms-2 p-button-rounded p-button-secondary p-button-outlined"
