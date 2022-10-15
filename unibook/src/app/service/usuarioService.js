@@ -35,7 +35,7 @@ class UsuarioService extends ApiService {
     }
 
     if (
-      this.validacao.validarCampo(usuarioInserido.senha) ||
+      this.validacao.validarCampo(usuarioInserido.senha) &&
       this.validacao.validarCampo(usuarioInserido.confirmarSenha)
     ) {
       erros.push("Senha inválida");
