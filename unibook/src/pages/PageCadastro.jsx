@@ -89,7 +89,7 @@ class PageCadastro extends React.Component {
       "cep": this.state.usuario.cep.replace(/-/,""),
       "numeroResidencia": this.state.usuario.numeroResidencia + " " +  this.state.usuario.complemento ,
       "login": this.state.usuario.login,
-      "foto": [ this.state.usuario.foto ]
+      "foto": this.state.usuario.foto
     }
 
     try{
