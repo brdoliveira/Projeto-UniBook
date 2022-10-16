@@ -75,6 +75,15 @@ class UsuarioService extends ApiService {
   filaTopUsuarios() {
     return this.get("/listar/top-usuarios-logados");
   }
+
+  alterarSenha(id,senhaAntiga,senhaNova){
+    var alterarSenhaObjeto = {
+      idUsuario : id,
+      senhaAntiga : senhaAntiga,
+      senhaNova : senhaNova
+    }
+    return this.patchObject(`/alterar-senha`,alterarSenhaObjeto)
+  }
 }
 
 export default UsuarioService;
