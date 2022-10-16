@@ -78,8 +78,6 @@ class PageCadastro extends React.Component {
   }
   
   cadastrarUsuario = () => {
-    console.log(this.state.usuario.foto)
-
     var usuarioCadastro = {
       "nome": this.state.usuario.nome,
       "dataNascimento": Date.parse(this.state.usuario.dataNascimento),
