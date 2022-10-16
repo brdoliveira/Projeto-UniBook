@@ -22,6 +22,8 @@ export default function AdicionarProduto(props) {
   const [estadoUso, setEstadoUso] = useState(props.livro.estado);
   const [precoLivro, setPrecoLivro] = useState(props.livro.valor);
   const [quantidade, setQuantidade] = useState(props.livro.quantidade);
+  const [idiomaInserido, setIdiomaInserido] = useState(props.livro.idioma);
+
   var dataAtual = new Date();
   const anoAtual = dataAtual.getFullYear();
 
@@ -66,6 +68,11 @@ export default function AdicionarProduto(props) {
     props.parentCallbackFoto(fotoEscolhida);
   }
 
+  function onTriggerProdutoIdioma() {
+    props.parentCallback({ idioma: idiomaInserido });
+    props.parentCallbackFoto(fotoEscolhida);
+  }
+
   function onTriggerProdutoPreco() {
     props.parentCallback({ valor: precoLivro });
     props.parentCallbackFoto(fotoEscolhida);
@@ -82,6 +89,19 @@ export default function AdicionarProduto(props) {
     { name: "Bom", code: "BOM" },
     { name: "Mediano", code: "MEDIANO" },
     { name: "Muito Usado", code: "MUITO_USADO" },
+  ];
+
+  const idiomas = [
+    { name: "Inglês", code: "INGLES" },
+    { name: "Chinês Mandarim", code: "CHINES_MANDARIM" },
+    { name: "Hindi", code: "HINDI" },
+    { name: "Espanhol", code: "ESPANHOL" },
+    { name: "Francês", code: "FRANCES" },
+    { name: "Árabe", code: "ARABE" },
+    { name: "Bengali", code: "BENGALI" },
+    { name: "Russo", code: "RUSSO" },
+    { name: "Português", code: "PORTUGUES" },
+    { name: "Indonésio", code: "INDONESIO" },
   ];
 
   return (
@@ -269,15 +289,16 @@ export default function AdicionarProduto(props) {
             </div>
             <div className="col-6 text-white py-4 ps-2">
               <p>Idioma</p>
-              <InputText
-                value={livroInformacoes.idioma}
+              <Dropdown
+              optionLabel="name"
+                value={idiomaInserido}
+                options={idiomas}
                 onChange={(e) => {
-                  setLivroInformacoes({ idioma: e.target.value });
+                  setIdiomaInserido(e.target.value);
+                  onTriggerProdutoIdioma(e.target.value);
                   onTriggerProduto();
                 }}
                 className="col-12 border border-0 rounded-pill"
-                type="text"
-                placeholder="Idioma do livro..."
               />
             </div>
           </div>
