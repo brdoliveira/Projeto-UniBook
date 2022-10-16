@@ -28,7 +28,7 @@ class PageAdicionarProduto extends React.Component {
         editora: "",
         autor: "",
         isbn: "",
-        idioma: "",
+        idioma: {name:'Português',code:'PORTUGUES'},
         quantidade: "",
         estado: {name: 'Perfeito', code: 'PERFEITO'},
         // etiquetas: [],
