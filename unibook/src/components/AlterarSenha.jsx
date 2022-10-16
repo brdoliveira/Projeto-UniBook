@@ -3,14 +3,16 @@ import { Dialog } from "primereact/dialog";
 import { Button } from "primereact/button";
 import { Password } from "primereact/password";
 import { Divider } from "primereact/divider";
-import AdministradorService from "../app/service/administradorService";
 import AuthService from "../app/service/authService";
+import { mensagemErro, mensagemSucesso } from "./Toastr";
+import UsuarioService from "../app/service/usuarioService";
 
-const service = new AdministradorService();
+const service = new UsuarioService();
 
 const AlterarSenha = () => {
   const [displayBasic, setDisplayBasic] = useState(false);
-  const [inputSenha, setInputSenha] = useState();
+  const [inputSenhaAntiga, setInputSenhaAntiga] = useState();
+  const [inputSenhaNova, setInputSenhaNova] = useState();
   const [setPosition] = useState("center");
 
   const dialogFuncMap = {
@@ -45,17 +47,24 @@ const AlterarSenha = () => {
   );
 
   const changePassword = () => {
-    var log = AuthService.obterUsuarioAutenticado()
-    var idUser = log.id
+    var log = AuthService.obterUsuarioAutenticado();
+    console.log("log = ", log);
+    var idUser = log.id;
+    var emailUser = log.email;
 
-    service.changePassword(idUser,inputSenha).then((response) => {
-        AuthService.removerUsuarioAutenticado()
-        window.location.href = "/login"
+    service
+      .alterarSenha(idUser, inputSenhaNova, inputSenhaAntiga)
+      .then((response) => {
+        service.logoff(emailUser, inputSenhaAntiga);
+        mensagemSucesso("Senha alterada com sucesso");
+        AuthService.removerUsuarioAutenticado();
+        window.location.href = "/login";
       })
       .catch((erro) => {
+        console.log("ERROR = ", erro);
+        mensagemErro(erro.response.data.message);
       });
-  
-  } 
+  };
 
   return (
     <>
@@ -69,14 +78,13 @@ const AlterarSenha = () => {
       <Dialog
         header="Alterar Senha"
         visible={displayBasic}
-        style={{ width: "25vw" , height: "35vh" }}
+        style={{ width: "25vw", height: "35vh" }}
         onHide={() => onHide("displayBasic")}
       >
-        <label className="ps-1 py-2 fw-bold">Nova Senha</label>
         <Password
           className="w-100"
-          onChange={(e) => setInputSenha(e.target.value)}
-          value={inputSenha}
+          onChange={(e) => setInputSenhaNova(e.target.value)}
+          value={inputSenhaNova}
           feedback={true}
           header={header}
           footer={footer}
@@ -85,8 +93,22 @@ const AlterarSenha = () => {
           strongLabel="Forte"
           toggleMask
         ></Password>{" "}
+        <label className="ps-1 py-2 fw-bold">Senha Nova</label>
+        <Password
+          className="w-100"
+          onChange={(e) => setInputSenhaAntiga(e.target.value)}
+          value={inputSenhaAntiga}
+          feedback={false}
+          toggleMask
+        ></Password>{" "}
+        <label className="ps-1 py-2 fw-bold">Senha Antiga</label>
         <div className="col-12 d-flex justify-content-end pt-4 mt-4">
-            <Button label="Alterar" icon="pi pi-pencil" iconPos="right" onClick={changePassword}/>
+          <Button
+            label="Alterar"
+            icon="pi pi-pencil"
+            iconPos="right"
+            onClick={changePassword}
+          />
         </div>
       </Dialog>
     </>
