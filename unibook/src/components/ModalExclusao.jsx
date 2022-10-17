@@ -18,7 +18,7 @@ export default function ModalExclusao(props){
             <Button 
                 onClick={confirm}             
                 icon="pi pi-trash"
-                className="p-button-rounded bg-orange border border-3 border-dark text-dark"
+                className="p-button-rounded bg-orange border border-3 border-dark text-dark hover-orange"
                 aria-label="Trash"
             />
             <ConfirmDialog />
