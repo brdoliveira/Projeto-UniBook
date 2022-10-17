@@ -23,6 +23,7 @@ export default function AdicionarProduto(props) {
   const [precoLivro, setPrecoLivro] = useState(props.livro.valor);
   const [quantidade, setQuantidade] = useState(props.livro.quantidade);
   const [idiomaInserido, setIdiomaInserido] = useState(props.livro.idioma);
+  const [editoraInserida,setEditoraInserida] = useState(props.livro.editora);
 
   var dataAtual = new Date();
   const anoAtual = dataAtual.getFullYear();
@@ -83,6 +84,11 @@ export default function AdicionarProduto(props) {
     props.parentCallbackFoto(fotoEscolhida);
   }
 
+  function onTriggerProdutoEditora(){
+    props.parentCallback({ editora : editoraInserida})
+    props.parentCallbackFoto(fotoEscolhida)
+  }
+
   const estados = [
     { name: "Perfeito", code: "PERFEITO" },
     { name: "Otimo", code: "OTIMO" },
@@ -103,6 +109,16 @@ export default function AdicionarProduto(props) {
     { name: "Português", code: "PORTUGUES" },
     { name: "Indonésio", code: "INDONESIO" },
   ];
+
+  const editoras = [
+    {name: "Rocco",code:"ROCCO"},
+    {name: "Companhia das letras",code:"COMPANHIA_DAS_LETRAS"},
+    {name: "Editora Intriseca",code:"EDITORA_INTRINSECA"},
+    {name: "Globo Livroa",code:"GLOBO_LIVROS"},
+    {name: "DarkSide",code:"DARKSIDE"},
+    {name: "Grupo Editorial Record",code:"GRUPO_EDITORIAL_RECORD"},
+    {name: "Suma",code:"SUMA"}
+  ]
 
   return (
     <>
@@ -224,11 +240,14 @@ export default function AdicionarProduto(props) {
             </div>
             <div className="col-6 text-white py-4 ps-2">
               <p>Editora</p>
-              <InputText
-                value={livroInformacoes.editora}
+              <Dropdown
+                optionLabel="name"
+                options={editoras}
+                value={editoraInserida}
                 onChange={(e) => {
+                  setEditoraInserida(e.target.value);
                   setLivroInformacoes({ editora: e.target.value });
-                  onTriggerProduto();
+                  onTriggerProdutoEditora();
                 }}
                 className="col-12 border border-0 rounded-pill"
                 type="text"
