@@ -102,7 +102,7 @@ class PageCadastro extends React.Component {
 
     this.service.salvarUsuario(usuarioCadastro).then((response) => {
       mensagemSucesso("Usuário cadastrado")
-      setInterval(1000000)
+      setTimeout(() => {window.location.href = "/login"}, 3000);
       window.location.href = "/login"
     })
     .catch((erro) => {
