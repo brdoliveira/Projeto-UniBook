@@ -12,4 +12,8 @@ export class FormatService {
     var dataNow = new Date();
     return dataNow.getFullYear() - dataCalc.getFullYear();
   }
+
+  static formatCapitalize(str){
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
 }
