@@ -15,18 +15,23 @@ class PageHome extends React.Component {
     super(props);
     this.service = new ProdutosAnunciadosService();
     this.state = {
-      livros: "",
+      livros: null,
     };
   }
 
   async componentDidMount() {
-    let response = await this.service.listarTodos();
-
-    this.setState({
-      livros: response.data.map((livro) => {
-        return <CardProduto key={livro.id} livro={livro} />;
-      }),
-    });
+    await this.service.listarTodos().then(
+      (response) => {
+      this.setState({
+        livros: response.data.map((livro) => {
+          return <CardProduto key={livro.id} livro={livro} />;
+        }),
+      });
+    }).catch(
+      this.setState({
+        livros : <ComponenteVazioHome/>
+      })
+    )
   }
 
   render() {
@@ -43,11 +48,6 @@ class PageHome extends React.Component {
             </h2>
             <div className="row mb-md-2 py-3 d-flex flex-wrap align-items-center justify-content-center justify-content-md-start">
               {this.state.livros}
-            </div>
-          </div>
-          <div className="col-12 d-flex align-items-center justify-content-center" hidden={this.state.livros}>
-            <div className="col-10 py-3 d-flex flex-wrap align-items-center justify-content-center">
-              <ComponenteVazioHome/>
             </div>
           </div>
         </div>
