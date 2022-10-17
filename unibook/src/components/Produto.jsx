@@ -1,14 +1,31 @@
 import React from "react";
-
-import { Link } from "react-router-dom";
-
 import { Divider } from "primereact/divider";
 import { Rating } from "primereact/rating";
 import { Button } from "primereact/button";
 import { Chip } from "primereact/chip";
 
+import AuthService from "../app/service/authService";
+import CarrinhosService from "../app/service/carrinhosService";
+import { mensagemErro, mensagemSucesso } from "./Toastr";
+const service = new CarrinhosService();
+
 export default function Produto(props) {
-  const livro = props.livro
+  const livro = props.livro;
+  let {id} = AuthService.obterUsuarioAutenticado();
+
+  const comprarProduto = async () => {
+    let idLivro = livro.id;
+    let quantidade = 1; 
+
+    service.adicionarProduto(id,idLivro,quantidade).then(
+      () => {
+        mensagemSucesso("Produto adicionado ao carrinho");
+      }
+    ).catch((erro) => {
+      mensagemErro(erro.response.data.message);
+      setTimeout(() => {window.location.href = "/"}, 5000);
+    })
+  };
 
   return (
     <div className="col-12 d-flex flex-wrap">
@@ -26,11 +43,17 @@ export default function Produto(props) {
         </div>
         <div className="col-12 py-2">
           <h3>Etiquetas</h3>
-          <Chip label={livro.estadoUso} className="mr-2 mb-2 custom-chip me-1" />
-          <Chip label="Português" className="mr-2 mb-2 custom-chip me-1" />
           <Chip
-            label="Editora Mundial"
-            className="mr-2 mb-2 custom-chip me-1"
+            label={livro.estadoUso ? livro.estadoUso.toLowerCase() : "Perfeito"}
+            className="mr-2 mb-2 custom-chip me-1 text-capitalize"
+          />
+          <Chip
+            label={livro.idioma ? livro.idioma.toLowerCase() : "Português"}
+            className="mr-2 mb-2 custom-chip me-1 text-capitalize"
+          />
+          <Chip
+            label={livro.editora ? livro.editora.toLowerCase() : "Editora"}
+            className="mr-2 mb-2 custom-chip me-1 text-capitalize"
           />
         </div>
         <div className="col-12 py-2">
@@ -50,18 +73,19 @@ export default function Produto(props) {
           </p>
         </div>
         <div className="col-12 d-flex justify-content-end align-items-center">
+          {/* Botão Chat */}
           <Button
             icon="pi pi-comments"
             className="p-button-rounded me-1"
             aria-label="Chat"
-          /> 
-          {/* Botão Chat */}
-          <Link to="pagamento" className="text-decoration-none">
-            <Button
-              className="bg-orange rounded-pill border border-dark text-dark border-2 fw-bold px-4 button-perfil ms-1"
-              label="Comprar"
-            />
-          </Link>
+          />
+          <Button
+            className="bg-orange rounded-pill border border-dark text-dark border-2 fw-bold px-4 button-perfil ms-1"
+            label="Comprar"
+            onClick={() => {
+              comprarProduto();
+            }}
+          />
         </div>
       </div>
       <div className="div-perfil-items py-4 col-12">
