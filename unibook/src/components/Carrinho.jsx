@@ -3,11 +3,20 @@ import React, { useState, useEffect } from "react";
 import { Sidebar } from "primereact/sidebar";
 import { Button } from "primereact/button";
 
-import ProdutoCarrinho  from "./ProdutoCarrinho";
+import ProdutoCarrinho from "./ProdutoCarrinho";
 import ModalExclusao from "./ModalExclusao";
+import CarrinhosService from "../app/service/carrinhosService";
+import AuthService from "../app/service/authService";
+import { mensagemErro, mensagemSucesso } from "./Toastr";
+
+const service = new CarrinhosService();
 
 function Carrinho(props) {
   const [visibleCarrinho, setVisibleCarrinho] = useState(false);
+  const [produtosCarrinho, setProdutosCarrinho] = useState("");
+  const [somaCarrinho,setSomaCarrinho]  = useState(0);
+
+  // listaCarrinho();
 
   useEffect(() => {
     setVisibleCarrinho(props.showCarrinho);
@@ -15,6 +24,40 @@ function Carrinho(props) {
 
   function onTriggerCarrinho() {
     props.parentCallbackCarrinho(false);
+  }
+
+  async function listaCarrinho() {
+    let { id } = AuthService.obterUsuarioAutenticado();
+
+    await service.listarProdutos(id).then(
+      (response) => {
+        setProdutosCarrinho(
+          response.data.map((livro) => {
+            setSomaCarrinho(somaCarrinho + livro.valor ? livro.valor : 0);
+            return <ProdutoCarrinho key={livro.id} informacoes={livro} />
+
+          }),
+        );
+
+      }).catch(
+        console.log("console !!!")
+
+    );
+  }
+
+  async function comprarProdutosCarrinho(){
+    let { id } = AuthService.obterUsuarioAutenticado();
+
+    await service.realizarComprar(id).then(
+      (response) => {
+        mensagemSucesso(response.response.data.message)
+
+      }
+    ).catch(
+      (erro) => { mensagemErro(erro.response.data.message)}
+
+    )
+
   }
 
   return (
@@ -32,18 +75,22 @@ function Carrinho(props) {
           <span className="fw-bold text-white display-5">Carrinho</span>
         </div>
         <div className="col-2 d-flex justify-content-end align-items-center">
-          <ModalExclusao header="Confirmação exclusão" message="Tem certeza que deseja limpar a lista de carrinho ?" />
+          <ModalExclusao
+            header="Confirmação exclusão"
+            message="Tem certeza que deseja limpar a lista de carrinho ?"
+          />
         </div>
       </div>
       <div className="p-sidebar-content" style={{ height: "80vh" }}>
-        <ProdutoCarrinho/>
+        {produtosCarrinho}
       </div>
       <div className="p-sidebar-bottom d-flex justify-content-end align-items-center">
-        <span className="text-white fw-bold px-2"> R$ 00,00</span>
+        <span className="text-white fw-bold px-2"> R$ {somaCarrinho}</span>
         <Button
-          className="p-button-rounded bg-orange border border-3 border-dark text-dark"
+          className="p-button-rounded bg-orange border border-3 border-dark text-dark hover-orange"
           aria-label="Comprar"
           label="Comprar"
+          onClick={() => {comprarProdutosCarrinho()}}
         />
       </div>
     </Sidebar>
