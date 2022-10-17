@@ -16,10 +16,10 @@ class PageProduto extends React.Component {
   async componentDidMount() {
     let { id } = this.props.params;
     if(id){
-      var livro = await JSON.parse(localStorage.getItem("_livro_escolhido"))
-      if(!livro){
-        window.location.href = "/"
-      }
+      await (await this.service.pesquisarProdutos(id)).data.map((livro) => {
+        this.setState(livro)
+        return null;
+      })
     }else{
       window.location.href = "/"
     }
