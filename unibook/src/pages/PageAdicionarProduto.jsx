@@ -31,9 +31,9 @@ class PageAdicionarProduto extends React.Component {
         idioma: {name:'Português',code:'PORTUGUES'},
         quantidade: "",
         estado: {name: 'Perfeito', code: 'PERFEITO'},
+        foto: iconAddImage
         // etiquetas: [],
       },
-      foto: iconAddImage
     };
   }
 
@@ -63,7 +63,7 @@ class PageAdicionarProduto extends React.Component {
       "descricao": this.state.livro.descricao,
       "valor": this.state.livro.valor,
       "idioma": this.state.livro.idioma.code
-      // ,"foto": this.state.foto
+      // ,"foto": this.state.livro.foto
     }
     
     try{
@@ -93,9 +93,7 @@ class PageAdicionarProduto extends React.Component {
   };
 
   handleCallbackFoto = (childData) => {
-    this.setState({
-      foto: {...childData },
-    });
+    this.setState({...this.state.livro, ...{ foto : childData}});
   };
 
   render() {
@@ -146,7 +144,7 @@ class PageAdicionarProduto extends React.Component {
                 <AdicionarProduto
                   page={this.state.buttonRight}
                   livro={this.state.livro}
-                  foto={this.state.foto}
+                  foto={this.state.livro.foto}
                   parentCallback={this.handleCallback}
                   parentCallbackFoto={this.handleCallbackFoto}
                 />
