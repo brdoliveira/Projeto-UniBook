@@ -6,6 +6,11 @@ import { Button } from "primereact/button";
 import ProdutoFavorito from "./ProdutoFavorito";
 import ModalExclusao from "./ModalExclusao";
 
+import AuthService from "../app/service/authService";
+import FavoritosService from "../app/service/favoritosService";
+
+const service = new FavoritosService();
+
 function Favoritos(props) {
   const [visibleFavoritos, setVisibleFavoritos] = useState(props.showFavoritos);
 
@@ -15,6 +20,24 @@ function Favoritos(props) {
   
   function onTriggerFavoritos() {
     props.parentCallbackFavoritos(false);
+  }
+
+  async function listarFavoritos() {
+    let { id } = AuthService.obterUsuarioAutenticado();
+
+    await service.listarProdutos(id).then(
+      (response) => {
+        setVisibleFavoritos(
+          response.data.map((livro) => {
+            return <ProdutoFavorito key={livro.id} informacoes={livro} />
+
+          }),
+        );
+
+      }).catch(
+        console.log("console !!!")
+
+    );
   }
 
   return (
@@ -36,7 +59,7 @@ function Favoritos(props) {
         </div>
       </div>
       <div className="p-sidebar-content" style={{ height: "80vh" }}>
-        <ProdutoFavorito/>
+        {visibleFavoritos}
       </div>
       <div className="p-sidebar-bottom d-flex justify-content-end">
         <Button
