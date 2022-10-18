@@ -3,6 +3,7 @@ import React from "react";
 import FeedbackMessage from "./FeedbackMessage";
 import EnviarMensagem from "./EnviarMensagem";
 import ComponenteVazioHome from "./ComponenteVazioHome";
+import CardProduto from "./CardProduto";
 
 import { FormatService } from "../app/service/formatService";
 import AuthService from "../app/service/authService";
@@ -11,8 +12,14 @@ import { Rating } from "primereact/rating";
 import { ScrollPanel } from "primereact/scrollpanel";
 
 import "../templates/styles/styles-perfil.css";
+import ProdutosAnunciadosService from "../app/service/produtosAnunciadosService";
 
 class PerfilVendedor extends React.Component {
+  constructor(){
+    super();
+    this.service = new ProdutosAnunciadosService();
+  }
+
   state = {
     nome: "",
     dataNascimento: "",
@@ -33,11 +40,23 @@ class PerfilVendedor extends React.Component {
 
     var usuario = AuthService.obterUsuarioAutenticado();
     this.setState(usuario);
+
+    this.carregarProdutos(usuario.login);
   }
 
-  carregarProdutos(){
-    var { login } = AuthService.obterUsuarioAutenticado();
-    console.log(login)
+  async carregarProdutos(login){
+    await this.service.listarAnunciosPorVendedor(login).then(
+      (response) => {
+        this.setState({
+          listaProdutosUsuarios: response.data.map((livro) => {
+            return <CardProduto key={livro.id} livro={livro} />;
+          }),
+        });
+      }).catch(
+        this.setState({
+          listaProdutosUsuarios : <ComponenteVazioHome/>
+        })
+      )
   }
 
   render() {
@@ -95,7 +114,7 @@ class PerfilVendedor extends React.Component {
             <h2 className="text-dark">Produtos</h2>
           </div>
           <div className="col-12 d-flex flex-wrap py-4">
-            <ComponenteVazioHome />
+            {this.state.listaProdutosUsuarios}
           </div>
         </div>
       </div>
