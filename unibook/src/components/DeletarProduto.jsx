@@ -1,6 +1,9 @@
 import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
 import { Button } from 'primereact/button';
-import { mensagemErro } from './Toastr';
+import { mensagemErro, mensagemSucesso } from './Toastr';
+import ProdutosAnunciadosService from '../app/service/produtosAnunciadosService';
+
+const service = new ProdutosAnunciadosService();
 
 export default function DeletarProduto(props){
     const confirm = () => {
@@ -14,9 +17,19 @@ export default function DeletarProduto(props){
         });
     }
 
-    const deletarProduto = (id) => {
-        console.log(id)
+    const deletarProduto = async (id) => {
+        await service.deletarProduto(id).then(
+            (response) => {
+              mensagemSucesso(response.response.data.message)
+      
+            }
+          ).catch(
+            (erro) => { mensagemErro("Erro ")}
+      
+          )
+          window.location.reload();
     }
+
 
     return(
         <>
@@ -25,8 +38,9 @@ export default function DeletarProduto(props){
                 icon="pi pi-trash"
                 className="p-button-rounded p-button-danger"
                 aria-label="Trash"
+                key={props.id}
             />
-            <ConfirmDialog />
+            <ConfirmDialog key={props.id} />
         </>
     )
 }
