@@ -3,15 +3,19 @@ import { Button } from "primereact/button";
 
 import FavoritosService from "../app/service/favoritosService";
 import { mensagemErro, mensagemSucesso } from "./Toastr";
+import EditarProduto from "./EditarProduto";
+import DeletarProduto from "./DeletarProduto";
+import { useState } from "react";
 
 const service = new FavoritosService();
 
 function CardProduto(props) {
+  const [isDono] = useState(props.isDono)
   const livro = props.livro;
 
   const header = (
     <div className="col-12">
-      <div className="position-fixed d-flex justify-content-end ms-3 mt-2">
+      <div className="position-absolute d-flex justify-content-end ms-3 mt-2">
         <Button
           icon="pi pi-bookmark"
           className="p-button-rounded p-button-secondary"
@@ -19,7 +23,16 @@ function CardProduto(props) {
           onClick={() => {
             adicionarFavorito(livro.id);
           }}
+          hidden={isDono}
         />
+        <div hidden={!isDono}>
+        <EditarProduto id={props.livro.id}/>
+        <DeletarProduto
+          id={props.livro.id}
+          key={props.livro.id}
+          nome={livro.titulo}
+          />
+          </div>
       </div>
       <img
         alt="Card"
@@ -36,13 +49,14 @@ function CardProduto(props) {
   const adicionarFavorito = async (id) => {
     var usuarioLogado = JSON.parse(localStorage.getItem("_usuario_logado"));
     if (usuarioLogado) {
-      await service.adicionarFavorito(usuarioLogado.id,id).then(
-        (response) => {
-          mensagemSucesso("Produto adicionado aos favoritos")
-        }).catch((erro) => {
-          mensagemErro(erro.response.data.message)
-        }
-      );
+      await service
+        .adicionarFavorito(usuarioLogado.id, id)
+        .then((response) => {
+          mensagemSucesso("Produto adicionado aos favoritos");
+        })
+        .catch((erro) => {
+          mensagemErro(erro.response.data.message);
+        });
     } else {
       mensagemErro("Faça login para adicionar algum livro aos favoritos");
     }
