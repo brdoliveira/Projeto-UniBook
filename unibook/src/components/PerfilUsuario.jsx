@@ -17,9 +17,9 @@ class PerfilUsuario extends React.Component {
     sexo: "",
     cpf: "",
     email: "",
-    endereco : {
-      localidade : ""
-    }
+    endereco: {
+      localidade: "",
+    },
   };
 
   componentDidMount() {
@@ -43,14 +43,15 @@ class PerfilUsuario extends React.Component {
             <img alt="" />
           </div>
           <span className="col-12 text-center text-dark py-2">
-            <span className="fs-3" style={{textTransform: 'capitalize'}}>
+            <span className="fs-3" style={{ textTransform: "capitalize" }}>
               {" "}
               {this.state.nome} ,{" "}
               {FormatService.formatYears(this.state.dataNascimento)} Anos
             </span>
             <br />
             <span>
-              <i className="bi bi-geo-alt-fill"></i> {this.state.endereco.localidade}
+              <i className="bi bi-geo-alt-fill"></i>{" "}
+              {this.state.endereco.localidade}
             </span>
           </span>
         </div>
@@ -71,32 +72,31 @@ class PerfilUsuario extends React.Component {
             </span>
           </div>
           <div className="row row-cols-2">
-
-          <div className="col-12 d-flex flex-wrap">
-            <div className="col-sm-12 col-md-6 text-center py-2 px-3">              
-              <Link to="editar" className="text-decoration-none">
-                 <Button
-                  className="bg-orange rounded-pill border border-dark text-dark border-2 fw-bold px-4 py-3 w-100 w-lg-75 button-perfil"
-                  label="Editar"
-                  icon="pi pi-user-edit"
-                  iconPos="right"
-                  /> 
-              </Link>
-            </div>
-            <div className="col-sm-12 col-md-6 text-center py-2 px-3">
-              <Link to="adicionar-produto" className="text-decoration-none">
-                <Button
-                  className="bg-orange rounded-pill border border-dark text-dark border-2 fw-bold px-4 py-3 w-100 button-perfil"
-                  label="Adicionar Produto"
-                  icon="pi pi-plus"
-                  iconPos="right"
+            <div className="col-12 d-flex flex-wrap">
+              <div className="col-sm-12 col-md-6 text-center py-2 px-3">
+                <Link to="editar" className="text-decoration-none">
+                  <Button
+                    className="bg-orange rounded-pill border border-dark text-dark border-2 fw-bold px-4 py-3 w-100 w-lg-75 button-perfil"
+                    label="Editar"
+                    icon="pi pi-user-edit"
+                    iconPos="right"
                   />
-              </Link>
+                </Link>
+              </div>
+              <div className="col-sm-12 col-md-6 text-center py-2 px-3">
+                <Link to="adicionar-produto" className="text-decoration-none">
+                  <Button
+                    className="bg-orange rounded-pill border border-dark text-dark border-2 fw-bold px-4 py-3 w-100 button-perfil"
+                    label="Adicionar Produto"
+                    icon="pi pi-plus"
+                    iconPos="right"
+                  />
+                </Link>
+              </div>
+              <div className="col-sm-12 col-md-6 text-center py-2 px-3">
+                <AlterarSenha />
+              </div>
             </div>
-            <div className="col-sm-12 col-md-6 text-center py-2 px-3">
-              <AlterarSenha />
-            </div>
-                  </div>
           </div>
         </div>
         <div className="div-perfil-items py-2 col-12">
@@ -104,7 +104,7 @@ class PerfilUsuario extends React.Component {
             <h2 className="text-dark">Historico de Compras</h2>
           </div>
           <div className="col-12 d-flex flex-wrap py-4">
-            <ComponenteVazioHome/>
+            <ComponenteVazioHome />
           </div>
         </div>
       </div>
