@@ -16,10 +16,9 @@ function Carrinho(props) {
   const [produtosCarrinho, setProdutosCarrinho] = useState("");
   const [somaCarrinho,setSomaCarrinho]  = useState(0);
 
-  // listaCarrinho();
-
   useEffect(() => {
     setVisibleCarrinho(props.showCarrinho);
+    listaCarrinho();
   }, [props.showCarrinho]);
 
   function onTriggerCarrinho() {
@@ -39,8 +38,9 @@ function Carrinho(props) {
           }),
         );
 
-      }).catch(
-        console.log("console !!!")
+      }).catch(() => {
+        mensagemErro("Erro ao carregar carrinho");
+      }
 
     );
   }
