@@ -9,15 +9,18 @@ import { Button } from "primereact/button";
 import BookService from "../app/service/bookService";
 import { mensagemErro, mensagemSucesso } from "./Toastr";
 
-export default function EditarProduto(props) {
+export default function EditarProduto() {
   const [displayBasic, setDisplayBasic] = useState(false);
-  const [livroInformacoes, setLivroInformacoes] = useState(props.livro);
-  const [dataLancamento, setDataLancamento] = useState(props.livro.dataLanc);
-  const [estadoUso, setEstadoUso] = useState(props.livro.estado);
-  const [precoLivro, setPrecoLivro] = useState(props.livro.valor);
-  const [quantidade, setQuantidade] = useState(props.livro.quantidade);
-  const [idiomaInserido, setIdiomaInserido] = useState(props.livro.idioma);
-  const [editoraInserida,setEditoraInserida] = useState(props.livro.editora);
+  const [nomeLivro, setNomeLivro] = useState(null); 
+  const [autorLivro, setAutoLivro] = useState(null);
+  const [isbnLivro,setIsbnLivro] = useState(null);
+  const [descricaoLivro, setDescricaoLivro] = useState(null);
+  const [dataLancamento, setDataLancamento] = useState(null);
+  const [estadoUso, setEstadoUso] = useState(null);
+  const [precoLivro, setPrecoLivro] = useState(null);
+  const [quantidade, setQuantidade] = useState(null);
+  const [idiomaInserido, setIdiomaInserido] = useState(null);
+  const [editoraInserida,setEditoraInserida] = useState(null);
   const [setPosition] = useState("center");
 
   var dataAtual = new Date();
@@ -99,12 +102,11 @@ export default function EditarProduto(props) {
               <p>ISBN</p>
               <div className="p-inputgroup">
                 <InputText
-                  value={livroInformacoes.isbn}
+                  value={isbnLivro}
                   onChange={(e) => {
-                    setLivroInformacoes({ isbn: e.target.value });
-                    onTriggerProduto();
+                    setIsbnLivro(e.target.value)
                   }}
-                  className="col-12 border border-0 rounded-pill rounded-end"
+                  className="col-12 border border-1 rounded-pill rounded-end"
                   type="text"
                   placeholder="ISBN do livro..."
                 />
@@ -112,7 +114,7 @@ export default function EditarProduto(props) {
                   icon="pi pi-search"
                   className="rounded-start rounded-pill"
                   onClick={() => {
-                    consultarLivro(livroInformacoes.isbn);
+                    consultarLivro(isbnLivro);
                   }}
                 />
               </div>
@@ -120,12 +122,11 @@ export default function EditarProduto(props) {
             <div className="col-6 text-white py-4 ps-1">
               <p>Nome do Livro</p>
               <InputText
-                value={livroInformacoes.nome}
+                value={nomeLivro}
                 onChange={(e) => {
-                  setLivroInformacoes({ nome: e.target.value });
-                  onTriggerProduto();
+                  setNomeLivro(e.target.value);
                 }}
-                className="col-12 border border-0 rounded-pill"
+                className="col-12 border border-1 rounded-pill"
                 type="text"
                 placeholder="Nome do livro..."
               />
@@ -135,12 +136,11 @@ export default function EditarProduto(props) {
             <div className="col-6 text-white py-4 pe-1">
               <p>Descrição do Livro</p>
               <InputText
-                value={livroInformacoes.descricao}
+                value={descricaoLivro}
                 onChange={(e) => {
-                  setLivroInformacoes({ descricao: e.target.value });
-                  onTriggerProduto();
+                  setDescricaoLivro(e.target.value);
                 }}
-                className="col-12 border border-0 rounded-pill"
+                className="col-12 border border-1 rounded-pill"
                 type="text"
                 placeholder="Descrição do livro..."
               />
@@ -151,8 +151,6 @@ export default function EditarProduto(props) {
                 value={precoLivro}
                 onChange={(e) => {
                   setPrecoLivro(e.value);
-                  setLivroInformacoes({ valor: e.value });
-                  onTriggerProdutoPreco();
                 }}
                 className="col-12 border border-0 rounded-pill"
                 type="text"
@@ -167,12 +165,11 @@ export default function EditarProduto(props) {
             <div className="col-6 text-white py-4 ps-2">
               <p>Autor</p>
               <InputText
-                value={livroInformacoes.autor}
+                value={autorLivro}
                 onChange={(e) => {
-                  setLivroInformacoes({ autor: e.target.value });
-                  onTriggerProduto();
+                  setAutoLivro(e.target.value);
                 }}
-                className="col-12 border border-0 rounded-pill"
+                className="col-12 border border-1 rounded-pill"
                 type="text"
                 placeholder="Autor do livro..."
               />
@@ -185,10 +182,8 @@ export default function EditarProduto(props) {
                 value={editoraInserida}
                 onChange={(e) => {
                   setEditoraInserida(e.target.value);
-                  setLivroInformacoes({ editora: e.target.value });
-                  onTriggerProdutoEditora();
                 }}
-                className="col-12 border border-0 rounded-pill"
+                className="col-12 border border-1 rounded-pill"
                 type="text"
                 placeholder="Editora do livro..."
               />
@@ -203,10 +198,8 @@ export default function EditarProduto(props) {
                 value={estadoUso}
                 onChange={(e) => {
                   setEstadoUso(e.value);
-                  setLivroInformacoes({ estado: e.value });
-                  onTriggerProdutoEstado();
                 }}
-                className="col-12 border border-0 rounded-pill"
+                className="col-12 border border-1 rounded-pill"
                 type="text"
                 placeholder="Digite estado de uso..."
               />
@@ -217,8 +210,6 @@ export default function EditarProduto(props) {
                 value={quantidade}
                 onChange={(e) => {
                   setQuantidade(e.value);
-                  setLivroInformacoes({ quantidade: e.value });
-                  onTriggerProdutoQuantidade();
                 }}
                 className="col-12 border border-0 rounded-pill"
                 type="text"
@@ -233,8 +224,6 @@ export default function EditarProduto(props) {
                 value={dataLancamento}
                 onChange={(e) => {
                   setDataLancamento(e.value);
-                  setLivroInformacoes({ dataLanc: e.value });
-                  onTriggerProdutoLancamento();
                 }}
                 className="col-12 border border-0 rounded-pill"
                 type="text"
@@ -253,12 +242,20 @@ export default function EditarProduto(props) {
                 options={idiomas}
                 onChange={(e) => {
                   setIdiomaInserido(e.target.value);
-                  onTriggerProdutoIdioma(e.target.value);
-                  onTriggerProduto();
                 }}
-                className="col-12 border border-0 rounded-pill"
+                className="col-12 border border-1 rounded-pill"
+                placeholder="Idioma..."
               />
             </div>
+          </div>
+          <div className="col-12 d-flex align-items-end justify-content-end">
+          <Button
+            className="rounded-pill"
+            icon="pi pi-pencil"
+            iconPos="right"
+            label="Editar"
+            onClick={() => {console.log("Eeee")}}
+          />
           </div>
       </Dialog>
     </>
