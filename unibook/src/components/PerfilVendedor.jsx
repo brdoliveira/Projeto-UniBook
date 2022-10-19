@@ -49,7 +49,7 @@ class PerfilVendedor extends React.Component {
       (response) => {
         this.setState({
           listaProdutosUsuarios: response.data.map((livro) => {
-            return <CardProduto key={livro.id} livro={livro} />;
+            return <CardProduto key={livro.id} livro={livro} isDono={true} />;
           }),
         });
       }).catch(
