@@ -8,14 +8,17 @@ import ModalExclusao from "./ModalExclusao";
 
 import AuthService from "../app/service/authService";
 import FavoritosService from "../app/service/favoritosService";
+import { mensagemErro } from "./Toastr";
 
 const service = new FavoritosService();
 
 function Favoritos(props) {
   const [visibleFavoritos, setVisibleFavoritos] = useState(props.showFavoritos);
+  const [ produtosFavoritos, setProdutosFavoritos] = useState("");
 
   useEffect(() => {
     setVisibleFavoritos(props.showFavoritos);
+    listarFavoritos()
   }, [props.showFavoritos]);
   
   function onTriggerFavoritos() {
@@ -27,15 +30,16 @@ function Favoritos(props) {
 
     await service.listarProdutos(id).then(
       (response) => {
-        setVisibleFavoritos(
+        setProdutosFavoritos(
           response.data.map((livro) => {
-            return <ProdutoFavorito key={livro.id} informacoes={livro} />
+            return <ProdutoFavorito key={livro.id} informacoes={livro.anuncioProduto} />
 
           }),
         );
 
-      }).catch(
-        console.log("console !!!")
+      }).catch(() => {
+        mensagemErro("Erro ao carregar favoritos");
+      }
 
     );
   }
@@ -59,7 +63,7 @@ function Favoritos(props) {
         </div>
       </div>
       <div className="p-sidebar-content" style={{ height: "80vh" }}>
-        {visibleFavoritos}
+        {produtosFavoritos}
       </div>
       <div className="p-sidebar-bottom d-flex justify-content-end">
         <Button
