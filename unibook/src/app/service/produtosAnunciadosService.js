@@ -13,6 +13,10 @@ class ProdutosAnunciadosService extends ApiService {
     return this.postObject("", produto);
   }
 
+  deletarProduto(id){
+    return this.delete(`?idAnuncioProduto=${id}`)
+  }
+
   validarProduto(produtoInserido) {
     const erros = [];
 
