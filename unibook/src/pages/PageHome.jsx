@@ -23,8 +23,8 @@ class PageHome extends React.Component {
     await this.service.listarTodos().then(
       (response) => {
       this.setState({
-        livros: response.data.map((livro) => {
-          return <CardProduto key={livro.id} livro={livro} />;
+        livros: response.data.map((livro,idx) => {
+          return <CardProduto key={idx} livro={livro} isDono={false} />;
         }),
       });
     }).catch(
