@@ -3,10 +3,10 @@ import { Chart } from "primereact/chart";
 
 export default function GraficoBarra() {
     const [stackedData] = useState({
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho'],
         datasets: [{
             type: 'bar',
-            label: 'Dataset 1',
+            label: 'Ativos',
             backgroundColor: '#162BAD',
             data: [
                 50,
@@ -19,7 +19,7 @@ export default function GraficoBarra() {
             ]
         }, {
             type: 'bar',
-            label: 'Dataset 2',
+            label: 'Inativos',
             backgroundColor: '#FB8500',
             data: [
                 21,
