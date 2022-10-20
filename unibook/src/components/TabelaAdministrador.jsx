@@ -9,10 +9,12 @@ export default function TabelaAdministrador(){
     // const [products, setProducts] = useState(jsonDefault);
 
     const columns = [
-        {field: 'code', header: 'Code'},
-        {field: 'name', header: 'Name'},
-        {field: 'category', header: 'Category'},
-        {field: 'quantity', header: 'Quantity'}
+        {field: 'id', header: 'Estados'},
+        {field: 'code', header: 'Março'},
+        {field: 'category', header: 'Abril'},
+        {field: 'quantity', header: 'Maio'},
+        {field: 'description', header: 'Junho'},
+        {field: 'price',header:'Julho'}
     ];
 
     // const productService = new ProductService();
@@ -28,10 +30,10 @@ export default function TabelaAdministrador(){
 
     const jsonDefault = {
         "data": [
-            {"id": "1000","code": "f230fh0g3","name": "Bamboo Watch","description": "Product Description","image": "bamboo-watch.jpg","price": 65,"category": "Accessories","quantity": 24,"inventoryStatus": "INSTOCK","rating": 5},
-            {"id": "1001","code": "nvklal433","name": "Black Watch","description": "Product Description","image": "black-watch.jpg","price": 72,"category": "Accessories","quantity": 61,"inventoryStatus": "INSTOCK","rating": 4},
-            {"id": "1002","code": "zz21cz3c1","name": "Blue Band","description": "Product Description","image": "blue-band.jpg","price": 79,"category": "Fitness","quantity": 2,"inventoryStatus": "LOWSTOCK","rating": 3},
-            {"id": "1003","code": "244wgerg2","name": "Blue T-Shirt","description": "Product Description","image": "blue-t-shirt.jpg","price": 29,"category": "Clothing","quantity": 25,"inventoryStatus": "INSTOCK","rating": 5},
+            {"id": "São Paulo","code": "R$ 599.38","name": "Bamboo Watch","description": "R$ 599,38","image": "bamboo-watch.jpg","price": "R$ 599,38","category": "R$ 599,38","quantity": "R$ 599,38","inventoryStatus": "INSTOCK","rating": 5},
+            {"id": "Fortaleza","code": "R$ 155.02","name": "Black Watch","description": "R$ 599,38","image": "black-watch.jpg","price": "R$ 599,38","category": "R$ 599,38","quantity": "R$ 599,38","inventoryStatus": "INSTOCK","rating": 4},
+            {"id": "Paraná","code": "R$ 234.89","name": "Blue Band","description": "R$ 599,38","image": "blue-band.jpg","price": "R$ 599,38","category": "R$ 599,38","quantity": "R$ 599,38","inventoryStatus": "LOWSTOCK","rating": 3},
+            {"id": "Goiás","code": "R$ 345.78","name": "Blue T-Shirt","description": "R$ 599,38","image": "blue-t-shirt.jpg","price": "R$ 599,38","category": "R$ 599,38","quantity": "R$ 599,38","inventoryStatus": "INSTOCK","rating": 5},
         ]
     } 
 
