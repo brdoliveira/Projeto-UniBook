@@ -44,7 +44,7 @@ class PageHome extends React.Component {
         <div className="col-12">
           <div className="container" hidden={!this.state.livros}>
             <h2 className="col-12 py-2 border-bottom border-3 border-dark">
-              Livros adicionados recentemente
+            Livros mais vistos
             </h2>
             <div className="row mb-md-2 py-3 d-flex flex-wrap align-items-center justify-content-center justify-content-md-start">
               {this.state.livros}
