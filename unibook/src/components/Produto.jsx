@@ -34,10 +34,10 @@ export default function Produto(props) {
       </div>
       <div className="col-12 col-lg-8">
         <div className="col-12 py-2">
-          <h3>{livro.titulo}</h3>
+          <h3>{livro.titulo ? livro.titulo : ""}</h3>
           <Divider />
         </div>
-        <div className="col-12">R$ {livro.valor}</div>
+        <div className="col-12">R$ {livro.valor ? livro.valor : 0.00}</div>
         <div className="col-12 py-2">
           <Rating value={4} readOnly stars={5} cancel={false} />
         </div>
@@ -63,10 +63,10 @@ export default function Produto(props) {
             {livro.descricao}
           </p>
           <p>
-            <span className="fw-bold">Ano: </span> {livro.anoPublicacao}
+            <span className="fw-bold">Ano: </span> {livro.anoPublicacao ? livro.anoPublicacao : '0000'}
           </p>
           <p>
-            <span className="fw-bold">Quantidade: </span> {livro.quantidade}
+            <span className="fw-bold">Quantidade: </span> {livro.quantidade ? livro.quantidade : '0'}
           </p>
           <p className="fw-bold color-orange">
             *Livros com algumas marcações por dentro
@@ -74,6 +74,11 @@ export default function Produto(props) {
         </div>
         <div className="col-12 d-flex justify-content-end align-items-center">
           {/* Botão Chat */}
+          <Button
+            icon="pi pi-user"
+            aria-label="Ver perfil vendedor"
+            iconPos="right"
+          /> 
           <Button
             icon="pi pi-comments"
             className="p-button-rounded me-1"
