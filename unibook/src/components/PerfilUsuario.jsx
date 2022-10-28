@@ -45,25 +45,25 @@ class PerfilUsuario extends React.Component {
           <span className="col-12 text-center text-dark py-2">
             <span className="fs-3" style={{ textTransform: "capitalize" }}>
               {" "}
-              {this.state.nome} ,{" "}
-              {FormatService.formatYears(this.state.dataNascimento)} Anos
+              {this.state.nome ? this.state.nome : "" } ,{" "}
+              {FormatService.formatYears(this.state.dataNascimento) === 0 ? FormatService.formatYears(this.state.dataNascimento) + "Anos" : "" }
             </span>
             <br />
             <span>
               <i className="bi bi-geo-alt-fill"></i>{" "}
-              {this.state.endereco.localidade}
+              {this.state.endereco.localidade ? this.state.endereco.localidade : ""}
             </span>
           </span>
         </div>
         <div className="col-md-12 col-lg-6 flex-wrap align-items-start px-2">
           <div className="col-12 bg-blue text-white py-3 my-2 rounded px-3">
-            <span>Sexo: {this.state.sexo}</span>
+            <span style={{ textTransform: "capitalize" }}>Sexo: {this.state.sexo ? this.state.sexo : "Outros"}</span>
           </div>
           <div className="col-12 bg-blue text-white py-3 my-2 rounded px-3">
-            <span>CPF: {this.state.cpf}</span>
+            <span>CPF: {this.state.cpf ? this.state.cpf : "000.000.000-00"}</span>
           </div>
           <div className="col-12 bg-blue text-white py-3 my-2 rounded px-3">
-            <span>Email: {this.state.email} </span>
+            <span>Email: {this.state.email ? this.state.email : "Nenhum email informado"} </span>
           </div>
           <div className="col-12 bg-blue text-white py-3 my-2 rounded px-3">
             <span>
