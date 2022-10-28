@@ -72,12 +72,12 @@ class PerfilVendedor extends React.Component {
           <span className="col-12 text-center text-dark py-2">
           <span className="fs-3" style={{textTransform: 'capitalize'}}>
               {" "}
-              {this.state.nome} ,{" "}
-              {FormatService.formatYears(this.state.dataNascimento)} Anos
+              {this.state.nome ? this.state.nome : ""} ,{" "}
+              {FormatService.formatYears(this.state.dataNascimento) === 0 ? FormatService.formatYears(this.state.dataNascimento) + "Anos" : "" }
             </span>
             <br />
             <span>
-            <i className="bi bi-geo-alt-fill"></i> {this.state.endereco.localidade}
+            <i className="bi bi-geo-alt-fill"></i> {this.state.endereco.localidade ? this.state.endereco.localidade : ""}
             </span>
           </span>
         </div>
