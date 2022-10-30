@@ -1,5 +1,6 @@
 import Menu from "../components/Menu";
 import NotFound from "../components/NotFound";
+import React from "react";
 
 function PageNotFound() {
   return (

@@ -18,6 +18,9 @@ import PageProduto from "./pages/PageProduto";
 import PageProdutoPagamento from "./pages/PageProdutoPagamento";
 import PagePagamentoEscolhido from "./pages/PagePagamentoEscolhido";
 import PageAdministrador from "./pages/PageAdministrador";
+import ChatRoom from "./components/ChatRoom";
+
+
 
 function Rotas() {
   return (
@@ -39,7 +42,8 @@ function Rotas() {
         <Route path="/produto/:id/pagamento/:escolhido" element={<PagePagamentoEscolhido />} />
         <Route path="/produtos" element={<PageProdutos />} />
         <Route path="/mais-vendidos" element={<PageMaisVendidos />} />
-        <Route path="/chat" element={<PageChat />} />
+        <Route path="/chat" element={<ChatRoom />} />
+      
       </Routes>
     </BrowserRouter>
   );

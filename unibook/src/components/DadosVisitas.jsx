@@ -1,5 +1,6 @@
 import { Dropdown } from "primereact/dropdown";
 import { useState } from "react";
+import React from "react";
 
 export default function DadosVisitas() {
   const [selectedPeriod, setSelectedPeriod] = useState(null);

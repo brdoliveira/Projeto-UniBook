@@ -1,4 +1,5 @@
 import "../templates/styles/styles-perfil.css";
+import React from "react";
 
 import FeedbackMessage from "./FeedbackMessage";
 import EnviarMensagem from "./EnviarMensagem";

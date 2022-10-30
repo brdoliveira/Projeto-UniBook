@@ -1,5 +1,6 @@
 import iconNotFound from "../templates/images/not-found.svg";
 import "../templates/styles/styles-not-found.css";
+import React from "react";
 
 function NotFound() {
   return (

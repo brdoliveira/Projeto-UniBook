@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { Sidebar } from "primereact/sidebar";
 import { Button } from "primereact/button";
+// import React from "react";
 
 import ProdutoFavorito from "./ProdutoFavorito";
 import ModalExclusao from "./ModalExclusao";

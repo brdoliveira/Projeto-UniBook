@@ -1,5 +1,5 @@
 import { ScrollPanel } from 'primereact/scrollpanel';
-
+import React from "react";
 import RemoverEditarProdutoItem from "./RemoverEditarProdutoItem";
 
 export default function RemoverEditarProduto(){

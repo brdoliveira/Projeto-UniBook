@@ -1,3 +1,4 @@
+import React from "react";
 import "../templates/styles/styles-contact.css";
 
 function FaleConosco() {

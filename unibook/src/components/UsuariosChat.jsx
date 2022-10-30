@@ -1,3 +1,4 @@
+import React from "react";
 export default function UsuariosChat() {
   return (
     <div className="col-12 d-flex flex-wrap my-3 rounded border border-3 border-orange py-2 px-1 usuarios-chat">

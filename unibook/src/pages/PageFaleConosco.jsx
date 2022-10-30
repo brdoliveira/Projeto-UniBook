@@ -1,5 +1,6 @@
 import Menu from "../components/Menu";
 import FaleConosco from "../components/FaleConosco";
+import React from "react";
 
 function PageFaleConosco() {
   return (

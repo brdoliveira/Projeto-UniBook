@@ -3,6 +3,7 @@ import brunoPic from "../templates/images/integrantes/bruno.jpg";
 import henriquePic from "../templates/images/integrantes/henrique.jpeg";
 import joaoPic from "../templates/images/integrantes/joao.jpg";
 import luizPic from "../templates/images/integrantes/luiz.jpg";
+import React from "react";
 
 function QuemSomos() {
   return (

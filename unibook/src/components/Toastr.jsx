@@ -1,4 +1,5 @@
 import toastr from "toastr";
+import React from "react";
 
 toastr.options = {
   closeButton: true,

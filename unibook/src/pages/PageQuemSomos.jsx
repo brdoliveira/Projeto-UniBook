@@ -1,5 +1,6 @@
 import Menu from "../components/Menu";
 import QuemSomos from "../components/QuemSomos";
+import React from "react";
 
 function PageQuemSomos() {
   return (

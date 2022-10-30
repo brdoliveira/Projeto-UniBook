@@ -5,6 +5,7 @@ import { Password } from "primereact/password";
 import { Divider } from "primereact/divider";
 import AdministradorService from "../app/service/administradorService";
 import AuthService from "../app/service/authService";
+// import React from "react";
 
 const service = new AdministradorService();
 

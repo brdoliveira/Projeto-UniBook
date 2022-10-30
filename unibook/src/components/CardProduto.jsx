@@ -1,7 +1,9 @@
 import { Card } from "primereact/card";
 import { Button } from "primereact/button";
+import React from "react";
 
 import { mensagemErro } from "./Toastr";
+import api from "../chat";
 
 function CardProduto(props) {
   const livro = props.livro
@@ -28,6 +30,17 @@ function CardProduto(props) {
     }
   }
 
+  const iniciarChat = (id) => {
+    var usuarioLogado = JSON.parse(localStorage.getItem("_usuario_logado")) 
+    if(usuarioLogado){
+      api.get(`/Chat-mensagem?idUsuarioRemetente=${usuarioLogado.id}&idAnuncioProduto=${id}`).then((response) => {
+        window.location.href = `/chat`
+      })
+    }else{
+      mensagemErro("Faça login para comprar algum livro")
+    }
+  }
+
   const footer = (
     <span>
       <div className="col-12 d-flex flex-wrap">
@@ -38,7 +51,12 @@ function CardProduto(props) {
         <div className="col-6 d-flex justify-content-end align-items-start">
           <Button label="Comprar" icon="pi pi-shopping-cart" onClick={() => {comprarLivro(livro.id)}} iconPos="right" />
         </div>
+      
+        <div className="chat_button">
+        <Button label="Chat" onClick={() => {iniciarChat(livro.id)}} iconPos="right" />
+        </div>
       </div>
+        
     </span>
   );
   return (
@@ -52,6 +70,7 @@ function CardProduto(props) {
           header={header}
         >
           <div className="p-card-footer">
+          {/* teste */}
             {footer}
           </div>
         </Card>

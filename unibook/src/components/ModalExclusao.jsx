@@ -1,5 +1,6 @@
 import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
 import { Button } from 'primereact/button';
+import React from "react";
 
 export default function ModalExclusao(props){
     const confirm = () => {

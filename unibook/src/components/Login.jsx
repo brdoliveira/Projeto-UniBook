@@ -31,6 +31,7 @@ class Login extends React.Component {
       window.location.href = "/perfil"
     })
     .catch((erro) => {
+      console.log(erro)
       mensagemErro(erro.response.data.message);
     });
 

@@ -4,6 +4,7 @@ import Debito from "../templates/images/formas-pagamentos/cartao-de-debito.png";
 import Pix from "../templates/images/formas-pagamentos/pix.png";
 
 import React, { useState, useEffect } from "react";
+// import React from "react";
 
 import { RadioButton } from "primereact/radiobutton";
 

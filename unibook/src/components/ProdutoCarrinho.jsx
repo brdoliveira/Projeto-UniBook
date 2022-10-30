@@ -1,3 +1,4 @@
+import React from "react";
 export default function ProdutoCarrinho() {
   return (
     <div className="col-12 border border-3 rounded my-2 p-2 border-orange d-flex flex-wrap bg-orangelightbook text-dark">

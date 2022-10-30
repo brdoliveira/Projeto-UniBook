@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Chart } from "primereact/chart";
+// import React from "react";
 
 export default function GraficoBarra() {
     const [stackedData] = useState({

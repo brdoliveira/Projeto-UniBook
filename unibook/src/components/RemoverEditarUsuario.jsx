@@ -1,6 +1,6 @@
 import { ScrollPanel } from 'primereact/scrollpanel';
 import RemoverEditarUsuarioItem from './RemoverEditarUsuarioItem';
-
+import React from "react";
 export default function RemoverEditarUsuario(){
     return(
         <>
