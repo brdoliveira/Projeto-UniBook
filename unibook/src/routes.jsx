@@ -30,7 +30,7 @@ function Rotas() {
         <Route path="/perfil" element={<PagePerfil />} />
         <Route path="/perfil/editar" element={<PageEditarPerfil />} />
         <Route path="/perfil/adicionar-produto" element={<PageAdicionarProduto />} />
-        <Route path="/usuario/:usuario" element={<PageUsuario />} />
+        <Route path="/usuario/:id" element={<PageUsuario />} />
         <Route path="/cadastro" element={<PageCadastro />} />
         <Route path="/fale-conosco" element={<PageFaleConosco />} />
         <Route path="/quem-somos" element={<PageQuemSomos />} />
