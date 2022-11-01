@@ -8,7 +8,6 @@ import ModalExclusao from "./ModalExclusao";
 
 import AuthService from "../app/service/authService";
 import FavoritosService from "../app/service/favoritosService";
-import { mensagemErro } from "./Toastr";
 
 const service = new FavoritosService();
 
@@ -33,14 +32,9 @@ function Favoritos(props) {
         setProdutosFavoritos(
           response.data.map((livro) => {
             return <ProdutoFavorito key={livro.id} informacoes={livro.anuncioProduto} />
-
           }),
         );
-
-      }).catch(() => {
-        mensagemErro("Erro ao carregar favoritos");
       }
-
     );
   }
 
