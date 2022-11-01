@@ -27,6 +27,10 @@ export default function Produto(props) {
     })
   };
 
+  const verPerfilVendedor = () => {
+    window.location.href = `/usuario/${livro.vendedor.id}`
+  }
+
   return (
     <div className="col-12 d-flex flex-wrap">
       <div className="col-12 col-lg-4 d-flex justify-content-center align-items-center">
@@ -76,17 +80,22 @@ export default function Produto(props) {
           {/* Botão Chat */}
           <Button
             icon="pi pi-user"
-            aria-label="Ver perfil vendedor"
+            label="Ver perfil vendedor"
+            className="p-button p-component bg-yellow rounded-pill border border-dark border-2 fw-bold px-4 py-1 text-dark py-2 px-4 me-2 hover-yellow"
             iconPos="right"
-          /> 
+            onClick={() => {verPerfilVendedor()}}
+            /> 
           <Button
             icon="pi pi-comments"
-            className="p-button-rounded me-1"
-            aria-label="Chat"
-          />
+            label="Chat"
+            className="p-button p-component bg-yellow rounded-pill border border-dark border-2 fw-bold px-4 py-1 text-dark py-2 px-4 me-2 hover-yellow"
+            iconPos="right"
+            />
           <Button
+            icon="pi pi-shopping-cart"
             className="bg-orange rounded-pill border border-dark text-dark border-2 fw-bold px-4 button-perfil ms-1"
             label="Comprar"
+            iconPos="right"
             onClick={() => {
               comprarProduto();
             }}
