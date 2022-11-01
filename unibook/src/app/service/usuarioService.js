@@ -61,7 +61,7 @@ class UsuarioService extends ApiService {
   }
 
   getUsuario(id) {
-    return this.get(`/id=${id}`);
+    return this.get(`?id=${id}`);
   }
 
   login(email, senha) {
