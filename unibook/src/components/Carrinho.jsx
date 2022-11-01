@@ -34,15 +34,9 @@ function Carrinho(props) {
           response.data.map((livro) => {
             setSomaCarrinho(somaCarrinho + livro.valor ? livro.valor : 0);
             return <ProdutoCarrinho key={livro.id} informacoes={livro} />
-
           }),
         );
-
-      }).catch(() => {
-        mensagemErro("Erro ao carregar carrinho");
-      }
-
-    );
+      });
   }
 
   async function comprarProdutosCarrinho(){
