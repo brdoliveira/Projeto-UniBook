@@ -19,16 +19,16 @@ class PageUsuario extends React.Component{
       }
     }
 
-    componentDidMount() {
+     async componentDidMount() {
       let { id } = this.props.params;
-      var usuario = this.pesquisarUsuario(id)
-      console.log("usuario = ", usuario)
+      var usuario = await this.pesquisarUsuario(id);
+      this.carregarProdutos(usuario.login);
     }
       
     async pesquisarUsuario(id){
       return await this.service.getUsuario(id).then(
         (response) => {
-          return response
+          return response.data
         }
       )
     }
@@ -56,7 +56,7 @@ class PageUsuario extends React.Component{
             <Menu />
             <div
               className="col-12 d-flex justify-content-center align-items-center pt-5 mt-5"
-              styleClass={{ height: "90vh" }}
+              style={{ height: "90vh" }}
             >
               <div className="col-10">
                 <TabView className="perfil-tabview">
