@@ -16,8 +16,8 @@ export default class AuthService {
     LocalStorageService.adicionarItem(USUARIO_LOGADO, usuario);
   }
 
-  static obterUsuarioAutenticado() {
-    return LocalStorageService.obterItem(USUARIO_LOGADO);
+  static async obterUsuarioAutenticado() {
+    return await LocalStorageService.obterItem(USUARIO_LOGADO);
   }
 
   static usuarioTemAutenticacao = () => {
