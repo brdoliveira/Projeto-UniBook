@@ -19,7 +19,7 @@ export default function RemoverEditarProdutoItem(props) {
  
   return (
     <>
-      <div className="col-12 rounded bg-white my-2 d-flex flex-wrap p-2" style={{ height: "5rem" }}>
+      <div className="col-12 rounded bg-white my-2 d-flex flex-wrap p-2" style={{ height: "7rem" }}>
         <div className="col-12 col-lg-5">
             <span className="fw-bold">Nome: </span>
         </div>
