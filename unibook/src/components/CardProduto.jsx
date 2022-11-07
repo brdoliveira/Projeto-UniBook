@@ -33,7 +33,7 @@ function CardProduto(props) {
   const iniciarChat = (id) => {
     var usuarioLogado = JSON.parse(localStorage.getItem("_usuario_logado")) 
     if(usuarioLogado){
-      api.get(`/Chat-mensagem?idUsuarioRemetente=${usuarioLogado.id}&idAnuncioProduto=${id}`).then((response) => {
+      api.get(`/chat-mensagens?idUsuarioRemetente=${usuarioLogado.id}&idAnuncioProduto=${id}`).then((response) => {
         window.location.href = `/chat`
       })
     }else{
@@ -48,9 +48,9 @@ function CardProduto(props) {
           <p className="fw-bold m-0">Preço</p>
           <p>R$ {livro.valor}</p>
         </div>
-        <div className="col-6 d-flex justify-content-end align-items-start">
+        {/* <div className="col-6 d-flex justify-content-end align-items-start">
           <Button label="Comprar" icon="pi pi-shopping-cart" onClick={() => {comprarLivro(livro.id)}} iconPos="right" />
-        </div>
+        </div> */}
       
         <div className="chat_button">
         <Button label="Chat" onClick={() => {iniciarChat(livro.id)}} iconPos="right" />

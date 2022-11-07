@@ -8,7 +8,14 @@ const ChatRoom = () => {
   const usuario_logado = JSON.parse(localStorage.getItem("_usuario_logado"))
 
   useEffect(() => {
-    api.get(`/Chat/usuario/${usuario_logado.id}`).then((response) => {
+    api.get(`/chat/usuario/${usuario_logado.id}`).then((response) => {
+      console.log(response.data);
+      setLista(response.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    api.get(`/chat-mensagens`).then((response) => {
       console.log(response.data);
       setLista(response.data);
     });
