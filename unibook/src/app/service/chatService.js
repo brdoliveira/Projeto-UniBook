@@ -10,15 +10,15 @@ class ChatService extends ApiService{
     }
 
     chatUsuario(idUsuario){
-        return this.get(`/Chat/usuario/${idUsuario}`)
+        return this.get(`/chat/usuario/${idUsuario}`)
     }
 
     pegarMensagens(){
-        return this.get(`/Chat-mensagem`)
+        return this.get(`/chat-mensagens`)
     }
 
     salvarChat(idAnuncioProduto,idUsuarioRemetente){
-        return this.postObject(`/Save-chat`,
+        return this.postObject(`/save-chat`,
                                 {"idAnuncioProduto": idAnuncioProduto,
                                  "idUsuarioRemetente" : idUsuarioRemetente})
     }
