@@ -6,7 +6,7 @@ class ChatService extends ApiService{
     }
 
     pegarChat(){
-       return this.get(`/Chat`) 
+       return this.get(`/chat`) 
     }
 
     chatUsuario(idUsuario){
