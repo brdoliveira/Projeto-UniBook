@@ -2,25 +2,28 @@ import ApiService from "../apiservice";
 
 class ChatService extends ApiService{
     constructor(){
-        super('')
+        super('/chat')
     }
 
-    pegarChat(){
-       return this.get(`/chat`) 
+    buscarChat(id){
+        return this.get(`?id=${id}`)
     }
 
-    chatUsuario(idUsuario){
-        return this.get(`/chat/usuario/${idUsuario}`)
+    iniciarChat(idChat, idAnuncioProduto, idUsuarioRemetente, mensagem){
+        return this.postObject('/iniciar', {
+            "idChat": idChat,
+            "idAnuncioProduto": idAnuncioProduto,
+            "idUsuarioRemetente": idUsuarioRemetente,
+            "mensagem": mensagem
+        })
     }
 
-    pegarMensagens(){
-        return this.get(`/chat-mensagens`)
+    listarChat(idUsuario){
+        return this.get(`/usuario?idusuario=${idUsuario}`)
     }
 
-    salvarChat(idAnuncioProduto,idUsuarioRemetente){
-        return this.postObject(`/save-chat`,
-                                {"idAnuncioProduto": idAnuncioProduto,
-                                 "idUsuarioRemetente" : idUsuarioRemetente})
+    buscarMensagens(idUsuarioRemetente,idAnuncioProduto){
+        return this.get(`/mensagens?idUsuarioRemetente=${idUsuarioRemetente}&idAnuncioProduto=${idAnuncioProduto}`)
     }
 
 
