@@ -23,7 +23,7 @@ class PageHome extends React.Component {
   }
 
   async componentDidMount() {
-    await this.service.listarTodos().then(
+    await this.service.listarTodos(this.state.pagina).then(
       (response) => {
       this.setState({
         livros: response.data.map((livro,idx) => {
