@@ -15,7 +15,7 @@ function Chat() {
   let { id } = JSON.parse(localStorage.getItem("_usuario_logado"))
 
   useEffect(() => {
-    service.chatUsuario(JSON.parse(localStorage.getItem("_usuario_logado")).id).then((response) => {
+    service.listarChat(JSON.parse(localStorage.getItem("_usuario_logado")).id).then((response) => {
       console.log(response.data);
       setListaUsers(response.data);
     });
