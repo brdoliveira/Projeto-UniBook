@@ -9,6 +9,7 @@ import "../templates/styles/styles-index.css";
 
 import ProdutosAnunciadosService from "../app/service/produtosAnunciadosService";
 import ComponenteVazioHome from "../components/ComponenteVazioHome";
+import Paginacao from "../components/Paginacao";
 
 class PageHome extends React.Component {
   constructor(props) {
@@ -16,6 +17,8 @@ class PageHome extends React.Component {
     this.service = new ProdutosAnunciadosService();
     this.state = {
       livros: null,
+      totalPaginas: 0,
+      pagina: 1
     };
   }
 
@@ -34,6 +37,10 @@ class PageHome extends React.Component {
     )
   }
 
+  handleCallback = (childData) => {
+    this.setState({...this.state, ...childData });
+  };
+
   render() {
     return (
       <div className="min-vh-100">
@@ -48,6 +55,7 @@ class PageHome extends React.Component {
             </h2>
             <div className="row mb-md-2 py-3 d-flex flex-wrap align-items-center justify-content-center justify-content-md-start">
               {this.state.livros}
+              <Paginacao totalRecords={this.state.totalPaginas} parentCallback={this.handleCallback} />
             </div>
           </div>
         </div>
