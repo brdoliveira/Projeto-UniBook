@@ -59,8 +59,8 @@ class ProdutosAnunciadosService extends ApiService {
     }
   }
 
-  listarTodos() {
-    return this.get("/listar-todos");
+  listarTodos(pagina) {
+    return this.get(`/listar-todos?pagina=${pagina}&tamanhoPorPagina=12`);
   }
 
   listarTodosPilha() {
