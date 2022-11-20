@@ -16,10 +16,11 @@ class PageProduto extends React.Component {
   async componentDidMount() {
     let { id } = this.props.params;
     if(id){
-      await (await this.service.pesquisarProdutos(id)).data.map((livro) => {
-        this.setState(livro)
+      await this.service.pesquisarProdutos(id).then((res) => {
+        this.setState(res.data);
         return null;
-      })
+      }
+      )
     }else{
       window.location.href = "/"
     }
