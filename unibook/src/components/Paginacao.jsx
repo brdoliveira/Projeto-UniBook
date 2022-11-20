@@ -6,14 +6,13 @@ export default function Paginacao(props){
     const [rows, setRows] = useState(props.fileira);
 
     const onBasicPageChange = (event) => {
+        onTrigger(event)
         setPagination(event.page);
         setRows(event.rows);
-        onTrigger()
     }
 
-    function onTrigger() {
-        props.parentCallback({"pagina" : pagination});
-        props.parentCallback({"fileira": rows})
+    function onTrigger(event) {
+        props.parentCallback({"fileira": event.rows,"pagina" : event.page});
       }
 
     return(
