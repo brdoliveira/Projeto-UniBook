@@ -6,7 +6,6 @@ import { Button } from "primereact/button";
 import ProdutoCarrinho from "./ProdutoCarrinho";
 import ModalExclusao from "./ModalExclusao";
 import CarrinhosService from "../app/service/carrinhosService";
-import AuthService from "../app/service/authService";
 import { mensagemErro, mensagemSucesso } from "./Toastr";
 
 const service = new CarrinhosService();
@@ -26,7 +25,7 @@ function Carrinho(props) {
   }
 
   async function listaCarrinho() {
-    let { id } = AuthService.obterUsuarioAutenticado();
+    let { id } = JSON.parse(localStorage.getItem("_usuario_logado"));
 
     await service.listarProdutos(id).then(
       (response) => {
@@ -40,7 +39,7 @@ function Carrinho(props) {
   }
 
   async function comprarProdutosCarrinho(){
-    let { id } = AuthService.obterUsuarioAutenticado();
+    let { id } = JSON.parse(localStorage.getItem("_usuario_logado"));
 
     await service.realizarComprar(id).then(
       (response) => {
