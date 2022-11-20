@@ -23,12 +23,11 @@ class PerfilUsuario extends React.Component {
   };
 
   componentDidMount() {
+    var usuario = JSON.parse(localStorage.getItem("_usuario_logado"));
     if (!AuthService.isUsuarioAutenticado) {
       window.location.href = "/";
       return;
     }
-
-    var usuario = AuthService.obterUsuarioAutenticado();
     this.setState(usuario);
   }
 
@@ -45,8 +44,8 @@ class PerfilUsuario extends React.Component {
           <span className="col-12 text-center text-dark py-2">
             <span className="fs-3" style={{ textTransform: "capitalize" }}>
               {" "}
-              {this.state.nome ? this.state.nome : "" } ,{" "}
-              {FormatService.formatYears(this.state.dataNascimento) === 0 ? FormatService.formatYears(this.state.dataNascimento) + "Anos" : "" }
+              {this.state.nome ? this.state.nome : ("Nome não informado") },
+              {this.state.dataNascimento ? FormatService.formatYears(this.state.dataNascimento) + " Anos" : "Idade não informada" }
             </span>
             <br />
             <span>
