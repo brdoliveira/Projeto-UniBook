@@ -18,27 +18,36 @@ class PageHome extends React.Component {
     this.state = {
       livros: null,
       totalPaginas: 0,
-      pagina: 1
+      pagina: 0,
+      fileira: 12,
     };
   }
 
   async componentDidMount() {
-    await this.service.listarTodos(this.state.pagina).then(
-      (response) => {
-      this.setState({
-        livros: response.data.map((livro,idx) => {
-          return <CardProduto key={idx} livro={livro} isDono={false} />;
-        }),
-      });
-    }).catch(
-      this.setState({
-        livros : <ComponenteVazioHome/>
+    this.getListBooks();
+  }
+
+  async getListBooks() {
+    await this.service
+      .listarTodos(this.state.pagina, this.state.fileira)
+      .then((response) => {
+        this.setState({ totalPaginas: response.data.totalElements });
+        this.setState({
+          livros: response.data.content.map((livro, idx) => {
+            return <CardProduto key={idx} livro={livro} isDono={true} />;
+          }),
+        });
       })
-    )
+      .catch(
+        this.setState({
+          livros: <ComponenteVazioHome />,
+        })
+      );
   }
 
   handleCallback = (childData) => {
-    this.setState({...this.state, ...childData });
+    this.setState({ ...this.state, ...childData });
+    this.getListBooks();
   };
 
   render() {
@@ -51,11 +60,16 @@ class PageHome extends React.Component {
         <div className="col-12">
           <div className="container" hidden={!this.state.livros}>
             <h2 className="col-12 py-2 border-bottom border-3 border-dark">
-            Livros mais vistos
+              Livros mais vistos
             </h2>
             <div className="row mb-md-2 py-3 d-flex flex-wrap align-items-center justify-content-center justify-content-md-start">
               {this.state.livros}
-              <Paginacao totalRecords={this.state.totalPaginas} parentCallback={this.handleCallback} />
+              <Paginacao
+                totalRecords={this.state.totalPaginas}
+                pagina={this.state.pagina}
+                fileira={this.state.fileira}
+                parentCallback={this.handleCallback}
+              />
             </div>
           </div>
         </div>
