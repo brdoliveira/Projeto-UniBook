@@ -6,7 +6,6 @@ import { Button } from "primereact/button";
 import ProdutoFavorito from "./ProdutoFavorito";
 import ModalExclusao from "./ModalExclusao";
 
-import AuthService from "../app/service/authService";
 import FavoritosService from "../app/service/favoritosService";
 
 const service = new FavoritosService();
@@ -25,7 +24,7 @@ function Favoritos(props) {
   }
 
   async function listarFavoritos() {
-    let { id } = AuthService.obterUsuarioAutenticado();
+    let { id } = JSON.parse(localStorage.getItem("_usuario_logado"));
 
     await service.listarProdutos(id).then(
       (response) => {
