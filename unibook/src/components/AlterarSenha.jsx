@@ -47,7 +47,7 @@ const AlterarSenha = () => {
   );
 
   const changePassword = () => {
-    var log = AuthService.obterUsuarioAutenticado();
+    var log =  JSON.parse(localStorage.getItem("_usuario_logado"));
     var idUser = log.id;
     var emailUser = log.email;
 
