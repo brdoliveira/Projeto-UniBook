@@ -22,7 +22,7 @@ function Chat() {
   }, []);
 
   useEffect(() => {
-    service.pegarMensagens().then((response) => {
+    service.buscarMensagens().then((response) => {
       console.log(response.data);
       setListChat(response.data);
     });
