@@ -4,7 +4,6 @@ import { Rating } from "primereact/rating";
 import { Button } from "primereact/button";
 import { Chip } from "primereact/chip";
 
-import AuthService from "../app/service/authService";
 import CarrinhosService from "../app/service/carrinhosService";
 import { mensagemErro, mensagemSucesso } from "./Toastr";
 import ChatService from "../app/service/chatService";
@@ -14,7 +13,7 @@ const serviceChat = new ChatService();
 
 export default function Produto(props) {
   const livro = props.livro;
-  let { id } = AuthService.obterUsuarioAutenticado();
+  let { id } =  JSON.parse(localStorage.getItem("_usuario_logado"));
 
   const comprarProduto = async () => {
     let idLivro = livro.id;
@@ -37,9 +36,9 @@ export default function Produto(props) {
     window.location.href = `/usuario/${livro.vendedor.id}`;
   };
 
-  const iniciarChat = (idVendedor) => {
+  const iniciarChat = (idProduto) => {
     let { id } = JSON.parse(localStorage.getItem("_usuario_logado"));
-      serviceChat.salvarChat(idVendedor, id).then(() => {
+      serviceChat.salvarChat(id,idProduto).then(() => {
           window.location.href = `/chat`;
         }).catch(() => {
           mensagemErro("Erro ao iniciar o chat, tente mais tarde")
@@ -111,7 +110,7 @@ export default function Produto(props) {
             className="p-button p-component bg-yellow rounded-pill border border-dark border-2 fw-bold px-4 py-1 text-dark py-2 px-4 me-2 hover-yellow"
             iconPos="right"
             onClick={() => {
-              iniciarChat(livro.vendedor.id);
+              iniciarChat(livro.id);
             }}
           />
           <Button
