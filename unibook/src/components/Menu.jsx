@@ -120,9 +120,14 @@ class Menu extends React.Component{
                 Fale Conosco
               </a>
             </li>
-            <li className="nav-item rounded mx-1 li-menu">
+            <li className="nav-item rounded mx-1 li-menu" hidden={this.state.logado}>
               <a className="nav-link text-white px-3" href="/quem-somos">
                 Quem Somos
+              </a>
+            </li>
+            <li className="nav-item rounded mx-1 li-menu" hidden={!this.state.logado}>
+              <a className="nav-link text-white px-3" href="/chat">
+                Chat
               </a>
             </li>
             <li className="nav-item dropdown li-menu" hidden={this.state.logado}>
