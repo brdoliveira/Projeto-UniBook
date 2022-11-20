@@ -34,7 +34,7 @@ class PageHome extends React.Component {
         this.setState({ totalPaginas: response.data.totalElements });
         this.setState({
           livros: response.data.content.map((livro, idx) => {
-            return <CardProduto key={idx} livro={livro} isDono={true} />;
+            return <CardProduto id={idx} key={idx} livro={livro} isDono={false} />;
           }),
         });
       })
@@ -46,7 +46,8 @@ class PageHome extends React.Component {
   }
 
   handleCallback = (childData) => {
-    this.setState({ ...this.state, ...childData });
+    console.log(childData);
+    this.setState({ ...this.state , ...{ fileira : childData.fileira, pagina: childData.pagina}})
     this.getListBooks();
   };
 
