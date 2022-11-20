@@ -17,7 +17,7 @@ export default function ProdutoFavorito(props){
           <i className="pi pi-heart-fill cursor-pointer"></i>
         </div>
         <div className="col-12">
-          <span className="text-wrap">R$ 00,00</span>
+          <span className="text-wrap">R$ {parseFloat(produto.valor)}</span>
         </div>
       </div>
     </div>
