@@ -7,24 +7,16 @@ import "../templates/styles/styles-perfil.css";
 
 function PerfilAnalitycs() {
   const lineData = {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho"],
     datasets: [
       {
-        label: "First Dataset",
-        data: [65, 59, 80, 81, 56, 55, 40],
+        label: "Dados da venda",
+        data: [0, 0, 0, 0, 0, 0, 0],
         fill: false,
         backgroundColor: "#2f4860",
         borderColor: "#2f4860",
         tension: 0.4,
-      },
-      {
-        label: "Second Dataset",
-        data: [28, 48, 40, 19, 86, 27, 90],
-        fill: false,
-        backgroundColor: "#00bb7e",
-        borderColor: "#00bb7e",
-        tension: 0.4,
-      },
+      }
     ],
   };
 
