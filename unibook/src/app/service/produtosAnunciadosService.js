@@ -68,7 +68,7 @@ class ProdutosAnunciadosService extends ApiService {
   }
 
   pesquisarProdutos(idProduto) {
-    return this.get(`/listar-todos?idProduto=${idProduto}`);
+    return this.get(`/pesquisar-produto?idProduto=${idProduto}`);
   }
 
   foto(idProdutoAnuncio) {
