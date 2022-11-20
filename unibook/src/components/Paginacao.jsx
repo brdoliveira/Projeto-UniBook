@@ -2,17 +2,18 @@ import React , { useState } from "react"
 import { Paginator } from 'primereact/paginator';
 
 export default function Paginacao(props){
-    const [pagination, setPagination] = useState(0);
-    const [rows, setRows] = useState(12);
+    const [pagination, setPagination] = useState(props.pagina);
+    const [rows, setRows] = useState(props.fileira);
 
     const onBasicPageChange = (event) => {
-        setPagination(event.first);
+        setPagination(event.page);
         setRows(event.rows);
         onTrigger()
     }
 
     function onTrigger() {
-        props.parentCallback(pagination);
+        props.parentCallback({"pagina" : pagination});
+        props.parentCallback({"fileira": rows})
       }
 
     return(
