@@ -25,6 +25,10 @@ class ChatService extends ApiService{
     buscarMensagens(idUsuarioRemetente,idAnuncioProduto){
         return this.get(`/mensagens?idUsuarioRemetente=${idUsuarioRemetente}&idAnuncioProduto=${idAnuncioProduto}`)
     }
+    
+    salvarChat(idUsuarioRemetente,idAnuncioProduto){
+        return this.get(`/mensagens?idUsuarioRemetente=${idUsuarioRemetente}&idAnuncioProduto=${idAnuncioProduto}`)
+    }
 
 
 }
