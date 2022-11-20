@@ -12,6 +12,7 @@ const service = new FavoritosService();
 function CardProduto(props) {
   const [isDono] = useState(props.isDono)
   const livro = props.livro;
+  const key = props.id
 
   const header = (
     <div className="col-12">
@@ -24,12 +25,13 @@ function CardProduto(props) {
             adicionarFavorito(livro.id);
           }}
           hidden={isDono}
+          key={key + 1000}
         />
         <div hidden={!isDono}>
-        <EditarProduto id={props.livro.id}/>
+        <EditarProduto key={key + 2000} id={props.livro.id}/>
         <DeletarProduto
           id={props.livro.id}
-          key={props.livro.id}
+          key={key + 3000}
           nome={livro.titulo}
           />
           </div>
@@ -95,7 +97,7 @@ function CardProduto(props) {
   return (
     <>
       <Card
-        key={livro.id}
+        key={key + 4000}
         title={
           livro.titulo.length >= 30
             ? livro.titulo.slice(0, 30) + "..."
