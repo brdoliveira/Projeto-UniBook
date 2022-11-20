@@ -38,7 +38,7 @@ class PerfilVendedor extends React.Component {
       return;
     }
 
-    var usuario = AuthService.obterUsuarioAutenticado();
+    var usuario = JSON.parse(localStorage.getItem("_usuario_logado"));
     this.setState(usuario);
 
     this.carregarProdutos(usuario.login);
@@ -73,7 +73,7 @@ class PerfilVendedor extends React.Component {
           <span className="fs-3" style={{textTransform: 'capitalize'}}>
               {" "}
               {this.state.nome ? this.state.nome : ""} ,{" "}
-              {FormatService.formatYears(this.state.dataNascimento) === 0 ? FormatService.formatYears(this.state.dataNascimento) + "Anos" : "" }
+              {this.state.dataNascimento ? FormatService.formatYears(this.state.dataNascimento) + " Anos" : "" }
             </span>
             <br />
             <span>
