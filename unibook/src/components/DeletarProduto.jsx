@@ -38,9 +38,9 @@ export default function DeletarProduto(props){
                 icon="pi pi-trash"
                 className="p-button-rounded p-button-danger"
                 aria-label="Trash"
-                key={props.id}
+                key={props.id + 5000 }
             />
-            <ConfirmDialog key={props.id} />
+            <ConfirmDialog key={props.id + 6000} />
         </>
     )
 }
