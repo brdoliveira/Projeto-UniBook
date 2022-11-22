@@ -1,6 +1,13 @@
+import React from "react";
+
 export default function UsuariosChat(props) {
+
+  const setIdAnuncioProduto = () =>{
+    props.parentCallback(props.idAnuncio)
+  }
+
   return (
-    <div className="col-12 d-flex flex-wrap my-3 rounded border border-3 border-orange py-2 px-1 usuarios-chat">
+    <div className="col-12 d-flex flex-wrap my-3 rounded border border-3 border-orange py-2 px-1 usuarios-chat" onClick={() => { setIdAnuncioProduto()}}>
       <div
         className="col-4 rounded-pill bg-white"
         style={{ width: "5rem", height: "5rem" }}
