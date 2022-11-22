@@ -1,7 +1,7 @@
 import React from "react";
 
 import FeedbackMessage from "./FeedbackMessage";
-import EnviarMensagem from "./EnviarMensagem";
+import EnviarFeedback from "./EnviarFeedback";
 import ComponenteVazioHome from "./ComponenteVazioHome";
 import CardProduto from "./CardProduto";
 
@@ -104,7 +104,7 @@ class PerfilVendedor extends React.Component {
                 <FeedbackMessage />
               </ScrollPanel>
               <div className="col-11 rounded">
-                <EnviarMensagem />
+                <EnviarFeedback />
               </div>
             </div>
           </div>
