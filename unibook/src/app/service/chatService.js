@@ -9,8 +9,8 @@ class ChatService extends ApiService{
         return this.get(`?id=${id}`)
     }
 
-    iniciarChat(idChat, idAnuncioProduto, idUsuarioRemetente, mensagem){
-        return this.postObject('/iniciar', {
+    enviarMensagem(idChat, idAnuncioProduto, idUsuarioRemetente, mensagem){
+        return this.postObject('/enviar-mensagem', {
             "idChat": idChat,
             "idAnuncioProduto": idAnuncioProduto,
             "idUsuarioRemetente": idUsuarioRemetente,
