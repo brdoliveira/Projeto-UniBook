@@ -1,22 +1,25 @@
-import React from "react";
+import React , { useState } from "react";
 
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
+import ChatService from "../app/service/chatService";
 
-class EnviarMensagem extends React.Component {
-  state = {
-    id: "",
-    feedback: "",
-  };
+const service = new ChatService();
 
-  render() {
-    return (
+export default function EnviarMensagem(props){
+  const [mensagem, setMensagem] = useState();
+
+  const enviarMensagem = () => {
+    service.enviarMensagem(props.idChat, props.anuncioProdutoAnunciado, props.idUsuario, mensagem);
+  }
+
+  return (
       <div className="col-12 py-2 d-flex flex-wrap">
         <InputText
           className="col-10"
-          placeholder="Digite seu feedback..."
-          value={this.state.feedback}
-          onChange={(e) => this.setState({ feedback: e.target.value })}
+          placeholder="Digite sua mensagem..."
+          value={mensagem}
+          onChange={(e) => setMensagem(e.target.value)}
         />
         <div className="col-2 px-2">
           <Button
@@ -24,11 +27,9 @@ class EnviarMensagem extends React.Component {
             label="Enviar"
             icon="pi pi-send"
             iconPos="right"
+            onClick={() => { enviarMensagem() }}
           />
         </div>
       </div>
     );
   }
-}
-
-export default EnviarMensagem;
