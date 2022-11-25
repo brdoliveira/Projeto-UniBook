@@ -8,7 +8,7 @@ import CarrinhosService from "../app/service/carrinhosService";
 import { mensagemErro, mensagemSucesso } from "./Toastr";
 import ChatService from "../app/service/chatService";
 import ComponenteVazioHome from "./ComponenteVazioHome";
-import ComentariosProdutos from "./ComentariosProduto";
+import ComentariosProduto from "./ComentariosProduto";
 
 const service = new CarrinhosService();
 const serviceChat = new ChatService();
@@ -35,7 +35,7 @@ export default function Produto(props) {
   };
 
   const verPerfilVendedor = () => {
-    window.location.href = `/usuario/${livro.vendedor.id}`;
+    window.location.href = `/usuario/${livro.idVendedor}`;
   };
 
   const iniciarChat = (idProduto) => {
@@ -134,7 +134,7 @@ export default function Produto(props) {
           <ComponenteVazioHome/>
         </div>
         <div className="col-12">
-          <ComentariosProdutos/>
+          <ComentariosProduto/>
         </div>
       </div>
     </div>
