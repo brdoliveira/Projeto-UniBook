@@ -7,6 +7,8 @@ import { Chip } from "primereact/chip";
 import CarrinhosService from "../app/service/carrinhosService";
 import { mensagemErro, mensagemSucesso } from "./Toastr";
 import ChatService from "../app/service/chatService";
+import ComponenteVazioHome from "./ComponenteVazioHome";
+import ComentariosProdutos from "./ComentariosProduto";
 
 const service = new CarrinhosService();
 const serviceChat = new ChatService();
@@ -125,8 +127,14 @@ export default function Produto(props) {
         </div>
       </div>
       <div className="div-perfil-items py-4 col-12">
-        <div className="w-100 col-12 border-dark border-3 border-bottom">
+        <div className="col-12 border-dark border-3 border-bottom">
           <h2 className="text-dark">Recomendados</h2>
+        </div>
+        <div className="col-12 d-flex py-2">
+          <ComponenteVazioHome/>
+        </div>
+        <div className="col-12">
+          <ComentariosProdutos/>
         </div>
       </div>
     </div>
