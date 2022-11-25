@@ -7,9 +7,9 @@ class MensagemService extends ApiService {
 
   enviarMensagem(mensagem, remententeId, produtoId) {
     return this.postObject("/enviar", {
-      mensagem: mensagem,
-      remetenteId: remententeId,
-      produtoId: produtoId,
+      "mensagem": mensagem,
+      "remetenteId": remententeId,
+      "produtoId": produtoId,
     });
   }
 
