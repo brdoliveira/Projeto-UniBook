@@ -17,6 +17,7 @@ export default function EnviarMensagem(props) {
       props.idUsuario,
       mensagem
     );
+    setMensagem('')
   };
 
   return (
