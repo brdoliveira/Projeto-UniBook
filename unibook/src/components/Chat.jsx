@@ -100,7 +100,7 @@ class Chat extends React.Component {
               );
             })}
           </ScrollPanel>
-          <div className="col-11">
+          <div className="col-12 d-flex justify-content-center">
             <EnviarMensagem
               anuncioProdutoAnunciado={this.state.idAnuncioProduto}
               idUsuario={this.state.idUsuario}
