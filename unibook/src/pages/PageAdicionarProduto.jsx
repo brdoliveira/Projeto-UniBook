@@ -29,7 +29,7 @@ class PageAdicionarProduto extends React.Component {
         autor: "",
         isbn: "",
         idioma: {name:'Português',code:'PORTUGUES'},
-        quantidade: "",
+        quantidade: 0,
         estado: {name: 'Perfeito', code: 'PERFEITO'},
         foto: iconAddImage
         // etiquetas: [],
@@ -57,7 +57,7 @@ class PageAdicionarProduto extends React.Component {
       "idVendedor": usuarioLogado.id,
       "titulo": this.state.livro.nome,
       "autor": this.state.livro.autor,
-      "quantidade": this.state.livro.quantidade,
+      "quantidade": this.state.livro.quantidade ? this.state.livro.quantidade : 1,
       "estadoUso": this.state.livro.estado.code,
       "anoPublicacao": this.state.livro.dataLanc,
       "descricao": this.state.livro.descricao,
