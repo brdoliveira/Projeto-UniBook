@@ -42,13 +42,9 @@ function Carrinho(props) {
     let { id } = JSON.parse(localStorage.getItem("_usuario_logado"));
 
     await service.realizarComprar(id).then(
-      (response) => {
-        mensagemSucesso(response.response.data.message)
-
-      }
+        mensagemSucesso("Compra efetuada")
     ).catch(
-      (erro) => { mensagemErro(erro.response.data.message)}
-
+        mensagemErro("Erro ao efetuar sua compra")
     )
 
   }
@@ -78,7 +74,7 @@ function Carrinho(props) {
         {produtosCarrinho}
       </div>
       <div className="p-sidebar-bottom d-flex justify-content-end align-items-center">
-        <span className="text-white fw-bold px-2"> R$ {somaCarrinho}</span>
+        <span className="text-white fw-bold px-2"> R$ {somaCarrinho.toFixed(2)}</span>
         <Button
           className="p-button-rounded bg-orange border border-3 border-dark text-dark hover-orange"
           aria-label="Comprar"
