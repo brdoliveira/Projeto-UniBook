@@ -14,7 +14,7 @@ export default function ProdutoCarrinho(props) {
           <i className="pi pi-times cursor-pointer"></i>
         </div>
         <div className="col-12">
-          <span className="text-wrap">R$ 00,00</span>
+          <span className="text-wrap">R$ {produto.valor.toFixed(2)}</span>
         </div>
       </div>
     </div>
