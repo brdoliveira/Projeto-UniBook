@@ -18,13 +18,16 @@ class Menu extends React.Component{
   state = {
     showCarrinho : false,
     showFavoritos : false,
-    logado : false
+    logado : false,
+    usuario : ""
   }
 
 
   componentDidMount(){
     if(localStorage.getItem("_usuario_logado")){
-      this.setState({logado : true}); //
+      let usuario = JSON.parse(localStorage.getItem("_usuario_logado"));
+      this.setState({logado : true});
+      this.setState({usuario : usuario})
     }else{
       this.setState({logado : false});
     }
@@ -170,7 +173,7 @@ class Menu extends React.Component{
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
                 >
-                <Avatar icon="pi pi-user"/>
+                <Avatar className="rounded-pill" image={this.state.usuario.foto ? this.state.usuario.foto : ""}/>
               </button>
               <ul
                 className="w-25 dropdown-menu bg-blue border border-white border-2 p-2"
