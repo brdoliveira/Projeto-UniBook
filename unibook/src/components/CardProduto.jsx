@@ -38,7 +38,7 @@ function CardProduto(props) {
       </div>
       <img
         alt="Card"
-        src="images/usercard.png"
+        src={livro.foto ? livro.foto : ""}
         style={{ height: "10rem" }}
         onError={(e) =>
           (e.target.src =
