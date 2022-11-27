@@ -13,6 +13,7 @@ import ComponenteVazioHome from "./ComponenteVazioHome";
 class PerfilUsuario extends React.Component {
   state = {
     nome: "",
+    foto: "",
     dataNascimento: "",
     sexo: "",
     cpf: "",
@@ -39,7 +40,7 @@ class PerfilUsuario extends React.Component {
             className="col-12 bg-white rounded-pill d-flex flex-wrap align-items-center justify-content-center"
             style={{ height: "300px", width: "300px" }}
           >
-            <img alt="" />
+            <img className="rounded-pill" style={{ height: "300px", width: "300px" }} alt={this.state.foto ? this.state.foto : ""} src={this.state.foto ? this.state.foto : ""} />
           </div>
           <span className="col-12 text-center text-dark py-2">
             <span className="fs-3" style={{ textTransform: "capitalize" }}>
