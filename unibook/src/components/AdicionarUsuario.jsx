@@ -7,6 +7,7 @@ import { Password } from "primereact/password";
 import { RadioButton } from "primereact/radiobutton";
 import { FileUpload } from "primereact/fileupload";
 import { Divider } from "primereact/divider";
+import { Button } from "primereact/button";
 
 import iconAddImage from "../templates/images/icon-add-image.png";
 
@@ -53,10 +54,11 @@ export default function AdicionarUsuario(props) {
     <>
       <div
         className="col-12 rounded bg-blue d-flex justify-content-center align-items-center flex-wrap"
-        style={{ height: "40rem" }}
+        style={{ height: "50rem" }}
       >
         <div className="col-11 text-white pt-4 pt-lg-4 py-4 py-lg-0">
           <h2>Adicionar Usuario</h2>
+          <Button label="Criar Usuario"/>
         </div>
         <div className="col-12 col-lg-4 px-4  d-flex flex-wrap align-items-center justify-content-center">
           <div
