@@ -85,11 +85,11 @@ class PageCadastro extends React.Component {
       "cpf": this.state.usuario.cpf,
       "email": this.state.usuario.email,
       "senha": this.state.usuario.senha,
-      "tipoUsuario": "VENDEDOR",
+      "tipoUsuario": "COMPRADOR",
       "cep": this.state.usuario.cep.replace(/-/,""),
       "numeroResidencia": this.state.usuario.numeroResidencia + " " +  this.state.usuario.complemento ,
-      "login": this.state.usuario.login
-      // ,"foto": this.state.usuario.foto
+      "login": this.state.usuario.login,
+      "foto": this.state.usuario.foto
     }
 
     try{
@@ -100,7 +100,7 @@ class PageCadastro extends React.Component {
       return false;
     }
 
-    this.service.salvarUsuario(usuarioCadastro).then((response) => {
+    this.service.salvarUsuario(usuarioCadastro).then(() => {
       mensagemSucesso("Usuário cadastrado")
       setTimeout(() => {window.location.href = "/login"}, 3000);
       window.location.href = "/login"
