@@ -41,12 +41,15 @@ function Carrinho(props) {
   async function comprarProdutosCarrinho(){
     let { id } = JSON.parse(localStorage.getItem("_usuario_logado"));
 
-    await service.realizarComprar(id).then(
-        mensagemSucesso("Compra efetuada")
-    ).catch(
-        mensagemErro("Erro ao efetuar sua compra")
-    )
-
+    try{
+      await service.realizarComprar(id)
+    }
+    catch{
+      mensagemErro("Erro ao efetuar sua compra")
+      return;      
+    }
+    mensagemSucesso("Compra efetuada")
+    listaCarrinho()
   }
 
   return (
