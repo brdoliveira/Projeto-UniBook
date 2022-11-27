@@ -30,7 +30,7 @@ export default function EnviarMensagem(props) {
         />
         <div className="col-2 px-2">
           <Button
-            className="w-100"
+            className="w-100 h-100"
             label="Enviar"
             icon="pi pi-send"
             iconPos="right"
