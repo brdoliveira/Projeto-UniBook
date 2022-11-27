@@ -37,8 +37,8 @@ class PageUsuario extends React.Component{
       await this.service.listarAnunciosPorVendedor(login).then(
         (response) => {
           this.setState({
-            listaUsuario: response.data.map((livro) => {
-              return <CardProduto key={livro.id} livro={livro} isDono={true} />;
+            listaUsuario: response.data.map((livro,idx) => {
+              return <CardProduto id={idx} key={idx} livro={livro} isDono={false} />;
             }),
           });
         }).catch(
@@ -47,8 +47,6 @@ class PageUsuario extends React.Component{
           })
         )
     }
-
-
 
     render(){
         return(
