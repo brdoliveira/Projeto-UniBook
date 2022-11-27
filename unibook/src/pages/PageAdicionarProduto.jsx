@@ -62,8 +62,8 @@ class PageAdicionarProduto extends React.Component {
       "anoPublicacao": this.state.livro.dataLanc,
       "descricao": this.state.livro.descricao,
       "valor": this.state.livro.valor,
-      "idioma": this.state.livro.idioma.code
-      // ,"foto": this.state.livro.foto
+      "idioma": this.state.livro.idioma.code,
+      "foto": this.state.livro.foto
     }
     
     try{
