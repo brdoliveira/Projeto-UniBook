@@ -80,7 +80,10 @@ class PageAdicionarProduto extends React.Component {
       window.location.href = "/perfil"
     })
     .catch((erro) => {
-      mensagemErro(erro.response.data.message);
+      erro.response.data.errors.map((msg) => {
+        mensagemErro(`${msg.field} : ${msg.defaultMessage}`);
+        return false;
+      })
       return;
     });
   }
