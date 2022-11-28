@@ -57,7 +57,7 @@ class ComentariosProduto extends React.Component {
               <ComentarioItem
                 id={idx}
                 key={idx}
-                nome={`Usuario ${item.nomeUsuario ? this.nomeUsuario : ""}`}
+                nome={`Usuario ${item.nomeUsuario ? item.nomeUsuario : ""}`}
                 mensagem={item.mensagem}
               />
             );
