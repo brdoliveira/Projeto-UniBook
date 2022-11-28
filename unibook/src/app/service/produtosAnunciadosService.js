@@ -62,6 +62,14 @@ class ProdutosAnunciadosService extends ApiService {
   listarTodos(pagina,fileira) {
     return this.get(`/listar-todos?pagina=${pagina}&tamanhoPorPagina=${fileira}`);
   }
+  
+  listarTodosExcetoUsuario(pagina,fileira,idUsuario){
+    return this.get(`/listar-todos/exceto-usuario?pagina=${pagina}&tamanhoPorPagina=${fileira}&idUsuario=${idUsuario}`);
+  }
+
+  listarTodosExcetoUsuarioExcetoProduto(pagina,fileira,idUsuario,idProduto){
+    return this.get(`/listar-todos/exceto-usuario-produto?pagina=${pagina}&tamanhoPorPagina=${fileira}&idUsuario=${idUsuario}&idProduto=${idProduto}`);
+  }
 
   listarTodosPilha() {
     return this.get("/listar-todos-pilha");
