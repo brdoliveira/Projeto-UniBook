@@ -24,7 +24,11 @@ class PageHome extends React.Component {
   }
 
   async componentDidMount() {
-    this.getListBooks();
+    if(!localStorage.getItem("_usuario_logado")){
+      this.getListBooks();
+    }else{
+      this.getListBooksExceptUser(JSON.parse(localStorage.getItem("_usuario_logado")).id)
+    }
   }
 
   async getListBooks() {
@@ -44,6 +48,30 @@ class PageHome extends React.Component {
         })
       );
   }
+
+  async getListBooksExceptUser(id) {
+    await this.service
+      .listarTodosExcetoUsuario(this.state.pagina, this.state.fileira,id)
+      .then((response) => {
+        if(response.data.totalElements){
+          this.setState({ totalPaginas: response.data.totalElements });
+          this.setState({
+            livros: response.data.content.map((livro, idx) => {
+              return <CardProduto id={idx} key={idx} livro={livro} isDono={false} />;
+            }),
+          });
+        }else{
+          this.setState({ livro : <ComponenteVazioHome/> })
+        }
+      })
+      .catch(
+        this.setState({
+          livros: <ComponenteVazioHome />,
+        })
+      );
+  }
+
+  
 
   handleCallback = (childData) => {
     console.log(childData);
