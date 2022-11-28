@@ -76,6 +76,10 @@ class UsuarioService extends ApiService {
     return this.get("/listar/top-usuarios-logados");
   }
 
+  listaUsuarios(){
+    return this.get("/usuarios/lista");
+  }
+
   alterarSenha(id,senhaAntiga,senhaNova){
     var alterarSenhaObjeto = {
       idUsuario : id,
