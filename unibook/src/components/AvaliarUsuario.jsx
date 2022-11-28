@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Dialog } from "primereact/dialog";
 import { Button } from "primereact/button";
-import { Rating } from 'primereact/rating';
+import { Rating } from "primereact/rating";
 import FeedbackService from "../app/service/feedbackSerivce";
 import { mensagemErro, mensagemSucesso } from "./Toastr";
 
@@ -13,7 +13,7 @@ export default function AvaliarUsuario(props) {
   const [star, setStar] = useState(null);
   const [setPosition] = useState("center");
 
-  const header = `Avaliar usuario ${props.usuario ? props.usuario : ""}`
+  const header = `Avaliar usuario`;
 
   const dialogFuncMap = {
     displayBasic: setDisplayBasic,
@@ -32,22 +32,20 @@ export default function AvaliarUsuario(props) {
   };
 
   const sendFeedback = () => {
-    if(star === null){
-        mensagemErro("Digite uma nota")
-        return
+    if (star === null) {
+      mensagemErro("Digite uma nota");
+      return;
     }
 
     try {
-        serviceFeedback.avaliarComprador(props.idAnuncioProduto,star)
+      serviceFeedback.avaliarComprador(props.idAnuncioProduto, star);
+      serviceFeedback.avaliarVendedor(props.idAnuncioProduto, star);
     } catch (error) {
-        try{
-            serviceFeedback.avaliarVendedor(props.idAnuncioProduto,star)
-        }catch(error){
-            mensagemErro(`Erro ao avaliar o usuario ${props.usuario}, tente mais tarde`)
-        }
+      mensagemErro("Erro ao avaliar usuario, tente mais tarde")
     }
-    mensagemSucesso("Usuario avaliado, obrigado pelo feedback")
-  }
+    mensagemSucesso("Usuario avaliado, obrigado pelo feedback");
+    onHide("displayBasic")
+  };
 
   return (
     <>
@@ -64,7 +62,11 @@ export default function AvaliarUsuario(props) {
         onHide={() => onHide("displayBasic")}
       >
         <span>Dar nota:</span>
-        <Rating value={star} cancel={false} onChange={(e) => setStar(e.value)} />
+        <Rating
+          value={star}
+          cancel={false}
+          onChange={(e) => setStar(e.value)}
+        />
         <div className="col-12 d-flex justify-content-end pt-4 mt-4">
           <Button
             label="Enviar Feedback"
