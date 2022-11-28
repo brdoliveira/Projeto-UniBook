@@ -106,7 +106,10 @@ class PageCadastro extends React.Component {
       window.location.href = "/login"
     })
     .catch((erro) => {
-      mensagemErro(erro.response.data.message);
+      erro.response.data.errors.map((msg) => {
+        mensagemErro(`${msg.field} : ${msg.defaultMessage}`);
+        return false;
+      })
       return;
     });
   };
