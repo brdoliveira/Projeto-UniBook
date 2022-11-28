@@ -6,7 +6,7 @@ class ChatService extends ApiService{
     }
     
     enviarMensagem(idChat, idAnuncioProduto, idUsuarioRemetente, mensagem){
-        return this.postObject('/envia-mensagem', {
+        return this.postObject('/mensagens/chat/', {
             "idChat": idChat,
             "idAnuncioProduto": idAnuncioProduto,
             "idUsuarioRemetente": idUsuarioRemetente,
