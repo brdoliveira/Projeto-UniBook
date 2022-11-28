@@ -18,6 +18,7 @@ export default function EnviarMensagem(props) {
       mensagem
     );
     setMensagem('')
+    window.location.reload()
   };
 
   return (
@@ -40,7 +41,7 @@ export default function EnviarMensagem(props) {
           />
         </div>
         <div className="col-2 d-flex">
-          <AvaliarUsuario usuario={props.idUsuario} idAnuncioProduto={props.idUsuario}  />
+          <AvaliarUsuario usuario={props.idUsuario} idAnuncioProduto={props.anuncioProdutoAnunciado}  />
         </div>
       </div>
   );
