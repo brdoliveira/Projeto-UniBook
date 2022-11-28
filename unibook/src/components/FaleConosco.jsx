@@ -1,6 +1,12 @@
 import "../templates/styles/styles-contact.css";
+import { mensagemSucesso } from "./Toastr";
 
 function FaleConosco() {
+
+  const submitForm = () => {
+    mensagemSucesso("Pergunta enviada")
+  }
+
   return (
     <section id="contact" className="contact">
       <div className="container py-4">
@@ -35,18 +41,18 @@ function FaleConosco() {
               </div>
               <iframe
                 src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=S%C3%A3o%20Paulo%20Tech%20School+(UniBook%20Empresa)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-                frameborder="0"
+                frameBorder="0"
                 style={{ border: "0", width: "100%", height: "290px" }}
                 title="Localização"
-                allowfullscreen
+                allowFullScreen
               ></iframe>
             </div>
           </div>
           <div className="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="" method="post" className="form-email">
+            <form onSubmit={() => { submitForm() }} className="form-email">
               <div className="row">
                 <div className="form-group col-md-6">
-                  <label for="name">Seu Nome:</label>
+                  <label htmlFor="name">Seu Nome:</label>
                   <input
                     type="text"
                     name="name"
@@ -56,7 +62,7 @@ function FaleConosco() {
                   />
                 </div>
                 <div className="form-group col-md-6 mt-3 mt-md-0">
-                  <label for="name">Seu Email:</label>
+                  <label htmlFor="name">Seu Email:</label>
                   <input
                     type="email"
                     className="form-control rounded"
@@ -67,7 +73,7 @@ function FaleConosco() {
                 </div>
               </div>
               <div className="form-group mt-3">
-                <label for="name">Assunto:</label>
+                <label htmlFor="name">Assunto:</label>
                 <input
                   type="text"
                   className="form-control rounded"
@@ -77,7 +83,7 @@ function FaleConosco() {
                 />
               </div>
               <div className="form-group mt-3">
-                <label for="name">Mensagem:</label>
+                <label htmlFor="name">Mensagem:</label>
                 <textarea
                   className="form-control"
                   name="message"
