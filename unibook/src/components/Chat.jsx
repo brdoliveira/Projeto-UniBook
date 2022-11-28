@@ -26,12 +26,11 @@ class Chat extends React.Component {
     let { id } = JSON.parse(localStorage.getItem("_usuario_logado"));
     this.setState({ idUsuario: id });
 
-    await this.listaChat(id).then(() => {
-      this.buscarMensagens(
-        this.state.idUsuarioRemetente,
-        this.state.idAnuncioProduto
-      );
-    });
+    await this.listaChat(id);
+    await this.buscarMensagens(
+      this.state.idUsuarioRemetente,
+      this.state.idAnuncioProduto
+    );
   }
 
   async listaChat(idUsuario) {
@@ -52,10 +51,7 @@ class Chat extends React.Component {
         ),
         idAnuncioProduto: response.data[0]["anuncioProduto"]["id"],
         idChat: response.data[0]["id"],
-        idUsuarioRemetente:
-          response.data[0].anuncioProduto.vendedor.id === idUsuario
-            ? response.data[0].usuario.id
-            : response.data[0].anuncioProduto.vendedor.id
+        idUsuarioRemetente: response.data[0].usuario.id,
       });
     });
   }
@@ -70,7 +66,10 @@ class Chat extends React.Component {
     this.setState({
       idAnuncioProduto: childData,
     });
-    this.buscarMensagens(this.state.idUsuarioRemetente, this.state.idAnuncioProduto);
+    this.buscarMensagens(
+      this.state.idUsuarioRemetente,
+      this.state.idAnuncioProduto
+    );
   };
 
   render() {
@@ -113,12 +112,10 @@ class Chat extends React.Component {
                 return (
                   <ChatMessage
                     proprietarioMensagem={
-                      res.chat.usuario.id === this.state.idUsuario
-                        ? true
-                        : false
+                      res.usuario.id === this.state.idUsuario ? true : false
                     }
                     mensagem={res.mensagem}
-                    nome={res.chat.usuario.nome}
+                    nome={res.usuario.nome}
                   />
                 );
               })
