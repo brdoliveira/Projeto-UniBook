@@ -77,11 +77,11 @@ function CardProduto(props) {
   const footer = (
     <span>
       <div className="col-12 d-flex flex-wrap">
-        <div className="col-6">
+        <div className="col-4">
           <p className="fw-bold m-0">Preço</p>
           <p>R$ {livro.valor}</p>
         </div>
-        <div className="col-6 d-flex justify-content-end align-items-start">
+        <div className="col-8 d-flex justify-content-end align-items-start">
           <Button
             label="Comprar"
             icon="pi pi-shopping-cart"
@@ -109,7 +109,7 @@ function CardProduto(props) {
             : livro.descricao
         }
         style={{ width: "20rem", height: "25rem" }}
-        className="border border-2 border-secondary rounded col-3 m-1"
+        className="border border-2 border-secondary rounded col-3 m-1 text-break"
         header={header}
       >
         <div className="p-card-footer">{footer}</div>
