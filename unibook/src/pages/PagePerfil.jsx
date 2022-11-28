@@ -6,14 +6,26 @@ import { TabView, TabPanel } from "primereact/tabview";
 import PerfilUsuario from "../components/PerfilUsuario";
 import PerfilVendedor from "../components/PerfilVendedor";
 import PerfilAnalitycs from "../components/PerfilAnalytics";
+import UsuarioService from "../app/service/usuarioService";
 class PagePerfil extends React.Component {
   constructor(){
     super()
     this.state = ""
+    this.service = new UsuarioService();
   }
 
   componentDidMount(){
-    this.setState(JSON.parse(localStorage.getItem("_usuario_logado")));
+    if(JSON.parse(localStorage.getItem("_usuario_logado")).id){
+      this.setState(JSON.parse(localStorage.getItem("_usuario_logado")));
+
+      this.service.getUsuario(JSON.parse(localStorage.getItem("_usuario_logado")).id).then(
+        (res) => {
+          this.setState(res.data);
+        } 
+      )
+    }else{
+      window.location.href = "/"
+    }
   }
 
   render() {
@@ -28,10 +40,10 @@ class PagePerfil extends React.Component {
               <TabPanel header="Usuario">
                 <PerfilUsuario className="col-12" />
               </TabPanel>
-              <TabPanel header="Vendedor" disabled={this.state.tipoUsuarip === "VENDEDOR"}>
+              <TabPanel header="Vendedor" disabled={this.state.tipoUsuario !== 'VENDEDOR'}>
                 <PerfilVendedor className="col-12" />
               </TabPanel>
-              <TabPanel header="Analytics" disabled={this.state.tipoUsuarip === "VENDEDOR"}>
+              <TabPanel header="Analytics" disabled={this.state.tipoUsuario !== 'VENDEDOR'}>
                 <PerfilAnalitycs className="col-12" />
               </TabPanel>
             </TabView>
