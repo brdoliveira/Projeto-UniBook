@@ -6,7 +6,6 @@ import ChatMessage from "./ChatMessage";
 import { ScrollPanel } from "primereact/scrollpanel";
 import EnviarMensagem from "./EnviarMensagem";
 import ChatService from "../app/service/chatService";
-import { mensagemErro } from "./Toastr";
 import ComponenteItemsVazio from "./ComponenteItemsVazio";
 
 class Chat extends React.Component {
@@ -18,6 +17,7 @@ class Chat extends React.Component {
       chat: [],
       idAnuncioProduto: 0,
       idUsuario: 0,
+      idUsuarioRemetente: 0,
       idChat: 0,
     };
   }
@@ -26,39 +26,51 @@ class Chat extends React.Component {
     let { id } = JSON.parse(localStorage.getItem("_usuario_logado"));
     this.setState({ idUsuario: id });
 
-    await this.listaChat(id);
-    this.buscarMensagens(id, this.state.idAnuncioProduto);
+    await this.listaChat(id).then(() => {
+      this.buscarMensagens(
+        this.state.idUsuarioRemetente,
+        this.state.idAnuncioProduto
+      );
+    });
   }
 
   async listaChat(idUsuario) {
     await this.service.listarChat(idUsuario).then((response) => {
       this.setState({
-        users: response.data.map((chat) => ({
-          nome: chat.anuncioProduto.vendedor.nome,
-          idAnuncio: chat.anuncioProduto.id,
-        })),
+        users: response.data.map((chat) =>
+          chat.anuncioProduto.vendedor.id === idUsuario
+            ? {
+                foto: chat.usuario.foto,
+                nome: chat.usuario.nome,
+                idAnuncio: chat.anuncioProduto.id,
+              }
+            : {
+                foto: chat.anuncioProduto.vendedor.foto,
+                nome: chat.anuncioProduto.vendedor.nome,
+                idAnuncio: chat.anuncioProduto.id,
+              }
+        ),
         idAnuncioProduto: response.data[0]["anuncioProduto"]["id"],
         idChat: response.data[0]["id"],
+        idUsuarioRemetente:
+          response.data[0].anuncioProduto.vendedor.id === idUsuario
+            ? response.data[0].usuario.id
+            : response.data[0].anuncioProduto.vendedor.id
       });
     });
   }
 
   buscarMensagens(idUsuario, idAnuncio) {
-    this.service
-      .buscarMensagens(idUsuario, idAnuncio)
-      .then((response) => {
-        this.setState({ chat: response.data.mensagemLista });
-      })
-      .catch(() => {
-        mensagemErro("Nenhuma mensagem encontrada")
-      });
+    this.service.buscarMensagens(idUsuario, idAnuncio).then((response) => {
+      this.setState({ chat: response.data.mensagemLista });
+    });
   }
 
   handleCallback = (childData) => {
     this.setState({
       idAnuncioProduto: childData,
     });
-    this.buscarMensagens(this.state.idUsuario, this.state.idAnuncioProduto);
+    this.buscarMensagens(this.state.idUsuarioRemetente, this.state.idAnuncioProduto);
   };
 
   render() {
@@ -75,19 +87,17 @@ class Chat extends React.Component {
             className="col-11 scroll text-dark mb-3 ps-1 justify-content-center flex-wrap"
             style={{ height: "40rem" }}
           >
-            {
-            this.state.usuario ?
-            this.state.users.map((chat) => {
+            {this.state.users.map((chat) => {
               return (
                 <UsuariosChat
                   parentCallback={this.handleCallback}
                   key={chat.idAnuncio}
                   idAnuncio={chat.idAnuncio}
                   nome={chat.nome}
+                  foto={chat.foto}
                 />
               );
-            }) : <ComponenteItemsVazio mensagem="Nenhum usuario encontrado"/>  
-            }
+            })}
           </ScrollPanel>
         </div>
         <div
@@ -98,17 +108,23 @@ class Chat extends React.Component {
             className="col-11 scroll text-dark bg-white rounded mb-3 ps-1 justify-content-center flex-wrap"
             style={{ height: "25rem" }}
           >
-            {this.state.chat ? this.state.chat.map((chat) => {
-              return (
-                <ChatMessage
-                  proprietarioMensagem={
-                    chat.usuario.id === this.state.idUsuario ? true : false
-                  }
-                  mensagem={chat.mensagem}
-                  nome={chat.usuario.nome}
-                />
-              );
-            }) : <ComponenteItemsVazio mensagem="Nenhuma mensagem encontrada"/> }
+            {this.state.chat ? (
+              this.state.chat.map((res) => {
+                return (
+                  <ChatMessage
+                    proprietarioMensagem={
+                      res.chat.usuario.id === this.state.idUsuario
+                        ? true
+                        : false
+                    }
+                    mensagem={res.mensagem}
+                    nome={res.chat.usuario.nome}
+                  />
+                );
+              })
+            ) : (
+              <ComponenteItemsVazio mensagem="Nenhuma mensagem encontrada" />
+            )}
           </ScrollPanel>
           <div className="col-12 d-flex justify-content-center">
             <EnviarMensagem
