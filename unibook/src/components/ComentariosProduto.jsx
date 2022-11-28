@@ -44,7 +44,7 @@ class ComentariosProduto extends React.Component {
         return;
       });
     mensagemSucesso("Mensagem enviada com sucesso");
-    this.buscarMensagensProdutos(this.state.idUsuario);
+    this.buscarMensagensProdutos(this.state.idAnuncio);
   }
 
   async buscarMensagensProdutos(idAnuncio) {
@@ -57,7 +57,7 @@ class ComentariosProduto extends React.Component {
               <ComentarioItem
                 id={idx}
                 key={idx}
-                nome={`Usuario ${item.remetenteId}`}
+                nome={`Usuario ${item.nomeUsuario ? this.nomeUsuario : ""}`}
                 mensagem={item.mensagem}
               />
             );
