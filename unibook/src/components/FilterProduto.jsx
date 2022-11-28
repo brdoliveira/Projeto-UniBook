@@ -19,7 +19,7 @@ export default function FilterProduto() {
 
 
     return (
-      <div className="col-2 p-2 py-4">
+      <div className="col-2 p-2 py-4 pt-5">
         <h2>Filtrar Por</h2>
         <Divider />
         <h3>Avaliação</h3>
