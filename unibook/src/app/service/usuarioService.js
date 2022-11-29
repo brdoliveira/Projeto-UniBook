@@ -77,7 +77,7 @@ class UsuarioService extends ApiService {
   }
 
   listaUsuarios(){
-    return this.get("/usuarios/lista");
+    return this.get("/lista");
   }
 
   alterarSenha(id,senhaAntiga,senhaNova){
