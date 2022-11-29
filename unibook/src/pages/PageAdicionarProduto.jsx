@@ -96,7 +96,7 @@ class PageAdicionarProduto extends React.Component {
   };
 
   handleCallbackFoto = (childData) => {
-    this.setState({...this.state.livro, ...{ foto : childData}});
+    this.setState({...this.state.livro, ...{livro : { foto : childData} }});
   };
 
   render() {
