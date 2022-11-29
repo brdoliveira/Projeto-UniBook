@@ -21,13 +21,13 @@ export default function RemoverEditarUsuarioItem(props) {
     <>
       <div className="col-12 rounded bg-white my-2 d-flex flex-wrap p-2" style={{ height: "7rem" }}>
         <div className="col-12 col-lg-5">
-            <span className="fw-bold">Nome: </span>
+            <span className="fw-bold">Nome: {props.nome ? props.nome : ""} </span>
         </div>
         <div className="col-6 col-lg-3">
-          <span className="fw-bold">Email: </span>
+          <span className="fw-bold">Email: {props.email ? props.email : ""} </span>
         </div>
         <div className="col-6 col-lg-2">
-            <span className="fw-bold">CPF: </span>
+            <span className="fw-bold">Login: {props.login ? props.login : ""}</span>
         </div>
         <div className="col-12 col-lg-2 d-flex align-items-center justify-content-end">
           <Button icon="pi pi-pencil" className="rounded-pill p-button-secondary"/>
