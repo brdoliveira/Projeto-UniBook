@@ -2,7 +2,6 @@ import React from "react";
 import "../templates/styles/styles-menu.css";
 
 import UsuarioService from "../app/service/usuarioService";
-
 import Favoritos from "./Favoritos";
 import Carrinho from "./Carrinho";
 import { mensagemErro } from "./Toastr";
@@ -21,7 +20,7 @@ class Menu extends React.Component {
     showFavoritos: false,
     logado: false,
     usuario: "",
-    produto: ""
+    produto: "",
   };
 
   componentDidMount() {
@@ -62,7 +61,7 @@ class Menu extends React.Component {
   pesquisarProduto() {
     if (this.state.produto !== "") {
       localStorage.setItem("pesquisa_livro", this.state.produto);
-      window.location.href = "/produtos"
+      window.location.href = "/produtos";
     } else {
       mensagemErro("Digite o nome de algum livro");
     }
@@ -93,13 +92,15 @@ class Menu extends React.Component {
                     className="form-control search-form py-0"
                     placeholder="Pesquisar livro..."
                     value={this.state.produto}
-                    onChange={(e) => this.setState({ produto : e.target.value})}
+                    onChange={(e) => this.setState({ produto: e.target.value })}
                   />
                   <div className="input-group-append">
                     <button
                       className="btn btn-search text-white search-button border border-0 py-2 button-menu"
                       type="submit"
-                      onClick={() => {this.pesquisarProduto()}}
+                      onClick={() => {
+                        this.pesquisarProduto();
+                      }}
                     >
                       <i className="bi bi-search"></i>
                     </button>
@@ -199,9 +200,7 @@ class Menu extends React.Component {
                   >
                     <Avatar
                       className="rounded-pill"
-                      image={
-                        this.state.usuario.foto ? this.state.usuario.foto : ""
-                      }
+                      image={this.state.usuario.foto}
                     />
                   </button>
                   <ul
