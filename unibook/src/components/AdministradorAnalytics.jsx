@@ -15,33 +15,10 @@ class AdministradorAnalytics extends React.Component {
     this.state = {
       usuariosAtivos: 0,
       usuariosInativos: 0,
-      stackedData: {},
     };
   }
 
   componentDidMount() {
-    this.usuarioAtivosInativos().then(() => {
-      this.setState({
-        stackedData: {
-          labels: ["Usuarios"],
-          datasets: [
-            {
-              type: "bar",
-              label: "Ativos",
-              backgroundColor: "#162BAD",
-              data: [this.state.usuariosAtivos],
-            },
-            {
-              type: "bar",
-              label: "Inativos",
-              backgroundColor: "#FB8500",
-              data: [this.state.usuariosInativos],
-            },
-          ],
-        },
-      });
-      console.log(this.state.stackedData);
-    });
   }
 
   async usuarioAtivosInativos() {
@@ -67,9 +44,7 @@ class AdministradorAnalytics extends React.Component {
           <h2>Quantidade de Usuários Ativos x Inativos</h2>
         </div>
         <div className="col-12 py-4">
-          <GraficoBarraAtivosInativos
-            stackedData={this.state.stackedData}
-          />
+          <GraficoBarraAtivosInativos/>
         </div>
         <div className="col-12 text-dark">
           <h2>Mapa Geográfico Volume de Compras</h2>
