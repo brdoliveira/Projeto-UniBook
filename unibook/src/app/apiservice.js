@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const httpClient = axios.create({
-    baseURL: "http://localhost:8080/"
-    // baseURL: "http://44.199.166.133:8004"
+    // baseURL: "http://localhost:8080/"
+    baseURL: "http://54.82.168.80:8004"
     // baseURL: "http://unibook.ddns.net:8004"
 })
 
