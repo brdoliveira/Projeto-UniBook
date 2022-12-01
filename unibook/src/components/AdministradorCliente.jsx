@@ -7,6 +7,8 @@ import RemoverEditarProduto from "./RemoverEditarProduto";
 import AdicionarUsuario from "./AdicionarUsuario";
 
 import iconAddImage from "../templates/images/icon-add-image.png";
+import { Button } from "primereact/button";
+import { Link } from "react-router-dom";
 
 class AdministradorCliente extends React.Component {
   constructor(){
@@ -44,7 +46,11 @@ class AdministradorCliente extends React.Component {
     return (
       <>
         <div className="col-12 text-center text-dark pt-5">
-          <h1>Administração dos Clientes</h1>
+          <h1>
+            <Link to="/" className="text-decoration-none">
+              <Button className="rounded-pill bg-danger border-0 mx-2" icon="pi pi-angle-left"/>
+            </Link>
+            Administração dos Clientes</h1>
         </div>
         <div className="col-12 py-4">
           <RemoverEditarUsuario />
