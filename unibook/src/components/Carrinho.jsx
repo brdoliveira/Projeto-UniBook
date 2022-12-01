@@ -49,6 +49,7 @@ function Carrinho(props) {
       return;      
     }
     mensagemSucesso("Compra efetuada")
+    setVisibleCarrinho(false);
     listaCarrinho()
   }
 
