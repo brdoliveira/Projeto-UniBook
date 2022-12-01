@@ -96,6 +96,16 @@ class PerfilUsuario extends React.Component {
               <div className="col-sm-12 col-md-6 text-center py-2 px-3">
                 <AlterarSenha />
               </div>
+              <div className="col-sm-12 col-md-6 text-center py-2 px-3">
+              <Link to="/administracao" className="text-decoration-none" hidden={this.state.tipoUsuario !== "ADMINISTRADOR"}>
+                  <Button
+                    className="bg-orange rounded-pill border border-dark text-dark border-2 fw-bold px-4 py-3 w-100 button-perfil"
+                    label="Administrador"
+                    icon="pi pi-chart-pie"
+                    iconPos="right"
+                  />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
