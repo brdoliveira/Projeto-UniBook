@@ -58,17 +58,18 @@ class PageAdicionarProduto extends React.Component {
       "titulo": this.state.livro.nome,
       "autor": this.state.livro.autor,
       "quantidade": this.state.livro.quantidade ? this.state.livro.quantidade : 1,
-      "estadoUso": this.state.livro.estado.code,
-      "anoPublicacao": this.state.livro.dataLanc,
-      "descricao": this.state.livro.descricao,
+      "estadoUso": this.state.livro.estado.code ? this.state.livro.estado.code : "PERFEITO",
+      "anoPublicacao": this.state.livro.dataLanc ? this.state.livro.dataLanc : 2000,
+      "descricao": this.state.livro.descricao ? this.state.livro.descricao : `Descrição do livro ${this.state.livro.nome}`,
       "valor": this.state.livro.valor,
-      "idioma": this.state.livro.idioma.code,
+      "idioma": this.state.livro.idioma.code ? this.state.livro.idioma.code : "PORTUGUES",
       "foto": this.state.livro.foto
     }
     
     try{
       this.service.validarProduto(produto)
     }catch(erro){
+      console.log(erro)
       const msgs = erro.mensagens;
       msgs.forEach((msg) => mensagemErro(msg));
       return false;
@@ -80,11 +81,8 @@ class PageAdicionarProduto extends React.Component {
       window.location.href = "/perfil"
     })
     .catch((erro) => {
-      erro.response.data.errors.map((msg) => {
-        mensagemErro(`${msg.field} : ${msg.defaultMessage}`);
-        return false;
-      })
-      return;
+      mensagemErro(erro.response);
+      return false;
     });
   }
 
