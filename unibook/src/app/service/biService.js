@@ -17,6 +17,14 @@ class BiService extends ApiService{
         return this.get('/produtos-anunciados/volume-venda')
     }
 
+    vendasMapa(){
+        return this.get('/produtos-anunciados/mapa-venda')
+    }
+
+    quantidadeVendasRegiao(){
+        return this.get('/produtos-anunciados/quantidade-compra-regiao')
+    }
+
     tipoLivro(){
         return this.get('/produtos-anunciados/volume-venda/tipo-livro')
     }
