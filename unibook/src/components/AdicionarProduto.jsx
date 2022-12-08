@@ -17,13 +17,13 @@ import "../templates/styles/styles-cadastro.css";
 
 export default function AdicionarProduto(props) {
   const [livroInformacoes, setLivroInformacoes] = useState(props.livro);
-  const [imgPath, setImgPath] = useState(props.foto);
+  const [fotoEscolhida, setFotoEscolhida] = useState(props.foto);
   const [dataLancamento, setDataLancamento] = useState(props.livro.dataLanc);
   const [estadoUso, setEstadoUso] = useState(props.livro.estado);
   const [precoLivro, setPrecoLivro] = useState(props.livro.valor);
   const [quantidade, setQuantidade] = useState(props.livro.quantidade);
   const [idiomaInserido, setIdiomaInserido] = useState(props.livro.idioma);
-  const [editoraInserida, setEditoraInserida] = useState(props.livro.editora);
+  const [editoraInserida,setEditoraInserida] = useState(props.livro.editora);
 
   var dataAtual = new Date();
   const anoAtual = dataAtual.getFullYear();
@@ -40,45 +40,53 @@ export default function AdicionarProduto(props) {
   };
 
   const customBase64Uploader = async (event) => {
-    if (imgPath === iconAddImage) {
+    if (fotoEscolhida === iconAddImage) {
+      var base64data;
       const file = event.files[0];
       const reader = new FileReader();
       let blob = await fetch(file.objectURL).then((r) => r.blob());
       reader.readAsDataURL(blob);
-      reader.onloadend = function () {
-        props.parentCallbackFoto(reader.result);
-        setImgPath(reader.result);
+      reader.onloadend = () => {
+        base64data = reader.result;
+        setFotoEscolhida(base64data);
       };
+      return;
     }
-    props.parentCallbackFoto(imgPath);
   };
 
   function onTriggerProduto() {
     props.parentCallback(livroInformacoes);
+    props.parentCallbackFoto(fotoEscolhida);
   }
 
   function onTriggerProdutoLancamento() {
     props.parentCallback({ dataLanc: dataLancamento });
+    props.parentCallbackFoto(fotoEscolhida);
   }
 
   function onTriggerProdutoEstado() {
     props.parentCallback({ estado: estadoUso });
+    props.parentCallbackFoto(fotoEscolhida);
   }
 
   function onTriggerProdutoIdioma() {
     props.parentCallback({ idioma: idiomaInserido });
+    props.parentCallbackFoto(fotoEscolhida);
   }
 
   function onTriggerProdutoPreco() {
     props.parentCallback({ valor: precoLivro });
+    props.parentCallbackFoto(fotoEscolhida);
   }
 
   function onTriggerProdutoQuantidade() {
     props.parentCallback({ quantidade: quantidade });
+    props.parentCallbackFoto(fotoEscolhida);
   }
 
-  function onTriggerProdutoEditora() {
-    props.parentCallback({ editora: editoraInserida });
+  function onTriggerProdutoEditora(){
+    props.parentCallback({ editora : editoraInserida})
+    props.parentCallbackFoto(fotoEscolhida)
   }
 
   const estados = [
@@ -103,14 +111,14 @@ export default function AdicionarProduto(props) {
   ];
 
   const editoras = [
-    { name: "Rocco", code: "ROCCO" },
-    { name: "Companhia das letras", code: "COMPANHIA_DAS_LETRAS" },
-    { name: "Editora Intriseca", code: "EDITORA_INTRINSECA" },
-    { name: "Globo Livroa", code: "GLOBO_LIVROS" },
-    { name: "DarkSide", code: "DARKSIDE" },
-    { name: "Grupo Editorial Record", code: "GRUPO_EDITORIAL_RECORD" },
-    { name: "Suma", code: "SUMA" },
-  ];
+    {name: "Rocco",code:"ROCCO"},
+    {name: "Companhia das letras",code:"COMPANHIA_DAS_LETRAS"},
+    {name: "Editora Intriseca",code:"EDITORA_INTRINSECA"},
+    {name: "Globo Livroa",code:"GLOBO_LIVROS"},
+    {name: "DarkSide",code:"DARKSIDE"},
+    {name: "Grupo Editorial Record",code:"GRUPO_EDITORIAL_RECORD"},
+    {name: "Suma",code:"SUMA"}
+  ]
 
   return (
     <>
@@ -121,103 +129,98 @@ export default function AdicionarProduto(props) {
         <h1 className="col-12 text-center text-white py-1">
           Cadastro - Produto
         </h1>
-        <div className="col-12 px-4" hidden={props.page}>
-          <div className="col-12 d-flex">
-          <div className="col-4 d-flex flex-wrap align-items-center justify-content-center">
-            <div
-              className="col-12 bg-white d-flex flex-wrap align-items-center justify-content-center rounded"
-              style={{ height: "35vh", width: "60%" }}
-            >
-              <img
-                src={imgPath}
-                alt=""
-                id="imgPhoto"
-                style={{ height: "29vh", width: "90%" }}
-              />
+        <div className="col-12 col-md-4 px-4  d-flex flex-wrap align-items-center justify-content-center">
+          <div
+            className="col-12 bg-white d-flex flex-wrap align-items-center justify-content-center rounded"
+            style={{ height: "35vh", width: "60%" }}
+          >
+            <img
+              src={fotoEscolhida}
+              alt=""
+              id="imgPhoto"
+              style={{ height: "29vh", width: "90%" }}
+            />
+          </div>
+          <div className="col-12 d-flex justify-content-center py-1">
+            <FileUpload
+              mode="basic"
+              name="demo[]"
+              accept="image/*"
+              customUpload
+              uploadHandler={customBase64Uploader}
+              auto
+            />
+          </div>
+        </div>
+        <div className="col-12 col-md-8 px-4" hidden={props.page}>
+          <div className="col-12 text-white py-4 d-flex flex-wrap px-2">
+            <div className="col-6 text-white py-4 pe-1">
+              <p>ISBN</p>
+              <div className="p-inputgroup">
+                <InputText
+                  value={livroInformacoes.isbn}
+                  onChange={(e) => {
+                    setLivroInformacoes({ isbn: e.target.value });
+                    onTriggerProduto();
+                  }}
+                  className="col-12 border border-0 rounded-pill rounded-end"
+                  type="text"
+                  placeholder="ISBN do livro..."
+                />
+                <Button
+                  icon="pi pi-search"
+                  className="rounded-start rounded-pill"
+                  onClick={() => {
+                    consultarLivro(livroInformacoes.isbn);
+                  }}
+                />
+              </div>
             </div>
-            <div className="col-12 d-flex justify-content-center py-1">
-              <FileUpload
-                mode="basic"
-                name="demo[]"
-                accept="image/*"
-                customUpload
-                uploadHandler={customBase64Uploader}
-                auto
+            <div className="col-6 text-white py-4 ps-1">
+              <p>Nome do Livro</p>
+              <InputText
+                value={livroInformacoes.nome}
+                onChange={(e) => {
+                  setLivroInformacoes({ nome: e.target.value });
+                  onTriggerProduto();
+                }}
+                className="col-12 border border-0 rounded-pill"
+                type="text"
+                placeholder="Nome do livro..."
               />
             </div>
           </div>
-          <div className="col-8">
-            <div className="col-12 text-white py-4 d-flex flex-wrap px-2">
-              <div className="col-6 text-white py-4 pe-1">
-                <p>ISBN</p>
-                <div className="p-inputgroup">
-                  <InputText
-                    value={livroInformacoes.isbn}
-                    onChange={(e) => {
-                      setLivroInformacoes({ isbn: e.target.value });
-                      onTriggerProduto();
-                    }}
-                    className="col-12 border border-0 rounded-pill rounded-end"
-                    type="text"
-                    placeholder="ISBN do livro..."
-                  />
-                  <Button
-                    icon="pi pi-search"
-                    className="rounded-start rounded-pill"
-                    onClick={() => {
-                      consultarLivro(livroInformacoes.isbn);
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="col-6 text-white py-4 ps-1">
-                <p>Nome do Livro</p>
-                <InputText
-                  value={livroInformacoes.nome}
-                  onChange={(e) => {
-                    setLivroInformacoes({ nome: e.target.value });
-                    onTriggerProduto();
-                  }}
-                  className="col-12 border border-0 rounded-pill"
-                  type="text"
-                  placeholder="Nome do livro..."
-                />
-              </div>
+          <div className="col-12 text-white py-4 d-flex flex-wrap px-2">
+            <div className="col-6 text-white py-4 pe-1">
+              <p>Descrição do Livro</p>
+              <InputText
+                value={livroInformacoes.descricao}
+                onChange={(e) => {
+                  setLivroInformacoes({ descricao: e.target.value });
+                  onTriggerProduto();
+                }}
+                className="col-12 border border-0 rounded-pill"
+                type="text"
+                placeholder="Descrição do livro..."
+              />
             </div>
-
-            <div className="col-12 text-white py-4 d-flex flex-wrap px-2">
-              <div className="col-6 text-white py-4 pe-1">
-                <p>Descrição do Livro</p>
-                <InputText
-                  value={livroInformacoes.descricao}
-                  onChange={(e) => {
-                    setLivroInformacoes({ descricao: e.target.value });
-                    onTriggerProduto();
-                  }}
-                  className="col-12 border border-0 rounded-pill"
-                  type="text"
-                  placeholder="Descrição do livro..."
-                />
-              </div>
-              <div className="col-6 text-white py-4 ps-1">
-                <p>Preço</p>
-                <InputNumber
-                  value={precoLivro}
-                  onChange={(e) => {
-                    setPrecoLivro(e.value);
-                    setLivroInformacoes({ valor: e.value });
-                    onTriggerProdutoPreco();
-                  }}
-                  className="col-12 border border-0 rounded-pill"
-                  type="text"
-                  placeholder="Preço do livro..."
-                  mode="currency"
-                  currency="BRL"
-                  locale="pt-BR"
-                />
-              </div>
+            <div className="col-6 text-white py-4 ps-1">
+              <p>Preço</p>
+              <InputNumber
+                value={precoLivro}
+                onChange={(e) => {
+                  setPrecoLivro(e.value);
+                  setLivroInformacoes({ valor: e.value });
+                  onTriggerProdutoPreco();
+                }}
+                className="col-12 border border-0 rounded-pill"
+                type="text"
+                placeholder="Preço do livro..."
+                mode="currency"
+                currency="BRL"
+                locale="pt-BR"
+              />
             </div>
-          </div>
           </div>
         </div>
         <div className="col-12 col-md-8 px-4" hidden={!props.page}>
@@ -306,7 +309,7 @@ export default function AdicionarProduto(props) {
             <div className="col-6 text-white py-4 ps-2">
               <p>Idioma</p>
               <Dropdown
-                optionLabel="name"
+              optionLabel="name"
                 value={idiomaInserido}
                 options={idiomas}
                 onChange={(e) => {
@@ -318,22 +321,6 @@ export default function AdicionarProduto(props) {
               />
             </div>
           </div>
-          {/* <div className="col-12 text-white pt-4">
-              <p>Etiquetas</p>
-              <ScrollPanel
-                className="col-12 scroll rounded"
-                style={{ height: " 5vh" }}
-              >
-                <Chips
-                  value={livroInformacoes.etiquetas}
-                  onChange={(e) => setLivroInformacoes({ etiquetas: e.value })}
-                  className="col-12 border border-0 rounded-pill"
-                  separator=","
-                  placeholder="Adicionar etiqueta..."
-                  max={5}
-                />
-              </ScrollPanel>
-            </div> */}
         </div>
       </div>
     </>
