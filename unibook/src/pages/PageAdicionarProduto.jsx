@@ -58,18 +58,17 @@ class PageAdicionarProduto extends React.Component {
       "titulo": this.state.livro.nome,
       "autor": this.state.livro.autor,
       "quantidade": this.state.livro.quantidade ? this.state.livro.quantidade : 1,
-      "estadoUso": this.state.livro.estado.code ? this.state.livro.estado.code : "PERFEITO",
-      "anoPublicacao": this.state.livro.dataLanc ? this.state.livro.dataLanc : 2000,
-      "descricao": this.state.livro.descricao ? this.state.livro.descricao : `Descrição do livro ${this.state.livro.nome}`,
+      "estadoUso": this.state.livro.estado.code,
+      "anoPublicacao": this.state.livro.dataLanc,
+      "descricao": this.state.livro.descricao,
       "valor": this.state.livro.valor,
-      "idioma": this.state.livro.idioma.code ? this.state.livro.idioma.code : "PORTUGUES",
+      "idioma": this.state.livro.idioma.code,
       "foto": this.state.livro.foto
     }
     
     try{
       this.service.validarProduto(produto)
     }catch(erro){
-      console.log(erro)
       const msgs = erro.mensagens;
       msgs.forEach((msg) => mensagemErro(msg));
       return false;
@@ -81,8 +80,11 @@ class PageAdicionarProduto extends React.Component {
       window.location.href = "/perfil"
     })
     .catch((erro) => {
-      mensagemErro(erro.response);
-      return false;
+      erro.response.data.errors.map((msg) => {
+        mensagemErro(`${msg.field} : ${msg.defaultMessage}`);
+        return false;
+      })
+      return;
     });
   }
 
@@ -94,7 +96,7 @@ class PageAdicionarProduto extends React.Component {
   };
 
   handleCallbackFoto = (childData) => {
-    this.setState({...this.state.livro, ...{livro : { foto : childData} }});
+    this.setState({...this.state.livro, ...{ foto : childData}});
   };
 
   render() {
